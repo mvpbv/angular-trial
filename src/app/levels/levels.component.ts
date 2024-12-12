@@ -20,12 +20,13 @@ import { CommonModule } from '@angular/common';
       </form>
     </section>
     <section *ngIf="lvl > 0" class="output-container">
-      <p>You are level {{lvl}}</p>
-      <p>You have {{ totalXp }} XP</p>
-      <p>You need {{ levelXp }} more XP to reach level {{lvl + 1}}</p>
-      <p>Your rank is {{rank.name}}</p>
-      <p>Your next rank is {{nextRank.name}}</p>
-      <p>You need {{nextRank.xp - totalXp}} XP to reach the next rank</p>
+      <p>You are level <span class="accent-text">{{lvl}}</span></p>
+      <p>You have <span class="accent-text">{{ totalXp }}</span> XP</p>
+      <p>You need <span class="accent-text">{{ levelXp }}</span> more XP to reach level <span class="accent-text">{{lvl + 1}}</span></p>
+      <p>Your rank is <span class="accent-text">{{rank.name}}</span></p>
+      <p>Your next rank is <span class="accent-text">{{nextRank.name}}</span></p>
+      <p>You need <span class="accent-text">{{nextRank.xp - totalXp}}</span> XP to reach the next rank</p>
+      <p>You are <span class="accent-text">{{ totalXp / Complete * 100 | number: '1.0-0' }}%</span> of the way to Archmage</p>
     </section>
     <br>
   `,
@@ -38,6 +39,7 @@ export class LevelsComponent {
   levelForm: FormGroup;
   rank : Rank = { name: RankTitle.Unranked, level: 0, xp: 0 };
   nextRank : Rank = { name: RankTitle.Unranked, level: 10, xp: 320 };
+  Complete = XpService.xpToFinish();
 
   constructor(private fb: FormBuilder, private rankService: RankService) {
     this.levelForm = this.fb.group({
@@ -56,7 +58,7 @@ export class LevelsComponent {
     this.nextRank = this.rankService.assignRank(this.lvl + 10);
     this.levelXp = XpService.xpForLevel(this.lvl);
     this.totalXp = XpService.xpAtLevel(this.lvl);
-  }  
+  }
 
   ngOnInit(): void {}
 }

@@ -19,5 +19,8 @@ export class XpService {
     }
     return total;
   }
+  static xpToFinish() {
+    return 427680;
+  }
   constructor() { }
 }

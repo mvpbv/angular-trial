@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   <div *ngIf="showRanks">
       <div *ngFor="let rank of ranks" class="rank-item">
         <h4>{{rank.name}}</h4>
-        <p>Level: {{rank.level}} XP: {{rank.xp}}</p>
+        <p>Level: <span class="accent-text">{{rank.level}}</span> XP: <span class="accent-text">{{rank.xp}}</span></p>
       </div>
   </div>
   `,
