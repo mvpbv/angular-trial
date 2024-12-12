@@ -1,5 +1,7 @@
+import { RankTitle } from "../rank.enum";
+
 export interface Rank {
-    name: string;
+    name: RankTitle;
     level: number;
     xp: number;
   }
