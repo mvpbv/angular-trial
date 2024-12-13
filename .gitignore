@@ -40,3 +40,45 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Java files
+target/
+backend/target/classes/com/mvpbv/bootutils/SecurityConfig.class
+backend/target/classes/com/mvpbv/bootutils/Controller.class
+backend/target/classes/com/mvpbv/bootutils/Application.class
+
+# Ignore build output directories
+target/
+build/
+
+# Ignore IDE-specific files
+*.iml
+.idea/
+*.classpath
+*.project
+*.settings/
+
+# Ignore Maven wrapper files
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# Ignore Gradle wrapper files
+.gradle/
+!/.gradle/wrapper/gradle-wrapper.jar
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+backend/target/classes/
+backend/target/classes/
+backend/target/classes/
+.vscode/settings.json
+.vscode/settings.json
