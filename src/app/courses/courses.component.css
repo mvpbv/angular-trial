@@ -1,9 +1,21 @@
-.custom-checkbox {
+ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  .custom-checkbox {
     display: flex;
     align-items: center;
     cursor: pointer;
     font-size: 16px;
     user-select: none;
+    position: relative;
+    padding-left: 35px;
+    color: var(--text-color);
   }
   
   .custom-checkbox input {
@@ -15,17 +27,19 @@
   }
   
   .checkmark {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #eee;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--checkbox-background-color);
     border-radius: 5px;
-    margin-right: 10px;
     transition: background-color 0.3s ease;
+    box-shadow: 0 0 5px var(--checkbox-glow-color);
   }
   
   .custom-checkbox input:checked ~ .checkmark {
-    background-color: #007bff;
+    background-color: var(--cehckbox-checked-background-color);
   }
   
   .checkmark:after {
@@ -39,20 +53,37 @@
   }
   
   .custom-checkbox .checkmark:after {
-    left: 7px;
-    top: 3px;
+    left: 9px;
+    top: 5px;
     width: 6px;
     height: 12px;
     border: solid white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
   }
-  ul {
-    list-style-type: none;
-    padding: 0;
+  
+  .course-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
   }
   
-  li {
-    margin-bottom: 10px;
+  .course-list.visible {
+    max-height: 500px; /* Adjust as needed */
   }
-  
+  .toggle-icon {
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0 5px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 30px;
+    color: var(--heading-color);
+  }
+  .toggle-icon:hover {
+    transform: scale(1.2);
+  }

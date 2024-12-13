@@ -1,1 +1,98 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --background-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --heading-color: #ff6f61;
+    --section-background-color: #2a2a40;
+    --button-background-color: #ff6f61;
+    --button-hover-background-color: #ff3b3b;
+    --input-background-color: #2a2a40;
+    --input-border-color: #ccc;
+    --input-focus-border-color: #ff6f61;
+    --checkbox-background-color: #2a2a40;
+    --checkbox-checked-background-color: #ff6f61;
+    --checkbox-glow-color: #39ff14;
+    --cyber-gradient: linear-gradient(45deg, #39ff14, #ff6f61);
+  }
+
+body {
+    background-color: var(--background-color); /* Light background color */
+    font-family: Arial, sans-serif; /* Consistent font family */
+    color: var(--text-color); /* Default text color */
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1, h2, h3, h4 {
+    color: var(--heading-color) ;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: var(--section-background-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .section h3 {
+    margin-top: 0;
+  }
+  
+  .section p {
+    margin: 10px 0;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6f61;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: var(--input-border-color);
+    transform: scale(1.05);
+  }
+  
+  .input-field {
+    padding: 10px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    background-color: var(--input-background-color);
+    color: var(--text-color);
+  }
+  
+  .input-field:focus {
+    border-color: var(--input-focus-border-color);
+    outline: none;
+  }
+.cyber-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-background-color);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px var(--checkbox-glow-color), 0, 0, 20px var(--checkbox-glow-color), 0, 0, 30px var(--checkbox-glow-color);
+}
+.cyber-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--checkbox-glow-color), 0, 0, 30px var(--checkbox-glow-color), 0, 0, 40px var(--checkbox-glow-color), 0, 0;
+}
