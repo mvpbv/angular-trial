@@ -1,1 +1,45 @@
-<p>fetch works!</p>
+  <button (click)="toggleChallengeFilter()">
+    {{showChallenges ? 'Hide' : 'Show'}} Challenge
+  </button>
+  <button (click)="sortByDifficulty()">
+    Sort by Difficulty
+  </button>
+  <button (click)="toggleDetails()">
+    {{showDetails ? 'Hide' : 'Show'}} Details
+  </button>
+  <label for="difficultyRange">Filter by Difficulty:</label>
+  <div class=range-slider>
+    <input type="range" id="difficultyRangeMax" min="3" max="10" step="1" value="5"
+    [(ngModel)]="difficultyRangeMin"
+    (input)="filterByDifficulty()">
+    <input type="range" id="difficultyRangeMin" min="3" max="10" step="1" value="5"
+    [(ngModel)]="difficultyRangeMax"
+    (input)="filterByDifficulty()">
+  </div>
+  <label for="courseFilter">Filter by course:</label>
+  <select id="courseFilter" [(ngModel)]="courses" (change)="filterByCourse()">
+    <option value="">All Courses</option>
+    <option *ngFor="let course of courses" [value]="course">{{course}}</option>
+  </select>
+<h3>Total Lessons: {{dataCount}} Average Diff: {{(totalDifficulty / dataCount) | number:'1.2-2'}}</h3>
+<div class="difficulty-count-container">
+    <div *ngFor="let difficulty of getDifficultyEntries()" class="difficulty-count">
+        <h4>{{difficulty[0]}}   :   {{difficulty[1]}}</h4>
+    </div>
+</div>
+  <div class="data-grid">
+  <div *ngIf="courseData$  | async as courseData" class="data-container">
+        <div *ngFor="let item of courseData" [ngClass]="getDifficultyClass(item.Diff)" class="data-point">
+          <div class="card-header">
+          <h3>{{item.Title}}</h3>
+          <h4>{{getCourseName(item.highPriority)}}</h4>
+          </div>
+          <div *ngIf="showDetails" class="details">
+            <p>Ch: {{item.middlePriority}} L: {{item.Challenge ? 'C' : ''}}{{item.leastPriority}} </p>
+            <p>Diff: {{item.Diff}}</p>
+        </div>
+        </div>
+    </div>
+    </div>
+
+

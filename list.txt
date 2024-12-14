@@ -1,0 +1,47 @@
+To Replace
+And -> &
+*ing -> *
+variables -> var
+with -> w/
+javascript -> JS
+typescript -> TS
+operations -> ops
+information -> info
+synchronous -> sync 
+asynchronous -> async
+operator -> op
+transformations -> transforms
+parameters -> params
+fat arrow -> =>
+vs -> v
+Traveling Salesman Problems => TSP
+To Remove
+What is -> ""
+Javascript's ->
+What are -> ""
+Why are ->
+Where to ->
+in JS -> ""
+in Go -> "
+in Python -> "
+bringing it togther -> ""
+welcome to ->
+
+Bring into Model
+Chapter Names
+Len(readme)
+Prog Lang
+Rest of Courses
+Track
+Absolute Index
+
+Front-end 
+Padding 
+Better Colors
+Site Nav
+Filtering UI
+
+Graphs
+Percent Code
+Github Style Thing
+Weight into Manifold?

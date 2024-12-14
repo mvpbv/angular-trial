@@ -1,5 +1,6 @@
 package com.mvpbv.bootutils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class Controller {
 
     private final DataService dataService;
     private final String baseUrl = "https://api.boot.dev/v1/";
-    private final ObjectMapper ObjectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
     public Controller(DataService dataService) {
@@ -43,14 +44,31 @@ public class Controller {
     }
     @GetMapping("/fetchData")
     public JsonNode fetchData() {
+        try {
+            File file = new File("cache.json");
+            JsonNode data = objectMapper.readTree(file);
+            return data; 
+        } catch (Exception e) {
+            logger.log(Level.WARNING, "Failed to read cache.json", e);
+            return null;
+        }
+    }
+
+
+    @GetMapping("/fetchRawData")
+    public JsonNode fetchRawData() {
         ArrayList<String> courseList = new ArrayList<>();
         courseList.add("courses/f9a25dfb-3e00-4727-ac78-36de82315355");
         courseList.add("courses/f9a48bbc-d1ff-4388-bf0c-23c6e3c60ae0");
         courseList.add("courses/b1459f0c-21eb-41e5-b7f3-562ef69d344c");
         courseList.add("courses/884342fc-5469-47b4-8125-8bfc897428a8");
         courseList.add("courses/7bbb53ed-2106-4f6b-b885-e7645c2ff9d8");
-        
-        ArrayNode lessons = ObjectMapper.createArrayNode();
+        courseList.add("courses/8926592f-99b6-4398-a02f-f52e20677f64");
+        courseList.add("courses/2af5c197-21eb-48b4-bd90-b0d59adb311e");
+        courseList.add("courses/3b39d0f6-f944-4f1b-832d-a1daba32eda4");
+        courseList.add("courses/323f2bff-0ba4-4ae9-b617-33bc5b2b7d79");
+        courseList.add("courses/5d804c54-887a-4c1c-b8c7-b6436f3a132e");
+        ArrayNode lessons = objectMapper.createArrayNode();
 
         for (String course : courseList) {
             String url = baseUrl + course;
@@ -70,13 +88,20 @@ public class Controller {
     }
     @GetMapping("/fetchLessonData")
     public JsonNode fetchLessonData() {
+        String lessonUrl = "https://api.boot.dev/v1/static/lessons/78b4646f-85aa-42c7-ba46-faec2f0902a9";
+        logger.log(Level.INFO, "Fetching data from {0}", lessonUrl);
+        JsonNode data = dataService.fetchLessonData(lessonUrl);
+        logger.log(Level.INFO, "Data fetched successfully");
+        return data;
+    }
+    @GetMapping("/fetchChallengeData")
+    public JsonNode fetchChallengeData() {
         String url = "https://api.boot.dev/v1/static/lessons/451da8ad-f8e9-4a58-88ec-dbfba4f76bb4";
         logger.log(Level.INFO, "Fetching data from {0}", url);
         JsonNode data = dataService.fetchLessonData(url);
         logger.log(Level.INFO, "Data fetched successfully");
         return data;
     }
-    
     
 }
 

@@ -85,6 +85,10 @@ public class DataService {
     }
     private ObjectNode processLesson(JsonNode lesson) {
         ObjectNode newNode = objectMapper.createObjectNode();
+        if (lesson.has("CompletionType")) {
+            var challenge = lesson.get("CompletionType").asText().equals("completion_type_challenge");
+            newNode.put("Challenge", challenge);
+        }
         if (lesson.has("Slug")) {
             String slug = lesson.get("Slug").asText();
             int leastPriority = Integer.parseInt(slug.split("-")[0]);
@@ -97,11 +101,17 @@ public class DataService {
         }
         if (lesson.has("CourseSlug")) {
             switch (lesson.get("CourseSlug").asText()) {
-                case "learn-python" -> newNode.put("highPriority", 1);
+                case "learn-code-python" -> newNode.put("highPriority", 1);
                 case "learn-object-oriented-programming-python" -> newNode.put("highPriority", 2);
                 case "learn-functional-programming-python" -> newNode.put("highPriority", 3);
                 case "learn-algorithms-python" -> newNode.put("highPriority", 4);
                 case "learn-data-structures-python" -> newNode.put("highPriority", 5);
+                case "learn-memory-management-python" -> newNode.put("highPriority", 6);
+                case "learn-golang" -> newNode.put("highPriority", 7);
+                case "learn-http-clients-golang" -> newNode.put("highPriority", 8);
+                case "learn-javascript" -> newNode.put("highPriority", 9);
+                case "learn-http-clients-javascript" -> newNode.put("highPriority", 10);
+
                 default -> newNode.put("highPriority", 1000);
             }
         }
@@ -124,6 +134,7 @@ public class DataService {
             filtered.set("ChapterSlug", lesson.get("ChapterSlug"));
             filtered.set("Title", lesson.get("Title"));
             filtered.set("CourseSlug", lesson.get("CourseSlug"));
+            filtered.set("CompletionType", lesson.get("CompletionType"));
         }
 
         return filtered;
@@ -165,7 +176,6 @@ public class DataService {
                 }
             }
             for (JsonNode codingLesson : codingLessons) {
-                removeField(codingLesson, "CompletionType");
                 removeField(codingLesson, "IsFree");
                 removeField(codingLesson, "CourseImageURL");
                 removeField(codingLesson, "Type");
