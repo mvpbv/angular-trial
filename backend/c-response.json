@@ -1,0 +1,399 @@
+{
+  "CodingLessons" : [ {
+    "UUID" : "d2176e10-f96b-4f57-af5c-e03e5c46fc88",
+    "Slug" : "1-welcome",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "a9d59658-4e3c-441e-973b-147cc3c7e9de",
+    "ChapterSlug" : "1-intro",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Welcome to Data Structures"
+  }, {
+    "UUID" : "21630e80-ca7b-40d1-b552-926d84bd783b",
+    "Slug" : "4-lists",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "a9d59658-4e3c-441e-973b-147cc3c7e9de",
+    "ChapterSlug" : "1-intro",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Lists"
+  }, {
+    "UUID" : "4fb8c103-5bab-4e0a-a0df-e4a024ee20b9",
+    "Slug" : "1-stacks",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61362b33-a3cc-4ad7-b27c-a2dfaf6cda48",
+    "ChapterSlug" : "2-stacks",
+    "LastMod" : "2024-10-22T09:55:35-04:00",
+    "Title" : "Stacks"
+  }, {
+    "UUID" : "d148cd17-4fb1-47f3-9501-0fd9f433f54d",
+    "Slug" : "4-pop-peek",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61362b33-a3cc-4ad7-b27c-a2dfaf6cda48",
+    "ChapterSlug" : "2-stacks",
+    "LastMod" : "2024-12-04T11:53:07+01:00",
+    "Title" : "Pop and Peek"
+  }, {
+    "UUID" : "77eead15-82c9-4047-b303-f93c1ac6af2d",
+    "Slug" : "7-use-stack",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61362b33-a3cc-4ad7-b27c-a2dfaf6cda48",
+    "ChapterSlug" : "2-stacks",
+    "LastMod" : "2024-12-02T12:32:59+01:00",
+    "Title" : "Using a Stack"
+  }, {
+    "UUID" : "73289433-96a5-4468-a977-7bbe3e731767",
+    "Slug" : "2-queue_class",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "a96ca39e-3b99-4a7a-ad9b-37c8e1a61ff6",
+    "ChapterSlug" : "3-queues",
+    "LastMod" : "2024-11-11T15:03:23-05:00",
+    "Title" : "Queue Class"
+  }, {
+    "UUID" : "6d49ab0d-1c58-44ba-9a78-22f22178f1ba",
+    "Slug" : "1-linked_list_node",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "eaa06262-52b4-4ec0-97ff-24c91e78271a",
+    "ChapterSlug" : "4-linked_lists",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Linked Lists"
+  }, {
+    "UUID" : "4e359289-67b4-418d-b614-986ffcea553a",
+    "Slug" : "4-iterating",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "eaa06262-52b4-4ec0-97ff-24c91e78271a",
+    "ChapterSlug" : "4-linked_lists",
+    "LastMod" : "2024-11-11T15:03:23-05:00",
+    "Title" : "Iterating"
+  }, {
+    "UUID" : "83776963-56ab-4a4d-acc6-301f284b916a",
+    "Slug" : "5-add_to_tail",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "eaa06262-52b4-4ec0-97ff-24c91e78271a",
+    "ChapterSlug" : "4-linked_lists",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Add to Tail"
+  }, {
+    "UUID" : "c675abc6-1091-4591-8986-43772e728447",
+    "Slug" : "6-add_to_head",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "eaa06262-52b4-4ec0-97ff-24c91e78271a",
+    "ChapterSlug" : "4-linked_lists",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Add to Head"
+  }, {
+    "UUID" : "795ef251-af9e-4335-a7a3-23931fd0a8ee",
+    "Slug" : "7-linked_list_queue",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "eaa06262-52b4-4ec0-97ff-24c91e78271a",
+    "ChapterSlug" : "4-linked_lists",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Linked List Queue"
+  }, {
+    "UUID" : "a901fb8e-f07c-43e1-9bf4-289a5f391667",
+    "Slug" : "8-remove_from_head",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "eaa06262-52b4-4ec0-97ff-24c91e78271a",
+    "ChapterSlug" : "4-linked_lists",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Remove From Head"
+  }, {
+    "UUID" : "8b49e869-e92f-472b-82ea-c845ef635f88",
+    "Slug" : "5-insert-nodes",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-11-11T15:03:23-05:00",
+    "Title" : "Insert Nodes"
+  }, {
+    "UUID" : "dc322f0d-3821-44a9-a628-d7e5207ca839",
+    "Slug" : "7-min-max",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Min and Max"
+  }, {
+    "UUID" : "b8cf2c16-23ad-4cc0-b315-0332985f6737",
+    "Slug" : "8-node_delete",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-12-05T14:49:19-07:00",
+    "Title" : "Delete"
+  }, {
+    "UUID" : "6a158883-5cba-4be8-85e4-66752ea4d469",
+    "Slug" : "11-traverse_preorder",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Preorder Traversal"
+  }, {
+    "UUID" : "9b512cbf-c523-4fe5-ac42-1a19469ee110",
+    "Slug" : "12-traverse_postorder",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Postorder Traversal"
+  }, {
+    "UUID" : "ff23e018-a4a1-45d4-9c05-5ce576f1eecd",
+    "Slug" : "13-traverse_inorder",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Inorder Traversal"
+  }, {
+    "UUID" : "f4ec8c86-2c5f-455e-9f3b-64354085d328",
+    "Slug" : "14-node_exists",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Node Exists"
+  }, {
+    "UUID" : "e044c349-8b8f-4289-b1a6-a38963532adf",
+    "Slug" : "3-rb_tree",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "5b493687-06f0-4761-9d38-627f07829adf",
+    "ChapterSlug" : "6-red-black-trees",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Red-Black Tree"
+  }, {
+    "UUID" : "10a39842-5bd3-40e9-946c-d066e2b206d5",
+    "Slug" : "6-rotate",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "5b493687-06f0-4761-9d38-627f07829adf",
+    "ChapterSlug" : "6-red-black-trees",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Rotation"
+  }, {
+    "UUID" : "4cf09294-6f46-4dae-9e71-ed9d50b77b8c",
+    "Slug" : "7-fix_insert",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "5b493687-06f0-4761-9d38-627f07829adf",
+    "ChapterSlug" : "6-red-black-trees",
+    "LastMod" : "2024-12-11T12:32:25-05:00",
+    "Title" : "Fix Insert"
+  }, {
+    "UUID" : "27eef24f-7b9a-41b2-81e1-d84e13eb919a",
+    "Slug" : "4-hash_map_hash",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "d698f2b9-8526-4a11-9e8c-ad45890bd220",
+    "ChapterSlug" : "7-hashmaps",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Hash Function"
+  }, {
+    "UUID" : "fe0bc417-69dc-435e-95c8-79cd8dde04a0",
+    "Slug" : "5-hash_map_insert",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "d698f2b9-8526-4a11-9e8c-ad45890bd220",
+    "ChapterSlug" : "7-hashmaps",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Insert"
+  }, {
+    "UUID" : "cabe4b06-1ee2-4654-9650-fb17eb0adab1",
+    "Slug" : "6-hash_map_get",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "d698f2b9-8526-4a11-9e8c-ad45890bd220",
+    "ChapterSlug" : "7-hashmaps",
+    "LastMod" : "2024-12-11T12:32:25-05:00",
+    "Title" : "Get"
+  }, {
+    "UUID" : "820b7d02-52fd-4c94-8c62-d52242a9c438",
+    "Slug" : "1-trie_add",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61e9d21f-63e5-4e9f-b294-4c1972d043ab",
+    "ChapterSlug" : "8-tries",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Tries"
+  }, {
+    "UUID" : "aa5dc9d4-5286-4adf-a8c5-03e738a781a6",
+    "Slug" : "2-trie_exists",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61e9d21f-63e5-4e9f-b294-4c1972d043ab",
+    "ChapterSlug" : "8-tries",
+    "LastMod" : "2024-12-11T12:32:25-05:00",
+    "Title" : "Exists"
+  }, {
+    "UUID" : "70432289-a136-4b2a-9d2b-962c60b95ba3",
+    "Slug" : "5-words_with_prefix",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61e9d21f-63e5-4e9f-b294-4c1972d043ab",
+    "ChapterSlug" : "8-tries",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Words with Prefix"
+  }, {
+    "UUID" : "6d67c2b9-e92a-4df2-ad2e-d0536176461e",
+    "Slug" : "6-find_matches",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61e9d21f-63e5-4e9f-b294-4c1972d043ab",
+    "ChapterSlug" : "8-tries",
+    "LastMod" : "2024-10-25T15:06:14+02:00",
+    "Title" : "Find Matches"
+  }, {
+    "UUID" : "e2345ef4-f077-40b2-86ed-a30d911f50c8",
+    "Slug" : "1-graphs",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "b4110935-3415-4e52-9370-d7db0a6d7619",
+    "ChapterSlug" : "9-graphs",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Graphs"
+  }, {
+    "UUID" : "e9dec025-2a1b-4f24-bfc2-0033c8968e43",
+    "Slug" : "5-adjacency_list",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "b4110935-3415-4e52-9370-d7db0a6d7619",
+    "ChapterSlug" : "9-graphs",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Adjacency List"
+  }, {
+    "UUID" : "a607653a-92c2-4898-b19f-e5469384a1c6",
+    "Slug" : "1-breadth_first_search",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "35d2354e-1601-42a4-b583-c38a3577e891",
+    "ChapterSlug" : "10-bfs_dfs",
+    "LastMod" : "2024-12-12T15:05:10-06:00",
+    "Title" : "Breadth First Search (BFS)"
+  }, {
+    "UUID" : "0deb238d-8b3c-48b0-a367-caf08d65eed4",
+    "Slug" : "4-depth_first_search",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "35d2354e-1601-42a4-b583-c38a3577e891",
+    "ChapterSlug" : "10-bfs_dfs",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Depth First Search (DFS)"
+  }, {
+    "UUID" : "cfe7f6a4-aa8b-4669-bed2-93004e1eff3f",
+    "Slug" : "1-potion_stack",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61362b33-a3cc-4ad7-b27c-a2dfaf6cda48",
+    "ChapterSlug" : "2-stacks",
+    "LastMod" : "2024-12-02T12:32:59+01:00",
+    "Title" : "Debounce Stack"
+  }, {
+    "UUID" : "cd2268ff-f75b-4e02-ae47-148818efced1",
+    "Slug" : "1-matchmaking",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "a96ca39e-3b99-4a7a-ad9b-37c8e1a61ff6",
+    "ChapterSlug" : "3-queues",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Matchmaking Queue"
+  }, {
+    "UUID" : "386b4010-be66-4790-8eb0-1bdf485dd5df",
+    "Slug" : "1-range",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Range Search"
+  }, {
+    "UUID" : "59717501-d833-4c2c-a0e1-1938eaf97326",
+    "Slug" : "2-height",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "36c4edda-52be-4679-a7d4-8fd81c7f7bdb",
+    "ChapterSlug" : "5-binary-trees",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Height"
+  }, {
+    "UUID" : "63a168df-81ef-4b82-804a-1e9775428081",
+    "Slug" : "1-resize",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "d698f2b9-8526-4a11-9e8c-ad45890bd220",
+    "ChapterSlug" : "7-hashmaps",
+    "LastMod" : "2024-12-02T12:32:59+01:00",
+    "Title" : "Resizing"
+  }, {
+    "UUID" : "dc221d3a-2e1b-4231-8ae3-0c89f806130b",
+    "Slug" : "2-probing",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "d698f2b9-8526-4a11-9e8c-ad45890bd220",
+    "ChapterSlug" : "7-hashmaps",
+    "LastMod" : "2024-11-23T22:38:21-05:00",
+    "Title" : "Linear Probing"
+  }, {
+    "UUID" : "f8a46c86-6c34-4f41-90f7-bb6f6a881b3c",
+    "Slug" : "1-longest_common_prefix",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61e9d21f-63e5-4e9f-b294-4c1972d043ab",
+    "ChapterSlug" : "8-tries",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Longest Common Prefix"
+  }, {
+    "UUID" : "dd146e90-6275-448a-89c4-d148e52ab022",
+    "Slug" : "2-advanced_find_matches",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "61e9d21f-63e5-4e9f-b294-4c1972d043ab",
+    "ChapterSlug" : "8-tries",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Advanced Find Matches"
+  }, {
+    "UUID" : "7ed9bd88-b5be-473d-9e4b-8d92a0874c3c",
+    "Slug" : "1-adjacent",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "b4110935-3415-4e52-9370-d7db0a6d7619",
+    "ChapterSlug" : "9-graphs",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Adjacent Nodes"
+  }, {
+    "UUID" : "ea912181-9d34-4bd3-abe3-627db20ea7ea",
+    "Slug" : "2-unconnected",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "b4110935-3415-4e52-9370-d7db0a6d7619",
+    "ChapterSlug" : "9-graphs",
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "Title" : "Unconnected Vertices"
+  }, {
+    "UUID" : "c0803659-7811-44fd-a532-3baf926fe435",
+    "Slug" : "1-path",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "35d2354e-1601-42a4-b583-c38a3577e891",
+    "ChapterSlug" : "10-bfs_dfs",
+    "LastMod" : "2024-11-11T15:03:23-05:00",
+    "Title" : "Shortest Path"
+  } ]
+}

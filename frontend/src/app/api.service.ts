@@ -14,4 +14,7 @@ export class ApiService {
   getHealthStatus(): Observable<{ status: string}> {
     return this.http.get<{ status: string }>(`${this.baseUrl}/healthz`);
   }
+  fetchData(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/fetchData`);
+  }
 }

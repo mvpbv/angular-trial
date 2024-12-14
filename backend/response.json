@@ -1,0 +1,53 @@
+{
+  "Lesson" : {
+    "UUID" : "451da8ad-f8e9-4a58-88ec-dbfba4f76bb4",
+    "Slug" : "1-card",
+    "Type" : "type_code_tests",
+    "CourseUUID" : "f9a48bbc-d1ff-4388-bf0c-23c6e3c60ae0",
+    "CourseTitle" : "Learn Object Oriented Programming in Python",
+    "CourseImageURL" : "",
+    "CourseSlug" : "learn-object-oriented-programming-python",
+    "ChapterUUID" : "44cd5b74-96aa-4f79-b073-00fc89a71e9d",
+    "ChapterTitle" : "Polymorphism",
+    "ChapterSlug" : "5-polymorphism",
+    "IsFree" : false,
+    "LastMod" : "2024-10-22T11:37:46-06:00",
+    "CompletionType" : "completion_type_challenge",
+    "Title" : "Card class",
+    "LessonDataCodeCompletion" : null,
+    "LessonDataCodeCompletionSQL" : null,
+    "LessonDataMultipleChoice" : null,
+    "LessonDataHTTPTests" : null,
+    "LessonDataGitHubChecks" : null,
+    "LessonDataManual" : null,
+    "LessonDataCodeTests" : {
+      "Readme" : "# Card class\n\nWe'll take a break from Age of Dragons to work on a simple deck of cards.\n\n## Assignment\n\nComplete the `Card` class.\n\n1. Define a constructor that takes `rank` and `suit` as parameters and sets `rank`, `suit`, `rank_index`, and `suit_index` instance variables.\n\nYou will need the indexes of the `ranks`, and `suits` to help you compare them against each other. Keep in mind that a `rank` and a `suit` are just strings within a list.\n\n2. Overload the comparison operators:\n\nOverload the following comparison operators:\n\n* `==`: [__eq__](https://docs.python.org/3/reference/datamodel.html#object.__eq__)\n* `>`: [__gt__](https://docs.python.org/3/reference/datamodel.html#object.__gt__)\n* `<`: [__lt__](https://docs.python.org/3/reference/datamodel.html#object.__lt__)\n\n## Ranking the cards\n\nA card is \"greater than\" another card if it has a higher rank. However, if the ranks are the same, the card with the higher suit is \"greater than\" the other card. This same logic applies to the \"less than\" operator. The \"equal to\" operator should check that the rank AND suit are equal.\n\nThe suits and ranks are defined as global variables. *The lower the index, the lower the rank or suit.*\n\n## Tips\n\nThe [.index](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) list method is very useful when trying to determine the index of an element in a list.\n",
+      "ProgLang" : "py",
+      "StarterFiles" : [ {
+        "Name" : "main.py",
+        "Content" : "import random\n\nSUITS = [\"Clubs\", \"Diamonds\", \"Hearts\", \"Spades\"]\n\nRANKS = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"Jack\", \"Queen\", \"King\", \"Ace\"]\n\n\nclass Card:\n    def __init__(self, rank, suit):\n        pass\n\n    def __eq__(self, other):\n        pass\n\n    def __lt__(self, other):\n        pass\n\n    def __gt__(self, other):\n        pass\n\n    # don't touch below this line\n\n    def __str__(self):\n        return f\"{self.rank} of {self.suit}\"\n",
+        "IsHidden" : false,
+        "IsReadonly" : false
+      }, {
+        "Name" : "main_test.py",
+        "Content" : "from main import *\n\nSUITS = [\"Clubs\", \"Diamonds\", \"Hearts\", \"Spades\"]\n\nRANKS = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"Jack\", \"Queen\", \"King\", \"Ace\"]\n\nrun_cases = [\n    (\"Ace\", \"Hearts\", \"Queen\", \"Hearts\", False, True),\n    (\"2\", \"Spades\", \"2\", \"Hearts\", False, True),\n]\n\nsubmit_cases = run_cases + [\n    (\"Ace\", \"Spades\", \"Ace\", \"Spades\", True, False),\n    (\"3\", \"Diamonds\", \"7\", \"Clubs\", False, False),\n    (\"King\", \"Clubs\", \"King\", \"Hearts\", False, False),\n    (\"Queen\", \"Diamonds\", \"Jack\", \"Spades\", False, True),\n    (\"10\", \"Hearts\", \"10\", \"Hearts\", True, False),\n]\n\n\ndef test(rank_1, suit_1, rank_2, suit_2, expected_eq, expected_gt):\n    print(\"---------------------------------\")\n    print(f\"Inputs: {rank_1} of {suit_1}, {rank_2} of {suit_2}\")\n    print(\"Expected:\")\n    print(f\" * Equal: {expected_eq}\")\n    print(f\" * Greater than: {expected_gt}\")\n    print(f\" * Less than: {not (expected_eq or expected_gt)}\")\n\n    card_1 = Card(rank_1, suit_1)\n    card_2 = Card(rank_2, suit_2)\n    result_eq = card_1 == card_2\n    result_gt = card_1 > card_2\n    result_lt = card_1 < card_2\n    print(\"Actual:\")\n    print(f\" * Equal: {result_eq}\")\n    if result_eq != expected_eq:\n        print(\"Fail\")\n        return False\n    print(f\" * Greater than: {result_gt}\")\n    if result_gt != expected_gt:\n        print(\"Fail\")\n        return False\n    print(f\" * Less than: {result_lt}\")\n    if result_lt == (expected_eq or expected_gt or None):\n        print(\"Fail\")\n        return False\n    print(\"Pass\")\n    return True\n\n\ndef main():\n    passed = 0\n    failed = 0\n    for test_case in test_cases:\n        correct = test(*test_case)\n        if correct:\n            passed += 1\n        else:\n            failed += 1\n    if failed == 0:\n        print(\"============= PASS ==============\")\n    else:\n        print(\"============= FAIL ==============\")\n    print(f\"{passed} passed, {failed} failed\")\n\n\ntest_cases = submit_cases\nif \"__RUN__\" in globals():\n    test_cases = run_cases\n\nmain()\n",
+        "IsHidden" : false,
+        "IsReadonly" : true
+      } ],
+      "SolutionFiles" : [ {
+        "Name" : "main.py",
+        "Content" : "import random\n\nSUITS = [\"Clubs\", \"Diamonds\", \"Hearts\", \"Spades\"]\n\nRANKS = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"Jack\", \"Queen\", \"King\", \"Ace\"]\n\n\nclass Card:\n    def __init__(self, rank, suit):\n        self.rank = rank\n        self.suit = suit\n        self.rank_index = RANKS.index(rank)\n        self.suit_index = SUITS.index(suit)\n\n    def __eq__(self, other):\n        return (\n            other.rank_index == self.rank_index and other.suit_index == self.suit_index\n        )\n\n    def __lt__(self, other):\n        if self.rank_index == other.rank_index:\n            return self.suit_index < other.suit_index\n        return self.rank_index < other.rank_index\n\n    def __gt__(self, other):\n        if self.rank_index == other.rank_index:\n            return self.suit_index > other.suit_index\n        return self.rank_index > other.rank_index\n\n    # don't touch below this line\n\n    def __str__(self):\n        return f\"{self.rank} of {self.suit}\"\n",
+        "IsHidden" : false,
+        "IsReadonly" : false
+      }, {
+        "Name" : "main_test.py",
+        "Content" : "from main import *\n\nSUITS = [\"Clubs\", \"Diamonds\", \"Hearts\", \"Spades\"]\n\nRANKS = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"Jack\", \"Queen\", \"King\", \"Ace\"]\n\nrun_cases = [\n    (\"Ace\", \"Hearts\", \"Queen\", \"Hearts\", False, True),\n    (\"2\", \"Spades\", \"2\", \"Hearts\", False, True),\n]\n\nsubmit_cases = run_cases + [\n    (\"Ace\", \"Spades\", \"Ace\", \"Spades\", True, False),\n    (\"3\", \"Diamonds\", \"7\", \"Clubs\", False, False),\n    (\"King\", \"Clubs\", \"King\", \"Hearts\", False, False),\n    (\"Queen\", \"Diamonds\", \"Jack\", \"Spades\", False, True),\n    (\"10\", \"Hearts\", \"10\", \"Hearts\", True, False),\n]\n\n\ndef test(rank_1, suit_1, rank_2, suit_2, expected_eq, expected_gt):\n    print(\"---------------------------------\")\n    print(f\"Inputs: {rank_1} of {suit_1}, {rank_2} of {suit_2}\")\n    print(\"Expected:\")\n    print(f\" * Equal: {expected_eq}\")\n    print(f\" * Greater than: {expected_gt}\")\n    print(f\" * Less than: {not (expected_eq or expected_gt)}\")\n\n    card_1 = Card(rank_1, suit_1)\n    card_2 = Card(rank_2, suit_2)\n    result_eq = card_1 == card_2\n    result_gt = card_1 > card_2\n    result_lt = card_1 < card_2\n    print(\"Actual:\")\n    print(f\" * Equal: {result_eq}\")\n    if result_eq != expected_eq:\n        print(\"Fail\")\n        return False\n    print(f\" * Greater than: {result_gt}\")\n    if result_gt != expected_gt:\n        print(\"Fail\")\n        return False\n    print(f\" * Less than: {result_lt}\")\n    if result_lt == (expected_eq or expected_gt or None):\n        print(\"Fail\")\n        return False\n    print(\"Pass\")\n    return True\n\n\ndef main():\n    passed = 0\n    failed = 0\n    for test_case in test_cases:\n        correct = test(*test_case)\n        if correct:\n            passed += 1\n        else:\n            failed += 1\n    if failed == 0:\n        print(\"============= PASS ==============\")\n    else:\n        print(\"============= FAIL ==============\")\n    print(f\"{passed} passed, {failed} failed\")\n\n\ntest_cases = submit_cases\nif \"__RUN__\" in globals():\n    test_cases = run_cases\n\nmain()\n",
+        "IsHidden" : false,
+        "IsReadonly" : true
+      } ]
+    },
+    "LessonDataTextInput" : null,
+    "LessonDataCLICommand" : null
+  },
+  "LessonDifficulty" : 7
+}

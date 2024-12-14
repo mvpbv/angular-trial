@@ -1,0 +1,53 @@
+{
+  "Lesson" : {
+    "UUID" : "c0803659-7811-44fd-a532-3baf926fe435",
+    "Slug" : "1-path",
+    "Type" : "type_code_tests",
+    "CourseUUID" : "7bbb53ed-2106-4f6b-b885-e7645c2ff9d8",
+    "CourseTitle" : "Learn Data Structures in Python",
+    "CourseImageURL" : "",
+    "CourseSlug" : "learn-data-structures-python",
+    "ChapterUUID" : "35d2354e-1601-42a4-b583-c38a3577e891",
+    "ChapterTitle" : "BFS and DFS",
+    "ChapterSlug" : "10-bfs_dfs",
+    "IsFree" : false,
+    "LastMod" : "2024-11-11T15:03:23-05:00",
+    "CompletionType" : "completion_type_challenge",
+    "Title" : "Shortest Path",
+    "LessonDataCodeCompletion" : null,
+    "LessonDataCodeCompletionSQL" : null,
+    "LessonDataMultipleChoice" : null,
+    "LessonDataHTTPTests" : null,
+    "LessonDataGitHubChecks" : null,
+    "LessonDataManual" : null,
+    "LessonDataCodeTests" : {
+      "Readme" : "# Shortest Path\n\nRather than traversing the _entire_ graph, we need to find the shortest path between two points in our graph _using BFS_. This will allow players to quickly navigate between locations in the game.\n\n## Assignment\n\n**Complete the `bfs_path` method _using BFS_**.\n\n- It takes a `start` vertex and an `end` vertex as inputs.\n- It should return the shortest path between these two vertices in the `self.graph` as a list. The list should include the start and end vertices and all the vertices in between.\n- If a path is not found, return `None`.\n",
+      "ProgLang" : "py",
+      "StarterFiles" : [ {
+        "Name" : "main.py",
+        "Content" : "class Graph:\n    def bfs_path(self, start, end):\n        pass\n\n    # don't touch below this line\n\n    def __init__(self):\n        self.graph = {}\n\n    def add_edge(self, u, v):\n        if u in self.graph.keys():\n            self.graph[u].add(v)\n        else:\n            self.graph[u] = set([v])\n        if v in self.graph.keys():\n            self.graph[v].add(u)\n        else:\n            self.graph[v] = set([u])\n\n    def __repr__(self):\n        result = \"\"\n        for key in self.graph.keys():\n            result += f\"Vertex: '{key}'\\n\"\n            for v in sorted(self.graph[key]):\n                result += f\"has an edge leading to --> {v} \\n\"\n        return result\n",
+        "IsHidden" : false,
+        "IsReadonly" : false
+      }, {
+        "Name" : "main_test.py",
+        "Content" : "from main import *\n\nrun_cases = [\n    (\n        [\n            (\"Oslo\", \"Bergen\"),\n            (\"Oslo\", \"Trondheim\"),\n            (\"Bergen\", \"Trondheim\"),\n            (\"Edinburgh\", \"London\"),\n            (\"Edinburgh\", \"Bristol\"),\n            (\"London\", \"Bristol\"),\n        ],\n        \"Oslo\",\n        \"Edinburgh\",\n        None,\n    ),\n    (\n        [\n            (\"New York\", \"London\"),\n            (\"New York\", \"Cairo\"),\n            (\"New York\", \"Tokyo\"),\n            (\"London\", \"Dubai\"),\n            (\"Cairo\", \"Kyiv\"),\n            (\"Cairo\", \"Madrid\"),\n            (\"London\", \"Madrid\"),\n            (\"Buenos Aires\", \"New York\"),\n            (\"Tokyo\", \"Buenos Aires\"),\n            (\"Kyiv\", \"San Francisco\"),\n        ],\n        \"Cairo\",\n        \"San Francisco\",\n        [\"Cairo\", \"Kyiv\", \"San Francisco\"],\n    ),\n]\nsubmit_cases = run_cases + [\n    (\n        [\n            (\"Los Angeles\", \"Istanbul\"),\n            (\"Los Angeles\", \"Shanghai\"),\n            (\"Paris\", \"Singapore\"),\n            (\"Istanbul\", \"Rome\"),\n            (\"Paris\", \"Rome\"),\n            (\"Rome\", \"Seattle\"),\n            (\"Sydney\", \"Los Angeles\"),\n            (\"Shanghai\", \"Sydney\"),\n            (\"Sydney\", \"Cairo\"),\n            (\"Cairo\", \"Seattle\"),\n            (\"Seattle\", \"Tokyo\"),\n            (\"Tokyo\", \"Shanghai\"),\n            (\"Istanbul\", \"Cairo\"),\n            (\"Rome\", \"Berlin\"),\n            (\"Berlin\", \"Paris\"),\n            (\"Singapore\", \"Sydney\"),\n            (\"Cairo\", \"Istanbul\"),\n            (\"Berlin\", \"Tokyo\"),\n        ],\n        \"Los Angeles\",\n        \"Berlin\",\n        [\"Los Angeles\", \"Istanbul\", \"Rome\", \"Berlin\"],\n    ),\n]\n\n\ndef test(edges_to_add, from_vertex, to_vertex, expected_path):\n    print(\"=================================\")\n    graph = Graph()\n    for edge in edges_to_add:\n        graph.add_edge(edge[0], edge[1])\n        print(f\"Added edge: {edge}\")\n    print(\"---------------------------------\")\n    try:\n        print(f\"Path from {from_vertex} to {to_vertex}\")\n        path = graph.bfs_path(from_vertex, to_vertex)\n        print(f\" - Expecting: {expected_path}\")\n        print(f\" - Actual: {path}\")\n\n        if path == expected_path:\n            print(\"Pass\")\n            return True\n        print(\"Fail\")\n        return False\n    except Exception as e:\n        print(f\"Error: {e}\")\n        return False\n\n\ndef main():\n    passed = 0\n    failed = 0\n    for test_case in test_cases:\n        correct = test(*test_case)\n        if correct:\n            passed += 1\n        else:\n            failed += 1\n    if failed == 0:\n        print(\"============= PASS ==============\")\n    else:\n        print(\"============= FAIL ==============\")\n    print(f\"{passed} passed, {failed} failed\")\n\n\ntest_cases = submit_cases\nif \"__RUN__\" in globals():\n    test_cases = run_cases\n\nmain()\n",
+        "IsHidden" : false,
+        "IsReadonly" : true
+      } ],
+      "SolutionFiles" : [ {
+        "Name" : "main.py",
+        "Content" : "class Graph:\n    def bfs_path(self, start, end):\n        visited = []\n        to_visit = [start]\n        path = {start: None}\n        while to_visit:\n            current_vertex = to_visit.pop(0)\n            visited.append(current_vertex)\n            if current_vertex == end:\n                path_list = []\n                while current_vertex is not None:\n                    path_list.append(current_vertex)\n                    current_vertex = path[current_vertex]\n                path_list.reverse()\n                return path_list\n\n            sorted_neighbors = sorted(self.graph[current_vertex])\n            for neighbor in sorted_neighbors:\n                if neighbor not in visited and neighbor not in to_visit:\n                    to_visit.append(neighbor)\n                    path[neighbor] = current_vertex\n        return None\n\n    # don't touch below this line\n\n    def __init__(self):\n        self.graph = {}\n\n    def add_edge(self, u, v):\n        if u in self.graph.keys():\n            self.graph[u].add(v)\n        else:\n            self.graph[u] = set([v])\n        if v in self.graph.keys():\n            self.graph[v].add(u)\n        else:\n            self.graph[v] = set([u])\n\n    def __repr__(self):\n        result = \"\"\n        for key in self.graph.keys():\n            result += f\"Vertex: '{key}'\\n\"\n            for v in sorted(self.graph[key]):\n                result += f\"has an edge leading to --> {v} \\n\"\n        return result\n",
+        "IsHidden" : false,
+        "IsReadonly" : false
+      }, {
+        "Name" : "main_test.py",
+        "Content" : "from main import *\n\nrun_cases = [\n    (\n        [\n            (\"Oslo\", \"Bergen\"),\n            (\"Oslo\", \"Trondheim\"),\n            (\"Bergen\", \"Trondheim\"),\n            (\"Edinburgh\", \"London\"),\n            (\"Edinburgh\", \"Bristol\"),\n            (\"London\", \"Bristol\"),\n        ],\n        \"Oslo\",\n        \"Edinburgh\",\n        None,\n    ),\n    (\n        [\n            (\"New York\", \"London\"),\n            (\"New York\", \"Cairo\"),\n            (\"New York\", \"Tokyo\"),\n            (\"London\", \"Dubai\"),\n            (\"Cairo\", \"Kyiv\"),\n            (\"Cairo\", \"Madrid\"),\n            (\"London\", \"Madrid\"),\n            (\"Buenos Aires\", \"New York\"),\n            (\"Tokyo\", \"Buenos Aires\"),\n            (\"Kyiv\", \"San Francisco\"),\n        ],\n        \"Cairo\",\n        \"San Francisco\",\n        [\"Cairo\", \"Kyiv\", \"San Francisco\"],\n    ),\n]\nsubmit_cases = run_cases + [\n    (\n        [\n            (\"Los Angeles\", \"Istanbul\"),\n            (\"Los Angeles\", \"Shanghai\"),\n            (\"Paris\", \"Singapore\"),\n            (\"Istanbul\", \"Rome\"),\n            (\"Paris\", \"Rome\"),\n            (\"Rome\", \"Seattle\"),\n            (\"Sydney\", \"Los Angeles\"),\n            (\"Shanghai\", \"Sydney\"),\n            (\"Sydney\", \"Cairo\"),\n            (\"Cairo\", \"Seattle\"),\n            (\"Seattle\", \"Tokyo\"),\n            (\"Tokyo\", \"Shanghai\"),\n            (\"Istanbul\", \"Cairo\"),\n            (\"Rome\", \"Berlin\"),\n            (\"Berlin\", \"Paris\"),\n            (\"Singapore\", \"Sydney\"),\n            (\"Cairo\", \"Istanbul\"),\n            (\"Berlin\", \"Tokyo\"),\n        ],\n        \"Los Angeles\",\n        \"Berlin\",\n        [\"Los Angeles\", \"Istanbul\", \"Rome\", \"Berlin\"],\n    ),\n]\n\n\ndef test(edges_to_add, from_vertex, to_vertex, expected_path):\n    print(\"=================================\")\n    graph = Graph()\n    for edge in edges_to_add:\n        graph.add_edge(edge[0], edge[1])\n        print(f\"Added edge: {edge}\")\n    print(\"---------------------------------\")\n    try:\n        print(f\"Path from {from_vertex} to {to_vertex}\")\n        path = graph.bfs_path(from_vertex, to_vertex)\n        print(f\" - Expecting: {expected_path}\")\n        print(f\" - Actual: {path}\")\n\n        if path == expected_path:\n            print(\"Pass\")\n            return True\n        print(\"Fail\")\n        return False\n    except Exception as e:\n        print(f\"Error: {e}\")\n        return False\n\n\ndef main():\n    passed = 0\n    failed = 0\n    for test_case in test_cases:\n        correct = test(*test_case)\n        if correct:\n            passed += 1\n        else:\n            failed += 1\n    if failed == 0:\n        print(\"============= PASS ==============\")\n    else:\n        print(\"============= FAIL ==============\")\n    print(f\"{passed} passed, {failed} failed\")\n\n\ntest_cases = submit_cases\nif \"__RUN__\" in globals():\n    test_cases = run_cases\n\nmain()\n",
+        "IsHidden" : false,
+        "IsReadonly" : true
+      } ]
+    },
+    "LessonDataTextInput" : null,
+    "LessonDataCLICommand" : null
+  },
+  "LessonDifficulty" : 10
+}

@@ -57,6 +57,7 @@ build/
 *.classpath
 *.project
 *.settings/
+.editorconfig
 
 # Ignore Maven wrapper files
 .mvn/
