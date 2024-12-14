@@ -1,19 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-interface User {
-  id: string;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://api.boot.dev/v1/users/public/'
+  private baseUrl = 'http://localhost:8080/api/v1';
+
   constructor(private http: HttpClient) { }
 
-  getUser(id: string): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}${id}`);
+  getHealthStatus(): Observable<{ status: string}> {
+    return this.http.get<{ status: string }>(`${this.baseUrl}/healthz`);
   }
 }

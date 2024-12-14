@@ -1,32 +1,32 @@
 package com.mvpbv.bootutils;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import reactor.core.publisher.Mono;
+
+
 
 
 @RestController
 @RequestMapping("/api/v1")
 public class Controller {
 
-    private final ApiService apiService;
 
-    public Controller(ApiService apiService) {
-        this.apiService = apiService;
+    public Controller() {
     }
 
     @RequestMapping("/healthz")
-    public String hello() {
-        return "Ready to go!";
+    public Map<String, String> healthCheck() {
+        var response = new HashMap<String, String>();
+        response.put("status", "Ready to go!");
+        return response;
     }
-    @RequestMapping("err") 
+    @RequestMapping("err")
     public String err() {
         return "Error!";
     }
-    @GetMapping("/get")
-    public Mono<String> get() {
-        return apiService.get();
-    }
+    
+    
 }
 
