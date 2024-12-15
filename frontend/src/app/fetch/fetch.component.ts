@@ -15,21 +15,26 @@ import { FormsModule } from '@angular/forms';
 })
 export class FetchComponent implements OnInit{
   courseData$!: Observable<DataItem[]>;
+  stats$!: Observable<any>;
   showChallenges: boolean = true;
   difficultyRangeMin: number = 3;
   difficultyRangeMax: number = 10;
+  languages: string[] = ['Python', 'SQL', 'Go', 'Typescript', 'Javascript'];
   showDetails: boolean = true;
-  dataCount: number = 0;
-  totalDifficulty: number = 0;
-  difficultyCounts: {[key: number]: number} = {};
+  
 
-  courses: string[] = ['Learn Python', 'Learn OOP', 'Learn FP', 'Algorithms', 'Data Structures', 'Memory Management', 'Learn Go', 'Learn HTTP Go', 'Learn Javascipt', 'Learn HTTP TypeScript'];
+  courses: string[] = ['Learn Python', 'Learn OOP', 'Learn FP', 'Learn Algorithms', 'Learn Data Structures',
+    'C Memory Management', 'Learn Go', 'Go HTTP Clients', 'Learn JavaScript', 'TS HTTP Clients', 'Go Web Servers', 'Learn SQL',
+    'TS Web Servers', 'Go Cryptography', 'Adv Algorithms' ];
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
       this.fetchData();
+      this.stats$!.subscribe(data => {
+        this.stats$ = data;
+      });
+
       this.courseData$.subscribe(data => {
-        this.dataCount = data.length;
         this.totalDifficulty = data.reduce((acc, item) => acc + item.Diff, 0);
         this.difficultyCounts = data.reduce((counts, item) => {
           counts[item.Diff] = (counts[item.Diff] || 0) + 1;
@@ -49,7 +54,7 @@ export class FetchComponent implements OnInit{
   filterByDifficulty() {
     this.fetchData();
   }
-
+  
   getDifficultyEntries(): [number,number][] {
     return Object.entries(this.difficultyCounts).map(([key, value]) => [parseInt(key), value]);
   }
@@ -58,8 +63,8 @@ export class FetchComponent implements OnInit{
     map(data => data.filter((item : any) => 
       (!item.Challenge || this.showChallenges) && 
     (item.Diff >= this.difficultyRangeMin && item.Diff <= this.difficultyRangeMax) &&
-    (this.courses.includes(this.getCourseName(item.highPriority))))
-  ));  
+    (this.courses.includes(item.CourseFriendly) || this.courses.length === 0)))
+  );  
   }
 
   toggleDetails() {
@@ -91,56 +96,6 @@ export class FetchComponent implements OnInit{
   filterByCourse() {
     this.fetchData();  
   }
-  getCourseName(course: number): string {
-    switch (course) {
-      case 1:
-        return 'Learn Python';
-      case 2:
-        return 'Learn OOP';
-      case 3:
-        return 'Learn FP';
-      case 4:
-        return 'Algorithms';
-      case 5:
-        return 'Data Structures';
-      case 6:
-        return 'Memory Management';
-      case 7:
-        return 'Learn Go';
-      case 8:
-        return 'Learn HTTP Go';
-      case 9:
-        return 'Learn Javascipt';
-      case 10: 
-        return 'Learn HTTP TypeScript';
-      default:
-        return '';
-    }
-  }
-  getCourseNumber(course: string): number {
-    switch (course) {
-      case 'Learn Python':
-        return 1;
-      case 'Learn OOP':
-        return 2;
-      case 'Learn FP':
-        return 3;
-      case 'Algorithms':
-        return 4;
-      case 'Data Structures':
-        return 5;
-      case 'Memory Management':
-        return 6;
-      case 'Learn Go':
-        return 7;
-      case 'Learn HTTP Go':
-        return 8;
-      case 'Learn Javascipt':
-        return 9;
-      case 'Learn HTTP TypeScript':
-        return 10;
-      default:
-        return 0;
-    }
-  }
+  
+
 }

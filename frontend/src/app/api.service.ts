@@ -12,22 +12,25 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getHealthStatus(): Observable<{ status: string}> {
-    return this.http.get<{ status: string }>(`${this.baseUrl}/healthz`);
+  fetchStats(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/fetchStats`);
   }
   fetchData(): Observable<any> {
     return this.http.get<DataItem[]>(`${this.baseUrl}/fetchData`).pipe(
       map(data => data.sort((a, b) => {
-        if (a.highPriority !== b.highPriority) {
-          return a.highPriority - b.highPriority;
+        if (a.HighestPriority !== b.HighestPriority) {
+          return a.HighestPriority - b.HighestPriority;
         }
-        if (a.middlePriority !== b.middlePriority) {
-          return a.middlePriority - b.middlePriority;
+        if (a.HighPriority !== b.HighPriority) {
+          return a.HighPriority - b.HighPriority;
+        }
+        if (a.MiddlePriority !== b.MiddlePriority) {
+          return a.MiddlePriority - b.MiddlePriority;
         }
         if (a.Challenge !== b.Challenge) {
           return a.Challenge ? -1 : 1;
         }
-          return a.leastPriority - b.leastPriority;
+          return a.LeastPriority - b.LeastPriority;
         }))
     );
   }

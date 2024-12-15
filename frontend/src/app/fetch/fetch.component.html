@@ -21,7 +21,7 @@
     <option value="">All Courses</option>
     <option *ngFor="let course of courses" [value]="course">{{course}}</option>
   </select>
-<h3>Total Lessons: {{dataCount}} Average Diff: {{(totalDifficulty / dataCount) | number:'1.2-2'}}</h3>
+<h3>Total Lessons: {{dataCount}} Average Diff: {{average}}</h3>
 <div class="difficulty-count-container">
     <div *ngFor="let difficulty of getDifficultyEntries()" class="difficulty-count">
         <h4>{{difficulty[0]}}   :   {{difficulty[1]}}</h4>
@@ -32,11 +32,14 @@
         <div *ngFor="let item of courseData" [ngClass]="getDifficultyClass(item.Diff)" class="data-point">
           <div class="card-header">
           <h3>{{item.Title}}</h3>
-          <h4>{{getCourseName(item.highPriority)}}</h4>
+          <h4>{{item.CourseFriendly}}</h4>
+          
           </div>
           <div *ngIf="showDetails" class="details">
-            <p>Ch: {{item.middlePriority}} L: {{item.Challenge ? 'C' : ''}}{{item.leastPriority}} </p>
-            <p>Diff: {{item.Diff}}</p>
+            <p>Ch {{item.MiddlePriority}}: {{item.Chapter}} </p>
+            <p>L: {{item.Challenge ? 'C' : ''}}{{item.LeastPriority}} </p>
+            <p>Diff: {{item.Diff}} Readme: {{item.ReadmeLen}}</p>
+            <p>Track: {{item.TrackFriendly}}</p>
         </div>
         </div>
     </div>

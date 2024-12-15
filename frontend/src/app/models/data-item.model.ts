@@ -1,8 +1,14 @@
 export interface DataItem {
-    leastPriority: number;
-    Challenge: boolean;
-    middlePriority: number;
-    highPriority: number;
-    Diff: number;
+    LeastPriority: number;
     Title: string;
+    Challenge: boolean;
+    MiddlePriority: number;
+    Chapter: string;
+    HighPriority: number;
+    CourseFriendly: string;
+    HighestPriority: number;
+    TrackFriendly: string;
+    Diff: number;
+    Lang: string;
+    ReadmeLen: number;
 }

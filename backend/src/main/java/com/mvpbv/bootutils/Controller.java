@@ -1,6 +1,7 @@
 package com.mvpbv.bootutils;
 
-import java.io.File;
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,19 +43,12 @@ public class Controller {
     public String err() {
         return "Error!";
     }
-    @GetMapping("/fetchData")
+    @GetMapping("/fetchStats")
     public JsonNode fetchData() {
-        try {
-            File file = new File("cache.json");
-            JsonNode data = objectMapper.readTree(file);
-            return data; 
-        } catch (Exception e) {
-            logger.log(Level.WARNING, "Failed to read cache.json", e);
-            return null;
-        }
+        return JsonParser.getAggregateStats();
+
     }
-
-
+    
     @GetMapping("/fetchRawData")
     public JsonNode fetchRawData() {
         ArrayList<String> courseList = new ArrayList<>();
@@ -68,14 +62,26 @@ public class Controller {
         courseList.add("courses/3b39d0f6-f944-4f1b-832d-a1daba32eda4");
         courseList.add("courses/323f2bff-0ba4-4ae9-b617-33bc5b2b7d79");
         courseList.add("courses/5d804c54-887a-4c1c-b8c7-b6436f3a132e");
+        courseList.add("courses/bc0dc34b-025a-4d97-b7a0-382aa21533aa");
+        courseList.add("courses/81b7293c-60aa-40c7-a158-7c87428f6031");
+        courseList.add("courses/ff177b31-d95b-4617-a6d3-db9007569db6");
+        courseList.add("courses/aaad49fb-0dc5-43c6-992c-96d3f83ee663");
+        courseList.add("courses/6321ddbf-49eb-4748-9737-6bc12e8bb705");
+        
         ArrayNode lessons = objectMapper.createArrayNode();
 
         for (String course : courseList) {
             String url = baseUrl + course;
             logger.log(Level.INFO, "Fetching data from {0}", url);
-            lessons.add(dataService.fetchCourseData(url));
+            JsonNode courseData = dataService.fetchCourseData(url);
+            if (courseData.isArray()) {
+                for (JsonNode lesson : courseData) {
+                    lessons.add(lesson);
+                }
+            }
             logger.log(Level.INFO, "Data fetched successfully");
         }
+        
         return lessons;
     }
     @GetMapping("/fetchOopData") 
@@ -102,6 +108,7 @@ public class Controller {
         logger.log(Level.INFO, "Data fetched successfully");
         return data;
     }
+    
     
 }
 
