@@ -62,7 +62,10 @@ public class JsonParser {
         stats.put("meanReadme", getMeanReadme(data));
         var diffCounts = getDifficultyCounts(data);
         var diffCountsNode = objectMapper.valueToTree(diffCounts);
+        var courseCounts = getCourseCounts(data);
+        var courseCountsNode = objectMapper.valueToTree(courseCounts);
         stats.set("difficultyCounts", diffCountsNode);
+        stats.set("courseCounts", courseCountsNode);
         return objectMapper.valueToTree(stats);
     }
     private static HashMap<String, Integer> getDifficultyCounts(JsonNode data) {
@@ -79,6 +82,19 @@ public class JsonParser {
         }
         return difficultyCounts;
     }
+    private static HashMap<String, Integer> getCourseCounts(JsonNode data) {
+        var courseCounts = new HashMap<String, Integer>();
+        for (JsonNode node : data) {
+            var course = node.get("CourseFriendly").asText();
+            if (courseCounts.containsKey(course)) {
+                courseCounts.put(course, courseCounts.get(course) + 1);
+            } else {
+                courseCounts.put(course, 1);
+            }
+        }
+        return courseCounts;
+    }
+
     public static JsonNode getCourseList() {
         JsonNode data = getCache();
         var courseList = new HashSet<String>();
