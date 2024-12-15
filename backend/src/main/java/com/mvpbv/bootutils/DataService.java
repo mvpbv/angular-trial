@@ -28,7 +28,7 @@ public class DataService {
     private final RestTemplate restTemplate;
     private final String randUrl;
 
-    public DataService() {
+    public DataService(RestTemplate restTemplate) {
         this.lessons = new Lessons();
         this.courses = new Courses();
         this.baseUrl = "https://api.boot.dev/v1/";
@@ -36,7 +36,7 @@ public class DataService {
         this.challengeUrl = this.baseUrl + "static/lessons/451da8ad-f8e9-4a58-88ec-dbfba4f76bb4";
         this.courseUrl = this.baseUrl + "courses/f9a48bbc-d1ff-4388-bf0c-23c6e3c60ae0";
         this.randUrl = this.baseUrl + "b0807eaa-38e5-4d3f-8359-ffe5e1c9ae7e";
-        this.restTemplate = new RestTemplate();
+        this.restTemplate = restTemplate;
 
 
     }

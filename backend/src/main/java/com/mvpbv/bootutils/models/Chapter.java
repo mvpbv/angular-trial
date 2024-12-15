@@ -1,26 +1,59 @@
 package com.mvpbv.bootutils.models;
 
+
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.ArrayList;
 
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Chapter{
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @JsonProperty("UUID") 
-    public String uUID;
+    private String uUID;
+
     @JsonProperty("Slug") 
-    public String slug;
+    private String slug;
+
     @JsonProperty("Title") 
-    public String title;
+    private String title;
+
     @JsonProperty("Description") 
-    public String description;
+    private String description;
+
+    @ManyToOne
+    private Root root;
+
     @JsonProperty("RequiredLessons") 
-    public ArrayList<RequiredLesson> requiredLessons;
+    @ElementCollection
+    private List<RequiredLesson> requiredLessons;
+
     @JsonProperty("OptionalLessons") 
-    public ArrayList<OptionalLesson> optionalLessons;
+    @ElementCollection
+    private List<OptionalLesson> optionalLessons;
+
     @JsonProperty("NumRequiredLessons") 
-    public int numRequiredLessons;
+    private int numRequiredLessons;
+
     @JsonProperty("NumOptionalLessons") 
-    public int numOptionalLessons;
+    private int numOptionalLessons;
+
     @JsonProperty("CourseUUID") 
-    public String courseUUID;
+    private String courseUUID;
 }

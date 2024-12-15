@@ -1,35 +1,60 @@
 package com.mvpbv.bootutils.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Embeddable;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Embeddable
+@Getter
+@Setter
+@NoArgsConstructor
 public class OptionalLesson{
+
+
     @JsonProperty("UUID") 
-    public String uUID;
+    private String UUID;
+
     @JsonProperty("Slug") 
-    public String slug;
+    private String slug;
+
     @JsonProperty("Type") 
-    public String type;
+    private String type;
+
     @JsonProperty("CourseUUID") 
-    public String courseUUID;
+    private String courseUUID;
+
     @JsonProperty("CourseTitle") 
-    public String courseTitle;
+    private String courseTitle;
+
     @JsonProperty("CourseImageURL") 
-    public String courseImageURL;
+    private String courseImageURL;
+
     @JsonProperty("CourseSlug") 
-    public String courseSlug;
+    private String courseSlug;
+
     @JsonProperty("ChapterUUID") 
-    public String chapterUUID;
+    private String chapterUUID;
+
     @JsonProperty("ChapterTitle") 
-    public String chapterTitle;
+    private String chapterTitle;
+
     @JsonProperty("ChapterSlug") 
-    public String chapterSlug;
+    private String chapterSlug;
+
     @JsonProperty("IsFree") 
-    public boolean isFree;
+    private boolean isFree;
+
     @JsonProperty("LastMod") 
-    public Date lastMod;
+    private Date lastMod;
+
     @JsonProperty("CompletionType") 
-    public String completionType;
+    private String completionType;
+    
     @JsonProperty("Title") 
-    public String title;
+    private String title;
 }

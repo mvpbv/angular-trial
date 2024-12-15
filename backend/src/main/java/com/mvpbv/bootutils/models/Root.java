@@ -1,56 +1,105 @@
 package com.mvpbv.bootutils.models;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Root{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @JsonProperty("UUID") 
-    public String uUID;
+    private String UUID;
+
     @JsonProperty("Slug") 
-    public String slug;
+    private String slug;
+
     @JsonProperty("Title") 
-    public String title;
+    private String title;
+
     @JsonProperty("GenericTitle") 
-    public String genericTitle;
+    private String genericTitle;
+
     @JsonProperty("ShortDescription") 
-    public String shortDescription;
+    private String shortDescription;
+
     @JsonProperty("Description") 
-    public String description;
+    private String description;
+
     @JsonProperty("ThumbnailURL") 
-    public String thumbnailURL;
+    private String thumbnailURL;
+
     @JsonProperty("Difficulty") 
-    public int difficulty;
+    private int difficulty;
+
+    
     @JsonProperty("PrerequisiteCourseUUIDS") 
-    public ArrayList<String> prerequisiteCourseUUIDS;
+    @ElementCollection
+    private List<String> prerequisiteCourseUUIDS;
+    
     @JsonProperty("EstimatedCompletionTimeHours") 
-    public int estimatedCompletionTimeHours;
+    private int estimatedCompletionTimeHours;
+    
     @JsonProperty("TypeDescription") 
-    public String typeDescription;
+    private String typeDescription;
+    
     @JsonProperty("LastUpdated") 
-    public Date lastUpdated;
+    private Date lastUpdated;
+    
     @JsonProperty("SlugAliases") 
-    public ArrayList<String> slugAliases;
+    @ElementCollection
+    private List<String> slugAliases;
+    
     @JsonProperty("AuthorUUIDs") 
-    public ArrayList<String> authorUUIDs;
-    @JsonProperty("MaintainerUUIDs") 
-    public ArrayList<String> maintainerUUIDs;
-    @JsonProperty("Alternatives") 
-    public Alternatives alternatives;
+    @ElementCollection
+    private List<String> authorUUIDs;
+    
+    @JsonProperty("MaintainerUUIDs")
+    @ElementCollection
+    private List<String> maintainerUUIDs;
+    
+    @JsonProperty("Alternatives")
+    @Embedded 
+    private Alternatives alternatives;
+    
     @JsonProperty("Status") 
-    public String status;
+    private String status;
+    
     @JsonProperty("NumRequiredLessons") 
-    public int numRequiredLessons;
+    private int numRequiredLessons;
+    
     @JsonProperty("NumOptionalLessons") 
-    public int numOptionalLessons;
+    private int numOptionalLessons;
+    
     @JsonProperty("Chapters") 
-    public ArrayList<Chapter> chapters;
+    @ElementCollection
+    @OneToMany(mappedBy = "root", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Chapter> chapters;
+
     @JsonProperty("Language") 
-    public String language;
+    private String language;
+
     @JsonProperty("CompletionXp") 
-    public int completionXp;
+    private int completionXp;
+
     @JsonProperty("NumEnrolled") 
-    public int numEnrolled;
+    private int numEnrolled;
 }

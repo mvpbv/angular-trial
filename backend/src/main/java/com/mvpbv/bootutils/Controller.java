@@ -19,10 +19,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class Controller {
 
     private final DataService dataService;
+    private final SeedDb seedDb;
 
-    public Controller(DataService dataService) {
+    public Controller(DataService dataService, SeedDb seedDb) {
         this.dataService = dataService;
-        
+        this.seedDb = seedDb;
     }
 
     @GetMapping("/healthz")
@@ -83,6 +84,16 @@ public class Controller {
     @GetMapping("/getDomainTrie")
     public JsonNode getDomainTrie() {
         return dataService.fetchDomainTrie();
+    }
+    @GetMapping("/seedDb")
+    public String seedDb() {
+        seedDb.seedCourses();
+        return "Seeded the database!";
+    }
+    @GetMapping("/testDb")
+    public String testDb() {
+        seedDb.testDatabaseConnection();
+        return "Tested the database!";
     }
 }
 

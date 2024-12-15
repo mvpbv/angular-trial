@@ -1,6 +1,7 @@
 package com.mvpbv.bootutils.repositories;
 
-import org.springframework.data.jpa.repostiory.JpaRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.mvpbv.bootutils.models.Root;
 
 public interface RootRepository extends JpaRepository<Root, Long> {
