@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LevelsComponent } from '../levels/levels.component';
-import { CoursesComponent } from '../courses/courses.component';
+import { CoursesComponent } from '../courses/courses.component'; // Ensure this path is correct and the component is properly exported
 import { RanksComponent } from '../ranks/ranks.component';
 
 @Component({
@@ -10,13 +10,12 @@ import { RanksComponent } from '../ranks/ranks.component';
   imports: [
     CommonModule,
     LevelsComponent,
-    CoursesComponent,
+
     RanksComponent
   ],
 
   template: `
   <app-levels></app-levels>
-  <app-courses></app-courses>
   <app-ranks></app-ranks>
   `,
   styleUrls: ['./home.component.css']

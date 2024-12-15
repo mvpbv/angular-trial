@@ -23,44 +23,26 @@ export class FetchComponent implements OnInit{
   showDetails: boolean = true;
   
 
-  courses: string[] = ['Learn Python', 'Learn OOP', 'Learn FP', 'Learn Algorithms', 'Learn Data Structures',
-    'C Memory Management', 'Learn Go', 'Go HTTP Clients', 'Learn JavaScript', 'TS HTTP Clients', 'Go Web Servers', 'Learn SQL',
-    'TS Web Servers', 'Go Cryptography', 'Adv Algorithms' ];
+  
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
       this.fetchData();
-      this.stats$!.subscribe(data => {
-        this.stats$ = data;
-      });
-
       this.courseData$.subscribe(data => {
-        this.courseData$ = data;
+        // handle the data here if needed
     });
   }
   toggleChallengeFilter() {
     this.showChallenges = !this.showChallenges;
     this.fetchData();
   }
-  sortByDifficulty() {
-    this.courseData$ = this.courseData$.pipe(
-    map(data => data.sort((a, b) => b.Diff - a.Diff))
-    );  
-  }
+  
   filterByDifficulty() {
     this.fetchData();
   }
   
-  getDifficultyEntries(): [number,number][] {
-    return Object.entries(this.difficultyCounts).map(([key, value]) => [parseInt(key), value]);
-  }
   fetchData() {
-    this.courseData$ = this.apiService.fetchData().pipe(
-    map(data => data.filter((item : any) => 
-      (!item.Challenge || this.showChallenges) && 
-    (item.Diff >= this.difficultyRangeMin && item.Diff <= this.difficultyRangeMax) &&
-    (this.courses.includes(item.CourseFriendly) || this.courses.length === 0)))
-  );  
+    this.courseData$ = this.apiService.fetchData();
   }
 
   toggleDetails() {

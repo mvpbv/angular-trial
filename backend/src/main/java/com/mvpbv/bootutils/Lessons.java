@@ -1,6 +1,7 @@
 package com.mvpbv.bootutils;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -196,11 +197,16 @@ public class Lessons {
     private ObjectNode parseLessonData(JsonNode response, ObjectNode filtered) {
         if (response.has("Lesson")) {
             JsonNode lesson = response.get("Lesson");
-
+            String uuid = "";
+            if (lesson.has("UUID")) {
+                uuid = lesson.get("UUID").asText();
+                filtered.put("UUID", lesson.get("UUID").asText());
+            }
             if (lesson.has("LessonDataCodeCompletion")) {
                 JsonNode codeCompletion = lesson.get("LessonDataCodeCompletion");
                 if (codeCompletion.has("Readme")) {
                     String readme = codeCompletion.get("Readme").asText();
+                    saveParsed(readme, uuid);
                     filtered.put("ReadmeLen", readme.length());
                 }       
             }
@@ -208,6 +214,7 @@ public class Lessons {
                 JsonNode codeCompletionSQL = lesson.get("LessonDataCodeCompletionSQL");
                 if (codeCompletionSQL.has("Readme")) {
                     String readme = codeCompletionSQL.get("Readme").asText();
+                    saveParsed(readme, uuid);
                     filtered.put("ReadmeLen", readme.length());
                 }       
             }
@@ -215,6 +222,7 @@ public class Lessons {
                 JsonNode codeTests = lesson.get("LessonDataCodeTests");
                 if (codeTests.has("Readme")) {
                     String readme = codeTests.get("Readme").asText();
+                    saveParsed(readme, uuid);
                     filtered.put("ReadmeLen", readme.length());
                 }       
             }
@@ -222,10 +230,20 @@ public class Lessons {
                 JsonNode httpTests = lesson.get("LessonDataHTTPTests");
                 if (httpTests.has("Readme")) {
                     String readme = httpTests.get("Readme").asText();
+                    saveParsed(readme, uuid);
                     filtered.put("ReadmeLen", readme.length());
                 }       
             }
     }
         return filtered;
+    }
+    public void saveParsed(String readme, String uuid) {
+        try (FileWriter writer = new FileWriter("assets/" + uuid + ".md", true)) {
+            writer.write(readme);
+            logger.log(Level.INFO, "Stored readme");
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Lost a readme", e);
+            throw new RuntimeException("Failed to write readme");
+        }
     }
 }

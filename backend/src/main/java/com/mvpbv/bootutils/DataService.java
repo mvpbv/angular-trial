@@ -1,11 +1,13 @@
 package com.mvpbv.bootutils;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,10 +25,9 @@ public class DataService {
     private final String lessonUrl;
     private final String courseUrl;
     private final String challengeUrl;
+    private final RestTemplate restTemplate;
+    private final String randUrl;
 
-
-
-    @Autowired
     public DataService() {
         this.lessons = new Lessons();
         this.courses = new Courses();
@@ -34,6 +35,9 @@ public class DataService {
         this.lessonUrl = this.baseUrl + "static/lessons/78b4646f-85aa-42c7-ba46-faec2f0902a9";
         this.challengeUrl = this.baseUrl + "static/lessons/451da8ad-f8e9-4a58-88ec-dbfba4f76bb4";
         this.courseUrl = this.baseUrl + "courses/f9a48bbc-d1ff-4388-bf0c-23c6e3c60ae0";
+        this.randUrl = this.baseUrl + "b0807eaa-38e5-4d3f-8359-ffe5e1c9ae7e";
+        this.restTemplate = new RestTemplate();
+
 
     }
     public JsonNode fetchAggregateStats() {
@@ -103,5 +107,136 @@ public class DataService {
         logger.log(Level.INFO, "Data fetched successfully for OOP");
         return data;
     }
+    public JsonNode fetchAssetUrls() {
+        var list = UrlProcessor.getAssetUrls();
+        return objectMapper.valueToTree(list);
+    }
+    public JsonNode fetchDomainTrie() {
+        var list = UrlProcessor.getAssetUrls();
+        var domainTrie = UrlProcessor.getDomainTrie(list);
+        return objectMapper.valueToTree(domainTrie);
+    }
+    public JsonNode fetchDomainCount() {
+        var list = UrlProcessor.getAssetUrls();
+        var domainCount = UrlProcessor.getDomainCount(list);
+        return objectMapper.valueToTree(domainCount);
+    }
 
+    public JsonNode testReadmeParse() {
+        String[] urls = new String[] {this.randUrl, this.challengeUrl};
+        var res = objectMapper.createObjectNode();
+        for (String url : urls) {
+            logger.log(Level.INFO, "Fetching data from {0}", url);
+            JsonNode response = restTemplate.getForObject(this.challengeUrl, JsonNode.class);
+            if (response == null) {
+                logger.log(Level.WARNING, "Failed to fetch data from {0}", this.challengeUrl);
+                return null;
+            }
+            if (response.has("Lesson")) {
+                JsonNode lesson = response.get("Lesson");
+                if (lesson.has("LessonDataCodeTests")) {
+                    JsonNode lessonData = lesson.get("LessonDataCodeTests");
+                    if (lessonData.has("Readme")) {
+                        if (lessonData.get("Readme") == null) {
+                            logger.log(Level.WARNING, "Readme is null");
+                            return null;
+                        }
+                        if (!lessonData.get("Readme").isTextual()) {
+                            logger.log(Level.WARNING, "Readme is not textual");
+                            return null;
+                        }
+                        JsonNode readme = lessonData.get("Readme");
+                        try (FileWriter writer = new FileWriter("mock.txt", true)) {
+                            writer.write(readme.asText());
+                            logger.log(Level.INFO, "Readme written to file successfully");
+                        } catch (IOException e) {
+                            logger.log(Level.SEVERE, "Failed to write Readme to file", e);
+                        }
+                        logger.log(Level.INFO, "Readme fetched successfully", readme);
+                        String[] split = readme.asText().split("##");
+                        try (FileWriter writer = new FileWriter("bofa.txt")) {
+                            for (String line : split) {
+                                writer.write(line + System.lineSeparator());
+                            }
+                            logger.log(Level.INFO, "Readme written to file successfully");
+                        } catch (IOException e) {
+                            logger.log(Level.SEVERE, "Failed to write Readme to file", e);
+                        }
+                    
+                    } else {
+                        logger.log(Level.WARNING, "Failed to parse data at node Readme");
+                    }
+                } else if (lesson.has("LessonDataCodeCompletion")) {
+                    JsonNode lessonData = lesson.get("LessonDataCodeCompletion");
+                    if (lessonData.has("Readme")) {
+                        if (lessonData.get("Readme") == null) {
+                            logger.log(Level.WARNING, "Readme is null");
+                            return null;
+                        }
+                        if (!lessonData.get("Readme").isTextual()) {
+                            logger.log(Level.WARNING, "Readme is not textual");
+                            return null;
+                        }
+                        JsonNode readme = lessonData.get("Readme");
+                        try (FileWriter writer = new FileWriter("mock.txt", true)) {
+                            writer.write(readme.asText());
+                            logger.log(Level.INFO, "Readme written to file successfully");
+                        } catch (IOException e) {
+                            logger.log(Level.SEVERE, "Failed to write Readme to file", e);
+                        }
+                        logger.log(Level.INFO, "Readme fetched successfully", readme);
+                        String[] split = readme.asText().split("##");
+                        try (FileWriter writer = new FileWriter("bofa.txt")) {
+                            for (String line : split) {
+                                writer.write(line + System.lineSeparator());
+                            }
+                            logger.log(Level.INFO, "Readme written to file successfully");
+                        } catch (IOException e) {
+                            logger.log(Level.SEVERE, "Failed to write Readme to file", e);
+                        }
+                    
+                    } else {
+                        logger.log(Level.WARNING, "Failed to parse data at node Readme");
+                    }
+                } else if (lesson.has("LessonDataCodeCompletionSql")) {
+                    var lessonData = lesson.get("LessonDataCodeCompletionSql");
+                    if (lessonData.has("Readme")) {
+                        if (lessonData.get("Readme") == null) {
+                            logger.log(Level.WARNING, "Readme is null");
+                            return null;
+                        }
+                        if (!lessonData.get("Readme").isTextual()) {
+                            logger.log(Level.WARNING, "Readme is not textual");
+                            return null;
+                        }
+                        JsonNode readme = lessonData.get("Readme");
+                        try (FileWriter writer = new FileWriter("mock.txt", true)) {
+                            writer.write(readme.asText());
+                            logger.log(Level.INFO, "Readme written to file successfully");
+                        } catch (IOException e) {
+                            logger.log(Level.SEVERE, "Failed to write Readme to file", e);
+                        }
+                        logger.log(Level.INFO, "Readme fetched successfully", readme);
+                        String[] split = readme.asText().split("##");
+                        try (FileWriter writer = new FileWriter("bofa.txt")) {
+                            for (String line : split) {
+                                writer.write(line + System.lineSeparator());
+                            }
+                            logger.log(Level.INFO, "Readme written to file successfully");
+                        } catch (IOException e) {
+                            logger.log(Level.SEVERE, "Failed to write Readme to file", e);
+                        }
+                    
+                    } else {
+                        logger.log(Level.WARNING, "Failed to parse data at node Readme");
+                    }
+                } else {
+                    logger.log(Level.WARNING, "Failed to parse data at node LesonDataCodeTests");
+                }
+            } else {
+                logger.log(Level.WARNING, "Failed to parse data at node lesson");
+            }
+        }
+        return res;
+    }
 }

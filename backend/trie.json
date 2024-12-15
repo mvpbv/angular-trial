@@ -1,0 +1,1173 @@
+{
+  ".markdownguide.org": {
+    "/basic-syntax": [
+      "/#images-1)",
+      "/#emphasis)"
+    ],
+    "/cheat-sheet": [
+      "/)",
+      "/)"
+    ]
+  },
+  "gist.github.com": {
+    "/timvisee": [
+      "/fcda9bbdff88d45cc9061606b4b923ca)"
+    ]
+  },
+  "yourbasic.org": {
+    "/golang": [
+      "/detect-deadlock/#:~:text=yourbasic.org%2Fgolang,look%20at%20this%20simple%20example.)",
+      "/fmt-printf-reference-cheat-sheet/).",
+      "/bitwise-operator-cheat-sheet/)"
+    ]
+  },
+  ".merriam-webster.com": {
+    "/dictionary": [
+      "/zany)"
+    ]
+  },
+  ".oracle.com": {
+    "/database": [
+      "/)"
+    ]
+  },
+  "dave.cheney.net": {
+    "/2014": [
+      "/03/25/the-empty-struct)"
+    ],
+    "/2017": [
+      "/06/11/go-without-package-scoped-variables)"
+    ]
+  },
+  ".cloudhadoop.com": {
+    "/2018": [
+      "/12/golang-tutorials-complex-types-numbers.html#:~:text=Golang%20Complex%20Type%20Numbers,complex%20number%20is%2012.8i.)"
+    ]
+  },
+  ".tutorialspoint.com": {
+    "/cprogramming": [
+      "/c_pointer_arithmetic.htm)."
+    ]
+  },
+  ".w3.org": {
+    "/MarkUp": [
+      "/html-spec/html-spec_9.html#SEC9.7.1)."
+    ]
+  },
+  "peps.python.org": {
+    "/pep-0515": [
+      "/)"
+    ],
+    "/pep-0257": [
+      "/))"
+    ]
+  },
+  ".bbc.co.uk": {
+    "/bitesize": [
+      "/guides/z3khpv4/revision/1)"
+    ]
+  },
+  ".rfc-editor.org": {
+    "/rfc": [
+      "/rfc3986#section-3.2).",
+      "/rfc3986#section-3.2).",
+      "/rfc9110.html#name-204-no-content)."
+    ]
+  },
+  "nemequ.github.io": {
+    "/munit": [
+      "/)"
+    ]
+  },
+  "softwareengineering.stackexchange.com": {
+    "/a": [
+      "/331392).)"
+    ]
+  },
+  ".postgresql.org": {
+    "/docs": [
+      "/9.2/ddl-constraints.html),"
+    ]
+  },
+  "developer.squareup.com": {
+    "/docs": [
+      "/build-basics/common-api-patterns/pagination)"
+    ]
+  },
+  "developer.mozilla.org": {
+    "/en-US": [
+      "/docs/Glossary/HTTP_header)",
+      "/docs/Web/API/Headers)",
+      "/docs/Web/API/Headers/get)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)",
+      "/docs/Web/JavaScript/Reference/Operators/Spread_syntax)",
+      "/docs/Glossary/First-class_Function)",
+      "/docs/Web/API/Fetch_API).",
+      "/docs/Web/JavaScript/Reference/Template_literals)",
+      "/docs/Web/JavaScript/Reference/Functions/Arrow_functions).",
+      "/docs/Web/API/URL/URL)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)",
+      "/docs/Web/JavaScript/Reference/Statements/try...catch)",
+      "/docs/Web/HTTP/Methods/PUT)",
+      "/docs/Glossary/Idempotent),",
+      "/docs/Glossary/https)",
+      "/docs/Glossary/Encryption)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Error)",
+      "/docs/Web/JavaScript/Guide/Modules#importing_features_into_your_script)",
+      "/docs/Web/JavaScript/Guide/Modules#exporting_module_features).",
+      "/docs/Learn/Common_questions/What_is_a_URL),",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)",
+      "/docs/Web/HTTP/Methods).",
+      "/docs/Web/HTTP/Methods/GET)",
+      "/docs/Glossary/Safe/HTTP)",
+      "/docs/Web/API/Fetch_API)",
+      "/docs/Web/API/fetch)",
+      "/docs/Web/JavaScript/Equality_comparisons_and_sameness)",
+      "/docs/Web/JavaScript/Reference/Operators/Equality#description).",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Promise)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)",
+      "/docs/Web/HTTP/Overview),",
+      "/docs/Web/HTTP/Methods).",
+      "/docs/Web/HTTP/Methods/GET)",
+      "/docs/Glossary/Safe/HTTP)",
+      "/docs/Glossary/Signature/Function).",
+      "/docs/Glossary/Synchronous)",
+      "/docs/Glossary/Asynchronous)",
+      "/docs/Glossary/Main_thread)",
+      "/docs/Web/API/setTimeout).",
+      "/docs/Web/HTTP/Overview),",
+      "/docs/Glossary/Global_object)",
+      "/docs/Web/JavaScript/Reference/Operators/this).",
+      "/docs/Learn/HTML/Tables/Basics)",
+      "/docs/Learn/JavaScript/Objects/JSON)",
+      "/docs/Web/API/Fetch_API),",
+      "/docs/Web/API/Response).",
+      "/docs/Web/API/Response/json)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Promise)",
+      "/docs/Web/JavaScript/Reference/Operators/await)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)",
+      "/docs/Learn/Common_questions/What_is_a_URL),",
+      "/docs/Web/JavaScript/Reference/Statements/async_function)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise)",
+      "/docs/Web/JavaScript/Guide/Modules).*",
+      "/docs/Web/API/Fetch_API)",
+      "/docs/Web/HTTP/Methods/POST)",
+      "/docs/Web/API/URL/URL):",
+      "/docs/Web/API/URL):",
+      "/docs/Web/API/Fetch_API)",
+      "/docs/Web/HTTP/Methods/POST)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)",
+      "/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse),",
+      "/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).",
+      "/docs/Glossary/Static_typing)",
+      "/docs/Glossary/https)",
+      "/docs/Glossary/Encryption)",
+      "/docs/Web/Security/Mixed_content)",
+      "/docs/Web/JavaScript/Reference/Operators/Optional_chaining):",
+      "/docs/Web/API/Response)",
+      "/docs/Web/JavaScript/Reference/Statements/const)",
+      "/docs/Web/HTTP/Methods/PUT)",
+      "/docs/Glossary/Idempotent),",
+      "/docs/Web/JavaScript/Reference/Operators/this)",
+      "/docs/Learn/JavaScript/Objects/JSON)",
+      "/docs/Glossary/HTTP_header)"
+    ]
+  },
+  "github.com": {
+    "/go-chi": [
+      "/chi),"
+    ],
+    "/nvm-sh": [
+      "/nvm)"
+    ],
+    "/golang-jwt": [
+      "/jwt)."
+    ],
+    "/gorilla": [
+      "/mux)"
+    ],
+    "/bootdotdev": [
+      "/bootdev)",
+      "/bootdev)",
+      "/bootdev)",
+      "/bootdev)",
+      "/bootdev)",
+      "/bootdev)"
+    ]
+  },
+  ".learnbyexample.org": {
+    "/python-list-slicing": [
+      "/)",
+      "/)"
+    ]
+  },
+  "golang.org": {
+    "/ref": [
+      "/spec#Composite_literals).",
+      "/spec#Conversions)"
+    ],
+    "/pkg": [
+      "/fmt/#Sprintf)",
+      "/sync/#Mutex.Lock)",
+      "/sync/#Mutex.Unlock)",
+      "/crypto/cipher/#NewGCM)",
+      "/crypto/cipher/#AEAD)",
+      "/sync/#RWMutex)",
+      "/sync/#Mutex.Lock)",
+      "/sync/#Mutex.Unlock)",
+      "/sync/#RWMutex.RLock)",
+      "/sync/#RWMutex.RUnlock)",
+      "/time/#Tick)",
+      "/time/#After)",
+      "/time/#Sleep)",
+      "/crypto/sha256/)"
+    ],
+    "/doc": [
+      "/install)"
+    ]
+  },
+  ".cs.utah.edu": {
+    "/~germain": [
+      "/PPS/Topics/recursion.html)",
+      "/PPS/Topics/unsigned_integer.html#:~:text=Unsigned%20Integers,negative%20(zero%20or%20positive).),",
+      "/PPS/Topics/variables.html)"
+    ]
+  },
+  ".ibm.com": {
+    "/docs": [
+      "/en/zos/2.4.0?topic=files-stdioh-standard-input-output)"
+    ],
+    "/cloud": [
+      "/learn/database-schema)"
+    ]
+  },
+  "iso.mit.edu": {
+    "/americanisms": [
+      "/date-format-in-the-united-states/)"
+    ]
+  },
+  ".toppr.com": {
+    "/guides": [
+      "/python-guide/tutorials/python-advanced-topics/python-iterators/)"
+    ]
+  },
+  "port70.net": {
+    "/~nsz": [
+      "/c/c11/n1570.html#6.3.2.1),"
+    ]
+  },
+  "python-reference.readthedocs.io": {
+    "/en": [
+      "/latest/docs/brackets/slicing.html#example-1)"
+    ]
+  },
+  "imgs.xkcd.com": {
+    "/comics": [
+      "/security.png)"
+    ]
+  },
+  "en.wikibooks.org": {
+    "/wiki": [
+      "/Python_Programming/Functions#Function_Calls)"
+    ]
+  },
+  "golang-jwt.github.io": {
+    "/jwt": [
+      "/usage/signing_methods/#signing-methods-and-key-types)"
+    ]
+  },
+  "stackoverflow.com": {
+    "/a": [
+      "/231855)"
+    ],
+    "/questions": [
+      "/3385201/confused-about-stdin-stdout-and-stderr).",
+      "/20461907/what-is-meaning-of-instance-in-programming)"
+    ]
+  },
+  ".salesforce.com": {
+    "/saas": [
+      "/)"
+    ]
+  },
+  "http:": {
+    "/": [
+      "/example.com?firstName=lane&lastName=wagner`",
+      "/testuser:testpass@testdomain.com:8080/testpath?testsearch=testvalue#testhash`",
+      "/testuser:testpass@testdomain.com:8080/testpath?testsearch=testvalue#testhash`",
+      "/testdomain.com/root/next`",
+      "/mystaticstate.com/documents/hello.txt`",
+      "/example.com`",
+      "/example.com`",
+      "/testdomain.com/root/next`",
+      "/mystaticstate.com/documents/hello.txt`",
+      "/example.com?firstName=lane&lastName=wagner`"
+    ]
+  },
+  "techterms.com": {
+    "/definition": [
+      "/floatingpoint),",
+      "/truncate)"
+    ]
+  },
+  "docs.sqlc.dev": {
+    "/en": [
+      "/stable/reference/config.html#go)"
+    ]
+  },
+  "exampleblog.com": {
+    "/site": [
+      "/index.html`",
+      "/index.html`"
+    ]
+  },
+  "auth0.com": {
+    "/intro-to-iam": [
+      "/what-is-authentication/)",
+      "/what-is-authentication/)"
+    ]
+  },
+  "gcc.gnu.org": {
+    "/onlinedocs": [
+      "/cpp/Macros.html)"
+    ]
+  },
+  ".w3schools.com": {
+    "/js": [
+      "/js_objects.asp)"
+    ],
+    "/python": [
+      "/python_datatypes.asp)"
+    ]
+  },
+  "godoc.org": {
+    "/crypto": [
+      "/aes#NewCipher)"
+    ],
+    "/golang.org": [
+      "/x/crypto/bcrypt#GenerateFromPassword)",
+      "/x/crypto/bcrypt#CompareHashAndPassword)"
+    ]
+  },
+  "cplusplus.com": {
+    "/reference": [
+      "/cstdio/printf/)",
+      "/cstdio/sprintf/)",
+      "/cstdio/printf/#:~:text=Parameters-,format,-C%20string%20that)"
+    ]
+  },
+  "db-engines.com": {
+    "/en": [
+      "/system/Microsoft+SQL+Server)",
+      "/ranking)*",
+      "/system/PostgreSQL%3BSQLite)."
+    ]
+  },
+  "en.wiktionary.org": {
+    "/wiki": [
+      "/iterate)"
+    ]
+  },
+  "en.wikipedia.org": {
+    "/wiki": [
+      "/Symmetric-key_algorithm),",
+      "/Pure_function)",
+      "/Idempotence)",
+      "/Concatenation)",
+      "/Man-in-the-middle_attack)",
+      "/Triple_DES):",
+      "/Padding_(cryptography))",
+      "/First_normal_form),",
+      "/Instance_(computer_science))",
+      "/Memory_management#Dynamic_memory_allocation),",
+      "/Name%E2%80%93value_pair)",
+      "/Metadata)",
+      "/Closure_(computer_programming))",
+      "/Elliptic_Curve_Digital_Signature_Algorithm),",
+      "/Unary_operation)",
+      "/Scope_%28computer_science%29)",
+      "/Stack_pointer)",
+      "/Return_statement)",
+      "/Unary_operation),",
+      "/Hard_coding)",
+      "/Set_(mathematics)).",
+      "/Second_normal_form)",
+      "/Closure_(computer_programming))",
+      "/Higher-order_function)",
+      "/Environment_variable).",
+      "/Recursion)...",
+      "/Internet_Protocol)",
+      "/Domain_name)",
+      "/C_string_handling).",
+      "/Not_invented_here)",
+      "/Exponential_growth)",
+      "/Recursion_(computer_science))",
+      "/Factorial)",
+      "/Empty_product),",
+      "/Currying)",
+      "/Partial_application)",
+      "/Single_source_of_truth))",
+      "/Heap_(data_structure)>)",
+      "/Domain_name)",
+      "/Hostname)",
+      "/C_data_types)",
+      "/Closure_(computer_programming))",
+      "/Nested_function).",
+      "/Newline)",
+      "/PostgreSQL)",
+      "/MySQL)",
+      "/SQLite)",
+      "/List_of_relational_database_management_systems)",
+      "/Arithmetic_mean)",
+      "/Exit_status)",
+      "/Newline)",
+      "/Observability_(software)#Telemetry_types).",
+      "/Readers%E2%80%93writer_lock)",
+      "/Middleware)",
+      "/Wrapper_function)",
+      "/Tracing_garbage_collection#Na%C3%AFve_mark-and-sweep)",
+      "/Internet_Protocol)",
+      "/Domain_name)",
+      "/Rainbow_table#:~:text=A%20rainbow%20table%20is%20a,a%20limited%20set%20of%20characters.)",
+      "/Salt_(cryptography))",
+      "/Blocking_(computing))",
+      "/Divide-and-conquer_algorithm)",
+      "/Binary_code).",
+      "/Palindrome)",
+      "/Galois/Counter_Mode),",
+      "/Authenticated_encryption).",
+      "/Data_migration)",
+      "/Static_variable).",
+      "/Object-oriented_programming),",
+      "/Real-time_strategy)",
+      "/Enumerated_type),",
+      "/Algebraic_data_type),",
+      "/Tagged_union),",
+      "/Recursion)",
+      "/Divide-and-conquer_algorithm):",
+      "/Syntactic_sugar)",
+      "/Higher-order_function).",
+      "/Average)",
+      "/Factorial)",
+      "/Empty_product).",
+      "/Euler%27s_totient_function)",
+      "/Greatest_common_divisor)",
+      "/Binary_tree)",
+      "/B-tree)!",
+      "/Random-access_memory)",
+      "/Computer_data_storage),",
+      "/Hexadecimal).",
+      "/Power_set)",
+      "/Foreign_key)",
+      "/Syntax_(programming_languages)>)",
+      "/Median)",
+      "/Exit_status):",
+      "/Socratic_method)",
+      "/Unit_testing).",
+      "/Concatenation)\",",
+      "/Factorial)",
+      "/Tree_traversal#In-order_(LNR)>).",
+      "/Rounding)",
+      "/Whole_number).",
+      "/Memoization)",
+      "/Cache_(computing))",
+      "/Third_normal_form)",
+      "/Algebraic_data_type)",
+      "/Linear_probing).",
+      "/Pseudocode):",
+      "/Server_%28computing%29)",
+      "/Average)*",
+      "/Alias_(SQL))",
+      "/Constructor_(object-oriented_programming)).",
+      "/Universally_unique_identifier).",
+      "/Exponential_decay)",
+      "/Initialization_vector),",
+      "/Pseudorandomness),",
+      "/Data_type).",
+      "/Data_Encryption_Standard)",
+      "/Initialization_vector),",
+      "/Block_cipher_mode_of_operation)",
+      "/Hexadecimal)",
+      "/Priority_queue).",
+      "/Server_%28computing%29)",
+      "/System_of_linear_equations).",
+      "/Slack_variable).",
+      "/UTF-8)",
+      "/Web_server)",
+      "/Communication_protocol).",
+      "/Concatenation)",
+      "/Fibonacci_number)",
+      "/Type_inference)!",
+      "/Functional_programming)",
+      "/Imperative_programming)",
+      "/Web_server)",
+      "/Communication_protocol).",
+      "/War_(card_game)).",
+      "/Block_cipher)",
+      "/Deterministic_system)",
+      "/Symmetric-key_algorithm).",
+      "/Scientific_notation).",
+      "/Decimal_separator#Digit_grouping)",
+      "/Subset_sum_problem),",
+      "/Wrapper_function#Helper_function)",
+      "/Hexadecimal)",
+      "/Web_colors#Hex_triplet)",
+      "/Newline)",
+      "/Initialization_(programming))",
+      "/Prime_number)",
+      "/Modulo_operation)",
+      "/Travelling_salesman_problem),",
+      "/Type_conversion)",
+      "/Stack_(abstract_data_type)>).",
+      "/Closure_(computer_programming)).",
+      "/Empty_sum)",
+      "/Memoization).",
+      "/Graph_%28discrete_mathematics%29)",
+      "/Hyperlink).",
+      "/Bubble_sort)",
+      "/Exponentiation)",
+      "/Arithmetic_mean)",
+      "/Bit)",
+      "/Currying)",
+      "/Modulo_operation)",
+      "/Higher-order_function).",
+      "/Memory_address).",
+      "/Logarithm)",
+      "/Binary_search_algorithm)",
+      "/Garbage_collection_(computer_science)#Reference_counting>)",
+      "/Random_seed)",
+      "/Arithmetic_mean)!",
+      "/Matrix_(mathematics)),",
+      "/Prime_number)",
+      "/Primality_test)",
+      "/Object-oriented_programming)",
+      "/Cartesian_coordinate_system).",
+      "/Encapsulation_(computer_programming))",
+      "/Black_box)",
+      "/Hyperlink).",
+      "/Linked_list)",
+      "/Wheat_and_chessboard_problem).",
+      "/Geometric_progression)",
+      "/Adjacency_list)",
+      "/Lambda_calculus).",
+      "/Domain_name)",
+      "/Hostname)",
+      "/Data_Encryption_Standard)",
+      "/Feistel_cipher)",
+      "/SQL)",
+      "/Key_schedule)",
+      "/Lexical_analysis#Token),",
+      "/Concatenation)",
+      "/Basic_access_authentication)",
+      "/Stack_overflow).",
+      "/Tail_call)",
+      "/Segmentation_fault).",
+      "/Random_seed)",
+      "/Subset)",
+      "/Method_overriding)",
+      "/Addition)",
+      "/Newline)",
+      "/Tagged_union)",
+      "/Inheritance_(object-oriented_programming)).",
+      "/Unit_testing).",
+      "/Floating-point_arithmetic#Accuracy_problems).",
+      "/Stream_cipher).",
+      "/Symmetric-key_algorithm)",
+      "/Algorithm)",
+      "/Trie)",
+      "/Natural_language_processing)",
+      "/C_data_types#:~:text=unsigned-,unsigned%20int,-Basic%20unsigned%20integer)",
+      "/C_data_types#:~:text=%5B8%5D-,long,-long%20int)",
+      "/Taxicab_geometry).",
+      "/Binary_search_tree#Deletion)",
+      "/Character_encoding)",
+      "/Reference_(computer_science))",
+      "/S-box)",
+      "/Checksum).",
+      "/Unit_testing).",
+      "/Include_directive)",
+      "/Average))",
+      "/Primary_key)",
+      "/Syntax_(programming_languages))",
+      "/Sigma),",
+      "/Summation)",
+      "/State_(computer_science)#:~:text=In%20information%20technology%20and%20computer,known%20as%20its%20state%20space.)).",
+      "/Median)",
+      "/NOP_(code))",
+      "/Fibonacci_number)",
+      "/Type_conversion)",
+      "/Adjacency_list)",
+      "/Metadata)",
+      "/Stack_(abstract_data_type)>)",
+      "/Prolog)",
+      "/Adjacency_list)",
+      "/Title_case),",
+      "/Red%E2%80%93black_tree)",
+      "/Immutable_object)*.",
+      "/Cartesian_coordinate_system).",
+      "/Information-theoretic_security#Security_levels)",
+      "/Currying)",
+      "/Metadata)",
+      "/Floating-point_arithmetic)",
+      "/Magic_number_(programming)>)\"",
+      "/Vertex_(graph_theory)>)",
+      "/Name%E2%80%93value_pair)",
+      "/Metadata)"
+    ]
+  },
+  ".sqlitetutorial.net": {
+    "/sqlite-functions": [
+      "/sqlite-iif/)"
+    ]
+  },
+  "realpython.com": {
+    "/python-sets": [
+      "/#defining-a-set)",
+      "/#defining-a-set)"
+    ],
+    "/python-thinking-recursively": [
+      "/)"
+    ]
+  },
+  "wagslane.dev": {
+    "/posts": [
+      "/keep-your-data-raw-at-rest/)."
+    ]
+  },
+  "expressjs.com": {
+    "/en": [
+      "/starter/static-files.html)",
+      "/4x/api.html#app.listen)",
+      "/starter/static-files.html)."
+    ]
+  },
+  "cloud.google.com": {
+    "/learn": [
+      "/what-is-a-relational-database)."
+    ]
+  },
+  "pkg.go.dev": {
+    "/crypto": [
+      "/ecdsa#SignASN1)",
+      "/rsa#EncryptOAEP)",
+      "/rand#Read).",
+      "/sha256#Sum256).",
+      "/cipher#AEAD))",
+      "/sha256#New)",
+      "/rand#Int)",
+      "/ecdsa#GenerateKey)",
+      "/elliptic#P256)",
+      "/cipher#NewCBCEncrypter)",
+      "/des#NewCipher)",
+      "/cipher#NewCBCEncrypter)",
+      "/cipher#BlockMode)",
+      "/aes#NewCipher)",
+      "/aes#NewCipher)",
+      "/des#NewCipher)",
+      "/cipher#Block)",
+      "/rand#Prime)",
+      "/rand#Read)",
+      "/sha256#example-New)."
+    ],
+    "/sync": [
+      "/atomic#Int32)",
+      "/atomic#Int32.Add)"
+    ],
+    "/github.com": [
+      "/golang-jwt/jwt/v5#NewWithClaims)",
+      "/golang-jwt/jwt/v5#SigningMethodHS256)",
+      "/golang-jwt/jwt/v5#RegisteredClaims)",
+      "/golang-jwt/jwt/v5#Token.SignedString)",
+      "/golang-jwt/jwt/v5#ParseWithClaims)",
+      "/golang-jwt/jwt/v5#Token)",
+      "/golang-jwt/jwt/v5#Claims)"
+    ],
+    "/net": [
+      "/http)",
+      "/http#Client)",
+      "/http#Get)",
+      "/http#DefaultClient)",
+      "/http#Response)",
+      "/url#Parse)",
+      "/url#URL.Hostname):",
+      "/http#NewServeMux)",
+      "/http#Server)",
+      "/http#Server.ListenAndServe)",
+      "/http#FileServer)",
+      "/http#Handler).",
+      "/http#HandlerFunc)",
+      "/http#ServeMux.HandleFunc)",
+      "/http#HandlerFunc):",
+      "/http#ResponseWriter.WriteHeader)",
+      "/http#ResponseWriter.Write)",
+      "/http#ServeMux.Handle)",
+      "/http#StripPrefix)",
+      "/http#FileServer)",
+      "/url#URL)",
+      "/url#Userinfo.Password)",
+      "/http#Request.Context)",
+      "/http#Request)",
+      "/http#Get)",
+      "/http#Client),",
+      "/http#NewRequest),",
+      "/http#Client.Do)",
+      "/http#Client),",
+      "/http#NewRequest),",
+      "/http#Client.Do)",
+      "/http#Response)",
+      "/http#Post)",
+      "/http#NewRequest):",
+      "/http#Request.PathValue)",
+      "/http#Client.Do).",
+      "/http#NewServeMux)'s",
+      "/http#ServeMux.Handle)",
+      "/http#FileServer)",
+      "/http#Dir)",
+      "/http#Header.Get)"
+    ],
+    "/golang.org": [
+      "/x/crypto/bcrypt#GenerateFromPassword)",
+      "/x/crypto/bcrypt#CompareHashAndPassword)",
+      "/x/crypto/bcrypt)"
+    ],
+    "/encoding": [
+      "/json#Unmarshal)",
+      "/json#Unmarshal)",
+      "/json#Decoder).",
+      "/json#Unmarshal)",
+      "/json#Marshal)",
+      "/json#Marshal)",
+      "/json)",
+      "/hex#EncodeToString)",
+      "/hex#DecodeString)"
+    ],
+    "/math": [
+      "/big#Int.ModInverse)",
+      "/rand#Read)",
+      "/big#Int.Exp)",
+      "/big)",
+      "/big)",
+      "/big#Int.Exp)",
+      "/rand#Read)",
+      "/big).",
+      "/big#Int.Mul)",
+      "/big#Int)",
+      "/bits#RotateLeft8)"
+    ]
+  },
+  "example.com": {
+    "/api": [
+      "/resource\")",
+      "/resource\")"
+    ]
+  },
+  "api.boot.dev": {
+    "/stripe": [
+      "/webhook`"
+    ],
+    "/v1": [
+      "/courses_rest_api/learn-http/locations/52fdfc07-2182-454f-963f-5f0f9a621d72\"",
+      "/courses_rest_api/learn-http/locations/52fdfc07-2182-454f-963f-5f0f9a621d72'"
+    ]
+  },
+  ".devx.com": {
+    "/open-source-zone": [
+      "/programming-basics-the-function-signature/#:~:text=A%20function%20signature%20includes%20the%20function%20name%2C%20its%20arguments%2C%20and%20in%20some%20languages%2C%20the%20return%20type.)"
+    ]
+  },
+  "doc.rust-lang.org": {
+    "/std": [
+      "/result/enum.Result.html)"
+    ]
+  },
+  "blog.boot.dev": {
+    "/img": [
+      "/800/1_Th9nPlIhYveMMsG9RvqQsQ.webp)",
+      "/800/1_Th9nPlIhYveMMsG9RvqQsQ.webp)"
+    ],
+    "/clean-code": [
+      "/dry-code/)",
+      "/dry-code/)",
+      "/guard-clauses/)",
+      "/guard-clauses/)",
+      "/dry-code/)"
+    ],
+    "/golang": [
+      "/how-to-use-golangs-generics/)",
+      "/golang-enum/)",
+      "/json-golang/)."
+    ],
+    "/bitcoin": [
+      "/base64-vs-base58-encoding/)",
+      "/achieving-data-integrity-using-cryptography/)"
+    ],
+    "/cryptography": [
+      "/aes-256-cipher/):",
+      "/hmac-and-macs-in-jwts/)",
+      "/very-basic-intro-to-hash-functions-sha-256-md-5-etc/)",
+      "/how-sha-2-works-step-by-step-sha-256/)",
+      "/elliptic-curve-cryptography/)",
+      "/what-is-cryptography/)",
+      "/bcrypt-step-by-step/)",
+      "/how-sha-2-works-step-by-step-sha-256/)",
+      "/bcrypt-step-by-step/)",
+      "/what-is-entropy-in-cryptography/)",
+      "/why-xor-in-cryptography/).",
+      "/encoding-vs-encryption/)."
+    ],
+    "/security": [
+      "/how-do-brute-force-attackers-know-they-found-the-key/)",
+      "/how-do-brute-force-attackers-know-they-found-the-key/),"
+    ]
+  },
+  ".dictionary.com": {
+    "/browse": [
+      "/dps)",
+      "/delimiter)"
+    ]
+  },
+  "sentry.io": {
+    "/answers": [
+      "/how-do-i-add-a-column-with-a-default-value-to-an-existing-table-in-sql-server/))."
+    ]
+  },
+  ".typescriptlang.org": {
+    "/docs": [
+      "/handbook/iterators-and-generators.html#forof-vs-forin-statements)"
+    ]
+  },
+  "xkcd.com": {
+    "/1790": [
+      "/)."
+    ],
+    "/538": [
+      "/)"
+    ]
+  },
+  "book.pythontips.com": {
+    "/en": [
+      "/latest/decorators.html)",
+      "/latest/args_and_kwargs.html)",
+      "/latest/ternary_operators.html)."
+    ]
+  },
+  ".bitecode.dev": {
+    "/i": [
+      "/140708565/unpacking-arguments)"
+    ]
+  },
+  "docs.python.org": {
+    "/3": [
+      "/library/stdtypes.html#ranges)",
+      "/reference/simple_stmts.html#nonlocal)",
+      "/library/stdtypes.html#str.split)",
+      "/library/functions.html#map)",
+      "/glossary.html#term-iterable)",
+      "/library/stdtypes.html#list),",
+      "/library/functions.html#map)",
+      "/library/stdtypes.html#str.split)",
+      "/library/stdtypes.html#str.join)",
+      "/library/functions.html#filter)",
+      "/library/stdtypes.html#str.join)",
+      "/library/stdtypes.html#str.startswith)",
+      "/library/stdtypes.html#str.split)",
+      "/reference/lexical_analysis.html#f-strings).",
+      "/library/operator.html#in-place-operators)",
+      "/tutorial/datastructures.html),",
+      "/library/functions.html#isinstance)",
+      "/tutorial/datastructures.html#the-del-statement)",
+      "/reference/datamodel.html#object.__str__)",
+      "/reference/datamodel.html#object.__repr__)",
+      "/tutorial/inputoutput.html#formatted-string-literals)",
+      "/reference/simple_stmts.html#the-pass-statement)",
+      "/library/functools.html#functools.lru_cache)",
+      "/library/functions.html#int)",
+      "/library/functions.html#sorted)",
+      "/library/math.html#math.sqrt).",
+      "/library/stdtypes.html#tuples).",
+      "/tutorial/datastructures.html#more-on-lists)",
+      "/library/copy.html#module-copy)",
+      "/library/stdtypes.html#dict)",
+      "/tutorial/datastructures.html#dictionaries)",
+      "/library/exceptions.html#IndexError).",
+      "/tutorial/floatingpoint.html).",
+      "/reference/datamodel.html#object.__init__),",
+      "/library/stdtypes.html#str.split)",
+      "/library/stdtypes.html#str.join)",
+      "/library/stdtypes.html#textseq)\".",
+      "/c-api/long.html)",
+      "/library/functions.html#float)",
+      "/c-api/bool.html#boolean-objects)",
+      "/library/exceptions.html#ValueError)",
+      "/tutorial/datastructures.html#sets)",
+      "/library/stdtypes.html#frozenset.add)",
+      "/library/stdtypes.html#set)",
+      "/library/stdtypes.html#list)",
+      "/tutorial/datastructures.html#more-on-lists)",
+      "/library/functions.html#map)",
+      "/library/stdtypes.html#list)",
+      "/library/functions.html#map)",
+      "/library/stdtypes.html#dict)",
+      "/library/stdtypes.html#dict.items)",
+      "/tutorial/datastructures.html#dictionaries)",
+      "/library/exceptions.html#KeyError),",
+      "/reference/datamodel.html#object.__eq__)",
+      "/reference/datamodel.html#object.__gt__)",
+      "/reference/datamodel.html#object.__lt__)",
+      "/tutorial/datastructures.html#more-on-lists)",
+      "/library/functions.html#zip)",
+      "/library/functions.html#filter)",
+      "/library/functions.html#max)",
+      "/library/functions.html#int).",
+      "/library/stdtypes.html#dict-views)",
+      "/library/functions.html#sorted)",
+      "/library/stdtypes.html#dict)",
+      "/glossary.html#term-parameter)",
+      "/library/exceptions.html#IndexError).",
+      "/tutorial/datastructures.html#more-on-lists)",
+      "/tutorial/errors.html#handling-exceptions)",
+      "/tutorial/datastructures.html#dictionaries)",
+      "/library/functions.html#ord)",
+      "/tutorial/datastructures.html#dictionaries)",
+      "/tutorial/errors.html#raising-exceptions)",
+      "/tutorial/classes.html)",
+      "/library/enum.html)",
+      "/library/stdtypes.html#typesseq-tuple)",
+      "/library/stdtypes.html#str.split)",
+      "/library/functools.html#functools.reduce))",
+      "/reference/expressions.html#membership-test-details)",
+      "/tutorial/datastructures.html#more-on-lists)",
+      "/library/stdtypes.html#str.lower)",
+      "/tutorial/errors.html#raising-exceptions)",
+      "/library/exceptions.html#ValueError)",
+      "/library/stdtypes.html#str.split)",
+      "/library/functions.html#min)",
+      "/library/functions.html#max)",
+      "/tutorial/datastructures.html)",
+      "/howto/sorting.html)",
+      "/tutorial/datastructures.html#more-on-lists)",
+      "/library/functions.html#sorted)",
+      "/library/stdtypes.html#str.replace)",
+      "/library/stdtypes.html#str.upper)",
+      "/library/stdtypes.html#str.capitalize)",
+      "/library/stdtypes.html#str.strip)",
+      "/library/stdtypes.html#str.lstrip)",
+      "/library/stdtypes.html#str.rstrip)",
+      "/library/stdtypes.html#tuples)",
+      "/reference/import.html)",
+      "/library/math.html)",
+      "/library/math.html#math.log)",
+      "/tutorial/classes.html#tut-private)",
+      "/library/constants.html#None).",
+      "/library/types.html#types.NoneType)",
+      "/reference/expressions.html#lambda)",
+      "/reference/expressions.html#expressions)",
+      "/library/stdtypes.html#dict.get)",
+      "/library/copy.html)",
+      "/library/functools.html#functools.reduce)",
+      "/library/functools.html#functools.reduce)",
+      "/library/stdtypes.html#common-sequence-operations)",
+      "/library/functions.html#print).",
+      "/library/enum.html)",
+      "/library/functions.html#sorted)",
+      "/library/functions.html#sorted)",
+      "/tutorial/errors.html#raising-exceptions)",
+      "/tutorial/controlflow.html#keyword-arguments)",
+      "/library/functions.html#sorted)",
+      "/library/stdtypes.html#dict.items)",
+      "/library/random.html#random.randint)",
+      "/reference/simple_stmts.html#grammar-token-python-grammar-yield_stmt)",
+      "/glossary.html#term-generator).",
+      "/library/functions.html#isinstance)",
+      "/library/functions.html#super)",
+      "/tutorial/datastructures.html#dictionaries)...",
+      "/tutorial/classes.html#method-objects)",
+      "/glossary.html#term-method).",
+      "/library/exceptions.html#KeyError).",
+      "/library/functions.html#sorted)",
+      "/howto/sorting.html#ascending-and-descending)",
+      "/library/stdtypes.html#frozenset.intersection)",
+      "/tutorial/datastructures.html#sets)",
+      "/library/functions.html#sorted)",
+      "/library/functions.html#len)",
+      "/library/stdtypes.html#numeric-types-int-float-complex)",
+      "/library/stdtypes.html#set)",
+      "/library/stdtypes.html#list)",
+      "/reference/simple_stmts.html#global)",
+      "/library/stdtypes.html#str.split)",
+      "/library/stdtypes.html#str.strip)",
+      "/library/functions.html#map)",
+      "/library/stdtypes.html#str.join)",
+      "/library/functions.html#float)",
+      "/library/math.html#math.log)",
+      "/tutorial/inputoutput.html#formatted-string-literals).",
+      "/tutorial/datastructures.html)",
+      "/library/stdtypes.html#string-methods).",
+      "/library/functions.html#type)",
+      "/library/functions.html#min)",
+      "/library/functions.html#max)",
+      "/library/random.html#random.shuffle)",
+      "/tutorial/datastructures.html#:~:text=list.pop,Python%20Library%20Reference.)"
+    ]
+  },
+  ".mathsisfun.com": {
+    "/numbers": [
+      "/fibonacci-sequence.html)"
+    ],
+    "/definitions": [
+      "/relatively-prime.html)"
+    ]
+  },
+  "go101.org": {
+    "/article": [
+      "/memory-layout.html)."
+    ]
+  },
+  "boot.dev": {
+    "/courses": [
+      "/learn-cryptography)",
+      "/learn-python)"
+    ]
+  },
+  ".makeuseof.com": {
+    "/hitboxes-gaming": [
+      "/)"
+    ]
+  },
+  ".boot.dev": {
+    "/courses": [
+      "/learn-algorithms)",
+      "/learn-typescript).",
+      "/learn-golang).",
+      "/learn-golang)",
+      "/learn-http-clients-golang).",
+      "/learn-http-clients-golang)"
+    ]
+  },
+  "utat-ss.readthedocs.io": {
+    "/en": [
+      "/master/c-programming/c_h_files.html)"
+    ]
+  },
+  "en.cppreference.com": {
+    "/w": [
+      "/c/memory/malloc)",
+      "/c/memory/free)",
+      "/c/language/sizeof).",
+      "/c/types/size_t)",
+      "/c/string/byte/strlen)",
+      "/c/string/byte/strcat)",
+      "/c/io/fprintf#:~:text=The%20following%20format%20specifiers%20are%20available%3A)",
+      "/c/language/array)",
+      "/c/memory/free)",
+      "/c/memory/malloc),",
+      "/c/memory/calloc),",
+      "/c/memory/realloc).",
+      "/c/language/cast)",
+      "/c/string/byte/memcpy),",
+      "/c/memory/malloc).",
+      "/c/memory/free)",
+      "/c/memory/malloc)",
+      "/c/memory/free)",
+      "/c/memory/realloc)",
+      "/c/language/struct_initialization),",
+      "/c/language/typedef).",
+      "/c/memory/calloc)",
+      "/c/language/enum).",
+      "/cpp/language/operator_incdec):",
+      "/c/language/struct)",
+      "/c/language/sizeof)",
+      "/c/language/type)",
+      "/c/memory/malloc)",
+      "/c/string/byte/strcpy):",
+      "/c/string/byte/strcat):",
+      "/c/string/byte/strlen):",
+      "/c/string/byte/strcmp):",
+      "/c/string/byte/strncpy):",
+      "/c/string/byte/strncat):",
+      "/c/string/byte/strchr):",
+      "/c/string/byte/strstr):",
+      "/c/language/switch)."
+    ]
+  },
+  "bradfieldcs.com": {
+    "/algos": [
+      "/stacks/balanced-parentheses/)."
+    ]
+  },
+  "go.dev": {
+    "/ref": [
+      "/spec#Declarations_and_scope).",
+      "/spec#Interface_types)",
+      "/spec#Selectors).",
+      "/spec#Struct_types)",
+      "/spec#Logical_operators):"
+    ],
+    "/blog": [
+      "/strings))",
+      "/gopher/header.jpg)",
+      "/strings))",
+      "/strings).",
+      "/maps)",
+      "/strings),",
+      "/maps)"
+    ],
+    "/tour": [
+      "/methods/14),",
+      "/moretypes/12)",
+      "/concurrency)",
+      "/basics/13).",
+      "/basics/9)",
+      "/methods/15).",
+      "/methods/16)",
+      "/generics/1)",
+      "/basics/12).",
+      "/methods/9)",
+      "/methods/14)"
+    ],
+    "/doc": [
+      "/tutorial/add-a-test)",
+      "/effective_go#blank)."
+    ]
+  },
+  "upload.wikimedia.org": {
+    "/wikipedia": [
+      "/commons/6/6a/Sorting_quicksort_anim.gif)"
+    ]
+  },
+  ".google.com": {
+    "/search?q=boot.dev](.google.com": [
+      "/search?q=boot.dev)",
+      "/search?q=boot.dev)"
+    ]
+  },
+  "miro.medium.com": {
+    "/max": [
+      "/1400/1*3aibaGt1-zimnwreliwX0A.gif)"
+    ]
+  },
+  "docs.microsoft.com": {
+    "/en-us": [
+      "/windows/wsl/install)",
+      "/windows/wsl/install)"
+    ]
+  },
+  "devdocs.io": {
+    "/c": [
+      "/io/fprintf)",
+      "/language/struct)",
+      "/memory/calloc)",
+      "/string/byte/strcat)",
+      "/language/enum)",
+      "/language/union)",
+      "/language/struct)",
+      "/language/struct)",
+      "/types/size_t)",
+      "/string/byte/strlen))",
+      "/memory/dynamic/free)",
+      "/string/byte/strcpy).",
+      "/string/byte/strlen)."
+    ]
+  }
+}

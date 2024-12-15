@@ -18,22 +18,7 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/fetchStats`);
   }
   fetchData(): Observable<any> {
-    return this.http.get<DataItem[]>(`${this.baseUrl}/getData`).pipe(
-      map(data => data.sort((a, b) => {
-        if (a.HighestPriority !== b.HighestPriority) {
-          return a.HighestPriority - b.HighestPriority;
-        }
-        if (a.HighPriority !== b.HighPriority) {
-          return a.HighPriority - b.HighPriority;
-        }
-        if (a.MiddlePriority !== b.MiddlePriority) {
-          return a.MiddlePriority - b.MiddlePriority;
-        }
-        if (a.Challenge !== b.Challenge) {
-          return a.Challenge ? -1 : 1;
-        }
-          return a.LeastPriority - b.LeastPriority;
-        }))
-    );
+    console.log('fetching data');
+    return this.http.get<DataItem[]>(`${this.baseUrl}/getData`);
   }
 }
