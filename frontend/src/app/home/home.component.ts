@@ -11,7 +11,8 @@ import { RanksComponent } from '../ranks/ranks.component';
     CommonModule,
     LevelsComponent,
     CoursesComponent,
-    RanksComponent],
+    RanksComponent
+  ],
 
   template: `
   <app-levels></app-levels>

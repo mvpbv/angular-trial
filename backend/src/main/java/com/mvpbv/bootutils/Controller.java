@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,9 +37,12 @@ public class Controller {
     }
     @GetMapping("/getStats")
     public JsonNode fetchData() {
-        return JsonParser.fetchAggregateStats();
+        return dataService.fetchAggregateStats();
     }
-    
+    @GetMapping("/getData") 
+    public JsonNode getData() {
+        return Cache.fetchChronologicalData();
+    }
     @GetMapping("/getRawData")
     public JsonNode getRawData() {
         return dataService.fetchRawData();
@@ -55,7 +59,6 @@ public class Controller {
     public JsonNode getChallengeData() {
         return dataService.fetchChallengeData();
     }
-    
     
 }
 

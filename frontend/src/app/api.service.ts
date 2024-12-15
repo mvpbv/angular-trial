@@ -11,12 +11,14 @@ export class ApiService {
   private baseUrl = 'http://localhost:8080/api/v1';
 
   constructor(private http: HttpClient) { }
-
+  getHealthStatus(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/healthz`);
+  }
   fetchStats(): Observable<any> {
     return this.http.get(`${this.baseUrl}/fetchStats`);
   }
   fetchData(): Observable<any> {
-    return this.http.get<DataItem[]>(`${this.baseUrl}/fetchData`).pipe(
+    return this.http.get<DataItem[]>(`${this.baseUrl}/getData`).pipe(
       map(data => data.sort((a, b) => {
         if (a.HighestPriority !== b.HighestPriority) {
           return a.HighestPriority - b.HighestPriority;

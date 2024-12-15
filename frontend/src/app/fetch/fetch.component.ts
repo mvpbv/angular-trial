@@ -35,11 +35,7 @@ export class FetchComponent implements OnInit{
       });
 
       this.courseData$.subscribe(data => {
-        this.totalDifficulty = data.reduce((acc, item) => acc + item.Diff, 0);
-        this.difficultyCounts = data.reduce((counts, item) => {
-          counts[item.Diff] = (counts[item.Diff] || 0) + 1;
-          return counts;
-        }, {} as {[key: number]: number});
+        this.courseData$ = data;
     });
   }
   toggleChallengeFilter() {
@@ -96,6 +92,4 @@ export class FetchComponent implements OnInit{
   filterByCourse() {
     this.fetchData();  
   }
-  
-
 }

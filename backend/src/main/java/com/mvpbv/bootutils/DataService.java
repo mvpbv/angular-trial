@@ -16,7 +16,7 @@ public class DataService {
 
 
     private final Courses courses;
-    private final ObjectMapper objectMapper;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
     private final Lessons lessons;
     private static final Logger logger = Logger.getLogger(DataService.class.getName());
     private final String baseUrl;
@@ -30,12 +30,28 @@ public class DataService {
     public DataService() {
         this.lessons = new Lessons();
         this.courses = new Courses();
-        this.objectMapper = new ObjectMapper();
         this.baseUrl = "https://api.boot.dev/v1/";
         this.lessonUrl = this.baseUrl + "static/lessons/78b4646f-85aa-42c7-ba46-faec2f0902a9";
         this.challengeUrl = this.baseUrl + "static/lessons/451da8ad-f8e9-4a58-88ec-dbfba4f76bb4";
         this.courseUrl = this.baseUrl + "courses/f9a48bbc-d1ff-4388-bf0c-23c6e3c60ae0";
+
     }
+    public JsonNode fetchAggregateStats() {
+        JsonNode data = Cache.getCache();
+        var finalStats = objectMapper.createObjectNode();
+        finalStats.put("count", Cache.getCount(data));
+        finalStats.put("average", Stats.getMeanDiff(data));
+        finalStats.put("meanReadme", Stats.getMeanReadme(data));
+        var diffCounts = Stats.getDifficultyCounts(data);
+        var diffCountsNode = objectMapper.valueToTree(diffCounts);
+        var courseCounts = Stats.getCourseCounts(data);
+        var courseCountsNode = objectMapper.valueToTree(courseCounts);
+        finalStats.set("difficultyCounts", diffCountsNode);
+        finalStats.set("courseCounts", courseCountsNode);
+        return objectMapper.valueToTree(finalStats);
+    }
+
+
     public JsonNode fetchLessonData() {
         logger.log(Level.INFO, "Fetching data from {0}", lessonUrl);
         JsonNode data = lessons.fetchLessonData(lessonUrl);
