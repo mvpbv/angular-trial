@@ -54,7 +54,7 @@ public class JsonParser {
         float mean = (float) sum / (float) count;
         return mean;
     }
-    public static JsonNode getAggregateStats() {
+    public static JsonNode fetchAggregateStats() {
         JsonNode data = getCache();
         var stats = objectMapper.createObjectNode();
         stats.put("count", getCount(data));
