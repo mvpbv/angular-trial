@@ -4,18 +4,24 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mvpbv.bootutils.models.Root;
 
-public class SeedDb {
 
+public class SeedDb {
+    
+    
     private static final RestTemplate restTemplate = new RestTemplate();    
     public static final String baseUrl = "https://api.boot.dev/v1/static/courses?";
     private static final ObjectMapper objectMapper = new ObjectMapper();    
     private static final Logger logger = Logger.getLogger(SeedDb.class.getName());
+    
+    @Autowired
+    private RootRepository rootRepository;
     
     public static void seedCourses() {
         JsonNode response = restTemplate.getForObject(getBaseUrl(), JsonNode.class);

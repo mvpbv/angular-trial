@@ -1,11 +1,11 @@
 package com.mvpbv.bootutils.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.persistence.*;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 public class Root{
     @JsonProperty("UUID") 
     public String uUID;
