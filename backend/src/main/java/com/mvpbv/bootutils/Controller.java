@@ -96,7 +96,7 @@ public class Controller {
     public JsonNode fetchLessonData() {
         String lessonUrl = "https://api.boot.dev/v1/static/lessons/78b4646f-85aa-42c7-ba46-faec2f0902a9";
         logger.log(Level.INFO, "Fetching data from {0}", lessonUrl);
-        JsonNode data = dataService.fetchLessonData(lessonUrl);
+        JsonNode data = DataService.fetchLessonData(lessonUrl);
         logger.log(Level.INFO, "Data fetched successfully");
         return data;
     }
