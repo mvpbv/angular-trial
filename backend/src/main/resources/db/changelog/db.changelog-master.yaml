@@ -2,6 +2,12 @@ databaseChangeLog:
   - changeSet:
       id: "1"
       author: braedenvallejos
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: root_authoruuids
+        - tableExists:
+            tableName: root_maintaineruuids
       changes:
         - dropTable:
             tableName: root_authoruuids
@@ -10,6 +16,10 @@ databaseChangeLog:
   - changeSet:
       id: "2"
       author: braedenvallejos
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: root_prerequisite_courseuuids
       changes:
         - dropTable:
             tableName: root_prerequisite_courseuuids

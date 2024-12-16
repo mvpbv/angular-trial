@@ -1,4 +1,4 @@
-package com.mvpbv.bootutils;
+package com.mvpbv.bootutils.service;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +12,9 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.mvpbv.bootutils.Cache;
+import com.mvpbv.bootutils.Stats;
+import com.mvpbv.bootutils.UrlProcessor;
 
 @Service
 public class DataService {
@@ -28,9 +31,9 @@ public class DataService {
     private final RestTemplate restTemplate;
     private final String randUrl;
 
-    public DataService(RestTemplate restTemplate) {
-        this.lessons = new Lessons();
-        this.courses = new Courses();
+    public DataService(RestTemplate restTemplate, Courses courses, Lessons lessons) {
+        this.lessons = lessons;
+        this.courses = courses;
         this.baseUrl = "https://api.boot.dev/v1/";
         this.lessonUrl = this.baseUrl + "static/lessons/78b4646f-85aa-42c7-ba46-faec2f0902a9";
         this.challengeUrl = this.baseUrl + "static/lessons/451da8ad-f8e9-4a58-88ec-dbfba4f76bb4";

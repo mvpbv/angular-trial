@@ -1,4 +1,4 @@
-package com.mvpbv.bootutils;
+package com.mvpbv.bootutils.service;
 
 import java.io.IOException;
 import java.util.logging.Level;

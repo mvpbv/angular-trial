@@ -1,9 +1,10 @@
-package com.mvpbv.bootutils;
+package com.mvpbv.bootutils.service;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+@Service
 public class Courses {
 
     private static final Logger logger = Logger.getLogger(Courses.class.getName());
@@ -18,10 +20,10 @@ public class Courses {
     private final ObjectMapper objectMapper;
     private final Lessons lessons;
 
-    public Courses() {
-        this.restTemplate = new RestTemplate();
-        this.objectMapper = new ObjectMapper();
-        this.lessons = new Lessons();
+    public Courses(RestTemplate restTemplate, ObjectMapper objectMapper, Lessons lessons) {
+        this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
+        this.lessons = lessons;
     }
 
     public JsonNode fetchCourseData(String url) {

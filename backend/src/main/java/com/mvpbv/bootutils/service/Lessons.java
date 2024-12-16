@@ -1,4 +1,4 @@
-package com.mvpbv.bootutils;
+package com.mvpbv.bootutils.service;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,20 +6,22 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+@Service
 public class Lessons {
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
     private static final Logger logger = Logger.getLogger(Lessons.class.getName());
-    public Lessons() {
-        this.restTemplate = new RestTemplate();
-        this.objectMapper = new ObjectMapper();
+    public Lessons(RestTemplate restTemplate, ObjectMapper objectMapper) {
+        this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
     }
     public JsonNode fetchLessonData(String url) {
         logger.log(Level.INFO, "Making request to {0}", url);
