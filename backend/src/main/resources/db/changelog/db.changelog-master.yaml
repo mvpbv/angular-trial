@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: braedenvallejos
+      changes:
+        - dropTable:
+            tableName: root_authoruuids
+        - dropTable:
+            tableName: root_maintaineruuids
+  - changeSet:
+      id: "2"
+      author: braedenvallejos
+      changes:
+        - dropTable:
+            tableName: root_prerequisite_courseuuids

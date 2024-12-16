@@ -49,11 +49,6 @@ public class Root{
 
     @JsonProperty("Difficulty") 
     private int difficulty;
-
-    
-    @JsonProperty("PrerequisiteCourseUUIDS") 
-    @ElementCollection
-    private List<String> prerequisiteCourseUUIDS;
     
     @JsonProperty("EstimatedCompletionTimeHours") 
     private int estimatedCompletionTimeHours;
@@ -67,14 +62,6 @@ public class Root{
     @JsonProperty("SlugAliases") 
     @ElementCollection
     private List<String> slugAliases;
-    
-    @JsonProperty("AuthorUUIDs") 
-    @ElementCollection
-    private List<String> authorUUIDs;
-    
-    @JsonProperty("MaintainerUUIDs")
-    @ElementCollection
-    private List<String> maintainerUUIDs;
     
     @JsonProperty("Alternatives")
     @Embedded 

@@ -30,6 +30,10 @@
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
@@ -70,6 +74,17 @@
 
                 </configuration>
             </plugin>
+            <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <configuration>
+                <changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</changeLogFile>
+                <url>jdbc:mysql://localhost:3306/bootutils</url>
+                <username>root</username>
+                <password></password>
+                <driver>com.mysql.cj.jdbc.Driver</driver>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 </project>
