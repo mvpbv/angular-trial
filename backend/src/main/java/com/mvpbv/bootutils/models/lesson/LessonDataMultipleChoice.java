@@ -2,7 +2,7 @@ package com.mvpbv.bootutils.models.lesson;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Embedded;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,11 +25,12 @@ public class LessonDataMultipleChoice{
     private Long id;
 
     @JsonProperty("Readme") 
-    public String readme;
+    private String readme;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "question_id")
     @JsonProperty("Question") 
-    @Embedded
-    public Question question;
+    private Question question;
 
     @OneToOne
     @JoinColumn(name = "lesson_id")
