@@ -1,4 +1,4 @@
-package com.mvpbv.bootutils.models;
+package com.mvpbv.bootutils.models.course;
 
 import java.util.Date;
 
@@ -9,15 +9,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
+
 @Embeddable
 @Getter
 @Setter
 @NoArgsConstructor
-public class OptionalLesson{
-
-
+public class RequiredLesson{
     @JsonProperty("UUID") 
-    private String UUID;
+    private String uUID;
 
     @JsonProperty("Slug") 
     private String slug;
@@ -54,7 +55,7 @@ public class OptionalLesson{
 
     @JsonProperty("CompletionType") 
     private String completionType;
-    
+
     @JsonProperty("Title") 
     private String title;
 }

@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mvpbv.bootutils.models.Root;
+import com.mvpbv.bootutils.models.course.CourseRoot;
 import com.mvpbv.bootutils.repositories.RootRepository;
 
 @Service
@@ -18,6 +18,7 @@ public class SeedDb {
     private static final Logger logger = Logger.getLogger(SeedDb.class.getName());   
     private final RestTemplate restTemplate;
     public final String baseUrl = "https://api.boot.dev/v1/static/courses?";
+    public final String lessonsUrlRoot = "https://api.boot.dev/v1/static/lessons";
     private  final ObjectMapper objectMapper;
     private final RootRepository rootRepository;
 
@@ -40,8 +41,8 @@ public class SeedDb {
             return;
         }
         try {
-            Root[] roots = objectMapper.readValue(response.toString(), Root[].class);
-            for (Root root : roots) {
+            CourseRoot[] roots = objectMapper.readValue(response.toString(), CourseRoot[].class);
+            for (CourseRoot root : roots) {
                 rootRepository.save(root);
             }
         } catch (IOException e) {

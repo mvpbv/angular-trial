@@ -1,4 +1,4 @@
-package com.mvpbv.bootutils.models;
+package com.mvpbv.bootutils.models.course;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

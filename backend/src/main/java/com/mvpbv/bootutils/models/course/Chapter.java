@@ -1,4 +1,4 @@
-package com.mvpbv.bootutils.models;
+package com.mvpbv.bootutils.models.course;
 
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class Chapter{
     private String description;
 
     @ManyToOne
-    private Root root;
+    private CourseRoot root;
 
     @JsonProperty("RequiredLessons") 
     @ElementCollection
