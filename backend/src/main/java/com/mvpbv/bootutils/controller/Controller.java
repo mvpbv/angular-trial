@@ -92,8 +92,16 @@ public class Controller {
     @GetMapping("/seedDb")
     public String seedDb() {
         seedDb.seedCourses();
+        seedDb.seedRequiredLessons();
+        seedDb.seedOptionalLessons();
         return "Seeded the database!";
     }
+    @GetMapping("/seedLessons") 
+    public String seedLessons() {
+        seedDb.seedRequiredLessons();
+        return "Seeded the lessons!";
+    }
+    
     @GetMapping("/testDb")
     public String testDb() {
         seedDb.testDatabaseConnection();

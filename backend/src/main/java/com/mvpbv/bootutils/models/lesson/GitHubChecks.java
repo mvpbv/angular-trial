@@ -1,11 +1,8 @@
 package com.mvpbv.bootutils.models.lesson;
 
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +16,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "github_checks")
 @Getter @Setter @NoArgsConstructor
-public class GitHubChecks{
+public class GithubChecks{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,15 +25,12 @@ public class GitHubChecks{
     @JsonProperty("ContainsCompleteDir") 
     public boolean containsCompleteDir;
 
-    @JsonProperty("Steps") 
-    @ElementCollection
-    public List<Step> steps;
 
     @JsonProperty("ShowcaseRepo") 
-    public Object showcaseRepo;
+    public String showcaseRepo;
 
-    @OneToOne(mappedBy = "gitHubChecks")
-    private LessonDataGitHubChecks lessonDataGitHubChecks;
+    @OneToOne(mappedBy = "githubChecks")
+    private LessonGithub LessonGithub;
 
 }
 

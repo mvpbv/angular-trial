@@ -9,12 +9,11 @@ import lombok.Setter;
 
 
 @Embeddable
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 public class Actions{
     @JsonProperty("DelayRequestByMs") 
-    public Object delayRequestByMs;
+    public int  delayRequestByMs;
+
 }
 
 

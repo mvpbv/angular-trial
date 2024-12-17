@@ -39,5 +39,5 @@ public class Question{
     public boolean containsCompleteDir;
 
     @OneToOne(mappedBy = "question", cascade = CascadeType.ALL)
-    private LessonDataMultipleChoice lessonDataMultipleChoice;    
+    private LessonMultipleChoice lessonDataMultipleChoice;    
 }

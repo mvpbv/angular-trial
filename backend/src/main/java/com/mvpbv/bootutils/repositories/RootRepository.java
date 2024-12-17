@@ -1,11 +1,19 @@
 package com.mvpbv.bootutils.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.mvpbv.bootutils.models.course.CourseRoot;
+import com.mvpbv.bootutils.models.Root;
 
 @Repository
-public interface RootRepository extends JpaRepository<CourseRoot, Long> {
-    // Add custom query methods if needed
+public interface RootRepository extends JpaRepository<Root, Long> {
+   @Query(value = "SELECT uuid FROM chapter_optional_lessons", nativeQuery = true) 
+   List<String> getOptUuids();
+   @Query(value = "SELECT uuid FROM chapter_required_lessons", nativeQuery = true)
+   List<String> getReqUuids();
+   @Query(value = "SELECT lesson_difficulty, chapter_slug, completion_type, course_title, title FROM lessons", nativeQuery = true)
+   List<Object[]> getAllLessonDetails();
 }

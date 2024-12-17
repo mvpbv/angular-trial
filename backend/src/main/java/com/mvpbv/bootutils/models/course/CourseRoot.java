@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mvpbv.bootutils.models.Root;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -15,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -45,7 +47,9 @@ public class CourseRoot{
     @JsonProperty("ShortDescription") 
     private String shortDescription;
 
-    @JsonProperty("Description") 
+    @JsonProperty("Description")
+    @Lob
+    @Column(name = "Description", columnDefinition="LONGTEXT")
     private String description;
 
     @JsonProperty("ThumbnailURL") 

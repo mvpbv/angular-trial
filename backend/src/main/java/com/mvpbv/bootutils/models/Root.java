@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mvpbv.bootutils.models.course.CourseRoot;
-import com.mvpbv.bootutils.models.lesson.LessonRoot;
+import com.mvpbv.bootutils.models.lesson.Lesson;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -29,5 +29,5 @@ public class Root {
 
     @OneToMany(mappedBy = "root", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<LessonRoot> lessonRoots;
+    private List<Lesson> lessons;
 }

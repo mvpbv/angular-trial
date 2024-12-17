@@ -2,39 +2,32 @@ package com.mvpbv.bootutils.models.lesson;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Embedded;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Table(name ="lesson_data_cli_command")
-@Getter
-@Setter
-@NoArgsConstructor
-public class LessonDataCLICommand{
+@Table(name = "lesson_text_input")
+@Getter @Setter @NoArgsConstructor
+public class LessonTextInput{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @JsonProperty("Readme") 
+    @JsonProperty("Readme")
+    @Lob
+    @Column(name = "Description", columnDefinition="LONGTEXT")
     public String readme;
-
-    @JsonProperty("CLICommandData") 
-    @Embedded
-    public CLICommandData cLICommandData;
-
-    @OneToOne
-    @JoinColumn(name = "lesson_id")
+    
+    @OneToOne(mappedBy = "lessonTextInput")
     private Lesson lesson;
 }
-

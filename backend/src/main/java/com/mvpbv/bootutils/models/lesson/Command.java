@@ -1,22 +1,38 @@
 package com.mvpbv.bootutils.models.lesson;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Embeddable
-@Getter
-@Setter
+@Entity
+@Table(name = "commands")
+@Getter @Setter @NoArgsConstructor
 public class Command{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @JsonProperty("Command") 
-    public String command;
-    @JsonProperty("Tests") 
+    private String command;
+    /*
     @ElementCollection
-    public List<TestCli> tests;
+    @CollectionTable(name = "command_tests",
+    joinColumns = @JoinColumn(name = "command_id")
+    )
+    @JsonProperty("Tests") 
+    private List<TestCli> tests;
+    */
+    @ManyToOne
+    @JoinColumn(name = "cli_command_id")
+    private CliCommand cliCommand;
 }
