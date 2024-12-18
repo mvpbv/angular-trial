@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RankTitle } from './rank.enum';
 import { Rank } from './models/rank.interface';
-import { XpService } from './xp.service';
 
 @Injectable({
   providedIn: 'root'
@@ -35,16 +34,33 @@ export class RankService {
   }
   getAllRanks(): Rank[] {
     return [
-      { name: RankTitle.Apprentice, level: 10, xp: XpService.xpAtLevel(10) },
-      { name: RankTitle.Pupil, level: 20, xp: XpService.xpAtLevel(20) },
-      { name: RankTitle.Acolyte, level: 30, xp: XpService.xpAtLevel(30) },
-      { name: RankTitle.Disciple, level: 40, xp: XpService.xpAtLevel(40) },
-      { name: RankTitle.Scholar, level: 50, xp: XpService.xpAtLevel(50) },
-      { name: RankTitle.Sorcerer, level: 60, xp: XpService.xpAtLevel(60) },
-      { name: RankTitle.Sage, level: 70, xp: XpService.xpAtLevel(70) },
-      { name: RankTitle.Archsage, level: 80, xp: XpService.xpAtLevel(80) },
-      { name: RankTitle.Mage, level: 90, xp: XpService.xpAtLevel(90) },
-      { name: RankTitle.Archmage, level: 100, xp: XpService.xpAtLevel(100) }
+      { name: RankTitle.Apprentice, level: 10, xp: this.xpAtLevel(10) },
+      { name: RankTitle.Pupil, level: 20, xp: this.xpAtLevel(20) },
+      { name: RankTitle.Acolyte, level: 30, xp: this.xpAtLevel(30) },
+      { name: RankTitle.Disciple, level: 40, xp: this.xpAtLevel(40) },
+      { name: RankTitle.Scholar, level: 50, xp: this.xpAtLevel(50) },
+      { name: RankTitle.Sorcerer, level: 60, xp: this.xpAtLevel(60) },
+      { name: RankTitle.Sage, level: 70, xp: this.xpAtLevel(70) },
+      { name: RankTitle.Archsage, level: 80, xp: this.xpAtLevel(80) },
+      { name: RankTitle.Mage, level: 90, xp: this.xpAtLevel(90) },
+      { name: RankTitle.Archmage, level: 100, xp: this.xpAtLevel(100) }
     ];
+  }
+  xpForLevel(level: number) {
+    if (level < 1) {
+      return 0;
+    }
+    return 320 + (80 * level);
+  }
+
+  xpAtLevel(level: number) {
+    let total = 0;
+    for (let i = 1; i < level; i++) {
+      total += this.xpForLevel(i);
+    }
+    return total;
+  }
+  xpToFinish() {
+    return 427680;
   }
 }

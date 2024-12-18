@@ -1,0 +1,22 @@
+<h1>Road To Archmage</h1>
+<form [formGroup]="rankForm" (ngSubmit)="onSubmit()" class="rank-form">
+        
+    <div class="form-group">
+        <label for="level">Level:</label>
+        <input id="level" type="number" formControlName="level">
+    </div>
+    <div class="form-group">
+        <label for="guess">What percent do you think you're done?</label>
+        <input id="guess" type="number" formControlName="guess">
+    </div>
+    
+    <button type="submit">Add Rank</button>
+</form>
+<div class="number-line">
+    <div class="number-line-horizontal">
+        <div class="midway-tick"></div>
+        <div *ngFor="let rank of ranks" class="rank-dot" [style.left.%]="getRankPercent(rank.xp)">
+            <span class="tooltip">{{rank.name}} {{rank.xp}}XP Level {{rank.level}}</span>
+        </div>
+    </div>
+</div>

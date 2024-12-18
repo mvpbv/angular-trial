@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Rank } from '../models/rank.interface';
 import { RankTitle } from '../rank.enum';
 import { RankService } from '../rank.service';
-import { XpService } from '../xp.service';
 import { CommonModule } from '@angular/common';
 import { RanksComponent } from '../ranks/ranks.component';
 
@@ -42,12 +41,13 @@ export class ProgressComponent {
   levelForm: FormGroup;
   rank : Rank = { name: RankTitle.Unranked, level: 0, xp: 0 };
   nextRank : Rank = { name: RankTitle.Unranked, level: 10, xp: 320 };
-  Complete = XpService.xpToFinish();
+  Complete: number = 0;
 
   constructor(private fb: FormBuilder, private rankService: RankService) {
     this.levelForm = this.fb.group({
       level: ['']
     });
+    this.Complete = this.rankService.xpToFinish();
   }
   onSubmit() {
     const level = this.levelForm.get('level')?.value;
@@ -59,8 +59,8 @@ export class ProgressComponent {
     this.lvl = level;
     this.rank = this.rankService.assignRank(this.lvl);
     this.nextRank = this.rankService.assignRank(this.lvl + 10);
-    this.levelXp = XpService.xpForLevel(this.lvl);
-    this.totalXp = XpService.xpAtLevel(this.lvl);
+    this.levelXp = this.rankService.xpForLevel(this.lvl);
+    this.totalXp = this.rankService.xpAtLevel(this.lvl);
   }
 
   ngOnInit(): void {}
