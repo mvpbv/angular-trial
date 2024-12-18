@@ -4,6 +4,8 @@ export interface DataItem {
     lessonIndex: number
     chapterIndex: number
     chapterName: string
+    lessonType: string
+    isLocalMachine: boolean
     courseIndex: number
     courseName: string
     trackIndex: number

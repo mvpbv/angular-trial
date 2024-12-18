@@ -8,14 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 
 @Entity
 @Table(name = "commands")
-@Getter @Setter @NoArgsConstructor
 public class Command{
 
     @Id
@@ -24,15 +21,32 @@ public class Command{
 
     @JsonProperty("Command") 
     private String command;
-    /*
-    @ElementCollection
-    @CollectionTable(name = "command_tests",
-    joinColumns = @JoinColumn(name = "command_id")
-    )
-    @JsonProperty("Tests") 
-    private List<TestCli> tests;
-    */
+
     @ManyToOne
     @JoinColumn(name = "cli_command_id")
     private CliCommand cliCommand;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
+    public CliCommand getCliCommand() {
+        return cliCommand;
+    }
+
+    public void setCliCommand(CliCommand cliCommand) {
+        this.cliCommand = cliCommand;
+    }
 }

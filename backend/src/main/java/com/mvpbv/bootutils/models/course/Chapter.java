@@ -11,14 +11,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 public class Chapter{
     
     @Id
@@ -56,4 +51,72 @@ public class Chapter{
 
     @JsonProperty("CourseUUID") 
     private String courseUUID;
+
+
+    public Chapter() {
+    }
+
+    public void setUUID(String uUID) {
+        this.uUID = uUID;
+    }
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setRoot(CourseRoot root) {
+        this.root = root;
+    }
+    public void setRequiredLessons(List<RequiredLesson> requiredLessons) {
+        this.requiredLessons = requiredLessons;
+    }
+    public void setOptionalLessons(List<OptionalLesson> optionalLessons) {
+        this.optionalLessons = optionalLessons;
+    }
+    public void setNumRequiredLessons(int numRequiredLessons) {
+        this.numRequiredLessons = numRequiredLessons;
+    }
+    public void setNumOptionalLessons(int numOptionalLessons) {
+        this.numOptionalLessons = numOptionalLessons;
+    }
+    public void setCourseUUID(String courseUUID) {
+        this.courseUUID = courseUUID;
+    }
+    public String getUUID() {
+        return uUID;
+    }
+    public String getSlug() {
+        return slug;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public CourseRoot getRoot() {
+        return root;
+    }
+    public List<RequiredLesson> getRequiredLessons() {
+        return requiredLessons;
+    }
+    public List<OptionalLesson> getOptionalLessons() {
+        return optionalLessons;
+    }
+    public int getNumRequiredLessons() {
+        return numRequiredLessons;
+    }
+    public int getNumOptionalLessons() {
+        return numOptionalLessons;
+    }
+    public String getCourseUUID() {
+        return courseUUID;
+    }
+    public Long getId() {
+        return id;
+    }
 }

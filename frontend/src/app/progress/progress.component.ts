@@ -5,11 +5,13 @@ import { RankTitle } from '../rank.enum';
 import { RankService } from '../rank.service';
 import { XpService } from '../xp.service';
 import { CommonModule } from '@angular/common';
+import { RanksComponent } from '../ranks/ranks.component';
 
 @Component({
-  selector: 'app-levels',
-  imports: [CommonModule, ReactiveFormsModule],
+  selector: 'app-progress',
+  imports: [CommonModule, ReactiveFormsModule, RanksComponent],
   template: `
+  <h1>Progress Calculator</h1>
   <section>
       <form [formGroup] ="levelForm" (ngSubmit)="onSubmit()" class="form-container">
         <input type="number"
@@ -28,11 +30,12 @@ import { CommonModule } from '@angular/common';
       <p>You need <span class="accent-text">{{nextRank.xp - totalXp}}</span> XP to reach the next rank</p>
       <p>You are <span class="accent-text">{{ totalXp / Complete * 100 | number: '1.0-0' }}%</span> of the way to Archmage</p>
     </section>
+    <app-ranks></app-ranks>
     <br>
   `,
-  styleUrl: './levels.component.css'
+  styleUrl: './progress.component.css'
 })
-export class LevelsComponent {
+export class ProgressComponent {
   lvl: number = 0;
   levelXp: number = 0;
   totalXp: number = 0;

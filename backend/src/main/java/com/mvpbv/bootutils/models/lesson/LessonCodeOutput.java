@@ -14,13 +14,11 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+
 
 @Entity
 @Table(name = "lesson_code_output")
-@Getter @Setter @NoArgsConstructor
 public class LessonCodeOutput{
 
     @Id
@@ -51,4 +49,60 @@ public class LessonCodeOutput{
 
     @OneToOne(mappedBy="lessonCodeOutput")
     private Lesson lesson;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getReadme() {
+        return readme;
+    }
+
+    public void setReadme(String readme) {
+        this.readme = readme;
+    }
+
+    public String getProgLang() {
+        return progLang;
+    }
+
+    public void setProgLang(String progLang) {
+        this.progLang = progLang;
+    }
+
+    public List<StarterFile> getStarterFiles() {
+        return starterFiles;
+    }
+
+    public void setStarterFiles(List<StarterFile> starterFiles) {
+        this.starterFiles = starterFiles;
+    }
+
+    public List<SolutionFile> getSolutionFiles() {
+        return solutionFiles;
+    }
+
+    public void setSolutionFiles(List<SolutionFile> solutionFiles) {
+        this.solutionFiles = solutionFiles;
+    }
+
+    public String getCodeExpectedOutput() {
+        return codeExpectedOutput;
+    }
+
+    public void setCodeExpectedOutput(String codeExpectedOutput) {
+        this.codeExpectedOutput = codeExpectedOutput;
+    }
+
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
 }

@@ -12,13 +12,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "question")
-@Getter @Setter @NoArgsConstructor
 public class Question{
 
     @Id
@@ -40,4 +37,52 @@ public class Question{
 
     @OneToOne(mappedBy = "question", cascade = CascadeType.ALL)
     private LessonMultipleChoice lessonDataMultipleChoice;    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public List<String> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<String> answers) {
+        this.answers = answers;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public boolean isContainsCompleteDir() {
+        return containsCompleteDir;
+    }
+
+    public void setContainsCompleteDir(boolean containsCompleteDir) {
+        this.containsCompleteDir = containsCompleteDir;
+    }
+
+    public LessonMultipleChoice getLessonDataMultipleChoice() {
+        return lessonDataMultipleChoice;
+    }
+
+    public void setLessonDataMultipleChoice(LessonMultipleChoice lessonDataMultipleChoice) {
+        this.lessonDataMultipleChoice = lessonDataMultipleChoice;
+    }
 }

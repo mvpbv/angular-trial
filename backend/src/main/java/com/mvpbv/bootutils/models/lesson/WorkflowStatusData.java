@@ -4,14 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Embeddable
-@Getter
-@Setter
-@NoArgsConstructor
 public class WorkflowStatusData{
 
     @Column(name="workflow_name_status")
@@ -20,4 +15,20 @@ public class WorkflowStatusData{
 
     @JsonProperty("Status") 
     public String status;
+
+    public String getWorkflowName() {
+        return workflowName;
+    }
+
+    public void setWorkflowName(String workflowName) {
+        this.workflowName = workflowName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

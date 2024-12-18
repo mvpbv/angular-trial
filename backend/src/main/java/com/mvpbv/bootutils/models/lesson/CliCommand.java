@@ -12,13 +12,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "cli_command_data")
-@Getter @Setter @NoArgsConstructor
+
 public class CliCommand{
 
     @Id
@@ -34,4 +32,36 @@ public class CliCommand{
 
     @OneToOne(mappedBy = "cliCommand")
     private LessonCli lessonCli;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isContainsCompleteDir() {
+        return containsCompleteDir;
+    }
+
+    public void setContainsCompleteDir(boolean containsCompleteDir) {
+        this.containsCompleteDir = containsCompleteDir;
+    }
+
+    public List<Command> getCommands() {
+        return commands;
+    }
+
+    public void setCommands(List<Command> commands) {
+        this.commands = commands;
+    }
+
+    public LessonCli getLessonCli() {
+        return lessonCli;
+    }
+
+    public void setLessonCli(LessonCli lessonCli) {
+        this.lessonCli = lessonCli;
+    }
 }

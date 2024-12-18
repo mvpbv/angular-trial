@@ -3,14 +3,11 @@ package com.mvpbv.bootutils.models.course;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+
 
 @Embeddable
-@Getter
-@Setter
-@NoArgsConstructor
+
 public class Alternatives {
 
     @JsonProperty("Typescript")
@@ -21,6 +18,31 @@ public class Alternatives {
     
     @JsonProperty("JavaScript")
     private String javascript;
+
+    public Alternatives() {
+    }
+
+    public void setTypeScript(String typescript) {
+        this.typescript = typescript;
+    }
+    public void setGo(String go) {
+        this.go = go;
+    }
+    public void setJavaScript(String javascript) {
+        this.javascript = javascript;
+    }
+    public String getTypeScript() {
+        return typescript;
+    }
+    public String getGo() {
+        return go;
+    }
+    public String getJavaScript() {
+        return javascript;
+    }
+    
+
+
 
     
 }

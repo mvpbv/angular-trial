@@ -12,10 +12,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.mvpbv.bootutils.Cache;
 import com.mvpbv.bootutils.TextAnalysis;
 import com.mvpbv.bootutils.service.DataService;
-import com.mvpbv.bootutils.service.SeedDb;
-
-
-
 
 
 @RestController
@@ -23,11 +19,9 @@ import com.mvpbv.bootutils.service.SeedDb;
 public class Controller {
 
     private final DataService dataService;
-    private final SeedDb seedDb;
 
-    public Controller(DataService dataService, SeedDb seedDb) {
+    public Controller(DataService dataService) {
         this.dataService = dataService;
-        this.seedDb = seedDb;
     }
 
     @GetMapping("/healthz")
@@ -44,30 +38,11 @@ public class Controller {
     public JsonNode fetchData() {
         return dataService.fetchAggregateStats();
     }
-    @GetMapping("/getData") 
+    @GetMapping("/getChronologicalData") 
     public JsonNode getData() {
         return Cache.fetchChronologicalData();
     }
-    @GetMapping("/getRawData")
-    public JsonNode getRawData() {
-        return dataService.fetchRawData();
-    }
-    @GetMapping("/getOopData") 
-    public JsonNode getOopData() {
-        return dataService.fetchOopData();
-    }
-    @GetMapping("/getLessonData")
-    public JsonNode getLessonData() {
-        return dataService.fetchLessonData();
-    }
-    @GetMapping("/getChallengeData")
-    public JsonNode getChallengeData() {
-        return dataService.fetchChallengeData();
-    }
-    @GetMapping("/testReadmeParse")
-    public JsonNode testParse() {
-        return dataService.testReadmeParse();
-    }
+    
     @GetMapping("/goNuts")
     public String goNuts() {
         try {
@@ -89,23 +64,7 @@ public class Controller {
     public JsonNode getDomainTrie() {
         return dataService.fetchDomainTrie();
     }
-    @GetMapping("/seedDb")
-    public String seedDb() {
-        seedDb.seedCourses();
-        seedDb.seedRequiredLessons();
-        seedDb.seedOptionalLessons();
-        return "Seeded the database!";
-    }
-    @GetMapping("/seedLessons") 
-    public String seedLessons() {
-        seedDb.seedRequiredLessons();
-        return "Seeded the lessons!";
-    }
     
-    @GetMapping("/testDb")
-    public String testDb() {
-        seedDb.testDatabaseConnection();
-        return "Tested the database!";
-    }
+    
 }
 

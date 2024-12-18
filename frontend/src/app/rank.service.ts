@@ -35,7 +35,6 @@ export class RankService {
   }
   getAllRanks(): Rank[] {
     return [
-      { name: RankTitle.Unranked, level: 0, xp: 0 },
       { name: RankTitle.Apprentice, level: 10, xp: XpService.xpAtLevel(10) },
       { name: RankTitle.Pupil, level: 20, xp: XpService.xpAtLevel(20) },
       { name: RankTitle.Acolyte, level: 30, xp: XpService.xpAtLevel(30) },

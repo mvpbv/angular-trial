@@ -9,13 +9,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "github_checks")
-@Getter @Setter @NoArgsConstructor
 public class GithubChecks{
 
     @Id
@@ -31,6 +28,37 @@ public class GithubChecks{
 
     @OneToOne(mappedBy = "githubChecks")
     private LessonGithub LessonGithub;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isContainsCompleteDir() {
+        return containsCompleteDir;
+    }
+
+    public void setContainsCompleteDir(boolean containsCompleteDir) {
+        this.containsCompleteDir = containsCompleteDir;
+    }
+
+    public String getShowcaseRepo() {
+        return showcaseRepo;
+    }
+
+    public void setShowcaseRepo(String showcaseRepo) {
+        this.showcaseRepo = showcaseRepo;
+    }
+
+    public LessonGithub getLessonGithub() {
+        return LessonGithub;
+    }
+
+    public void setLessonGithub(LessonGithub lessonGithub) {
+        this.LessonGithub = lessonGithub;
+    }
 
 }
 

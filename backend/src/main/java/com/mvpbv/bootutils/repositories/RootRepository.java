@@ -14,6 +14,4 @@ public interface RootRepository extends JpaRepository<Root, Long> {
    List<String> getOptUuids();
    @Query(value = "SELECT uuid FROM chapter_required_lessons", nativeQuery = true)
    List<String> getReqUuids();
-   @Query(value = "SELECT lesson_difficulty, chapter_slug, completion_type, course_title, title FROM lessons", nativeQuery = true)
-   List<Object[]> getAllLessonDetails();
 }

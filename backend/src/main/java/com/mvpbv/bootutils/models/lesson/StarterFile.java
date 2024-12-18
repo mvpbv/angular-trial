@@ -11,13 +11,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "starter_file")
-@Getter @Setter @NoArgsConstructor
 public class StarterFile{
 
     @Id
@@ -49,5 +46,69 @@ public class StarterFile{
     @ManyToOne
     @JoinColumn(name = "lesson_code_tests_id")
     private LessonCodeTests lessonCodeTests;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+
+    public void setHidden(boolean isHidden) {
+        this.isHidden = isHidden;
+    }
+
+    public boolean isReadonly() {
+        return isReadonly;
+    }
+
+    public void setReadonly(boolean isReadonly) {
+        this.isReadonly = isReadonly;
+    }
+
+    public LessonCodeOutput getLessonCodeOutput() {
+        return lessonCodeOutput;
+    }
+
+    public void setLessonCodeOutput(LessonCodeOutput lessonCodeOutput) {
+        this.lessonCodeOutput = lessonCodeOutput;
+    }
+
+    public LessonCodeSQL getLessonCodeSQL() {
+        return lessonCodeSQL;
+    }
+
+    public void setLessonCodeSQL(LessonCodeSQL lessonCodeSQL) {
+        this.lessonCodeSQL = lessonCodeSQL;
+    }
+
+    public LessonCodeTests getLessonCodeTests() {
+        return lessonCodeTests;
+    }
+
+    public void setLessonCodeTests(LessonCodeTests lessonCodeTests) {
+        this.lessonCodeTests = lessonCodeTests;
+    }
 
 }

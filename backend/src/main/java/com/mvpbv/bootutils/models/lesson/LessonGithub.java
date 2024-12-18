@@ -12,13 +12,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "lesson_github")
-@Getter @Setter @NoArgsConstructor
+
 public class LessonGithub {
 
     @Id
@@ -37,4 +35,36 @@ public class LessonGithub {
 
     @OneToOne(mappedBy = "lessonGithub")
     private Lesson lesson;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getReadme() {
+        return readme;
+    }
+
+    public void setReadme(String readme) {
+        this.readme = readme;
+    }
+
+    public GithubChecks getGithubChecks() {
+        return githubChecks;
+    }
+
+    public void setGithubChecks(GithubChecks githubChecks) {
+        this.githubChecks = githubChecks;
+    }
+
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
 }

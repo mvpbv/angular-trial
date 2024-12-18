@@ -7,15 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-ranks',
   imports: [CommonModule],
-  template: `
-  <button class="toggle-button" (click)="toggleRanks()">{{ showRanks ? 'Hide Ranks' : 'Show Ranks' }}</button>
-  <div *ngIf="showRanks">
-      <div *ngFor="let rank of ranks" class="rank-item">
-        <h4>{{rank.name}}</h4>
-        <p>Level: <span class="accent-text">{{rank.level}}</span> XP: <span class="accent-text">{{rank.xp}}</span></p>
-      </div>
-  </div>
-  `,
+  templateUrl: './ranks.component.html',
   styleUrl: './ranks.component.css'
 })
 export class RanksComponent {
@@ -29,4 +21,8 @@ export class RanksComponent {
   toggleRanks(): void {
     this.showRanks = !this.showRanks;
   }
+  getRankPercent(xp: number): number {
+    return xp / this.ranks[this.ranks.length - 1].xp;
+  }
+
 }

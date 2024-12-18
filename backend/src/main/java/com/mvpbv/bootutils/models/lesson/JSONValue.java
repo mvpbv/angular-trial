@@ -3,14 +3,11 @@ package com.mvpbv.bootutils.models.lesson;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Embeddable
-@Getter
-@Setter
-@NoArgsConstructor
+
+
 public class JSONValue{
     @JsonProperty("Path") 
     public String path;
@@ -22,4 +19,44 @@ public class JSONValue{
     public String stringValue;
     @JsonProperty("BoolValue") 
     public Boolean boolValue;
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+
+    public Integer getIntValue() {
+        return intValue;
+    }
+
+    public void setIntValue(Integer intValue) {
+        this.intValue = intValue;
+    }
+
+    public String getStringValue() {
+        return stringValue;
+    }
+
+    public void setStringValue(String stringValue) {
+        this.stringValue = stringValue;
+    }
+
+    public Boolean getBoolValue() {
+        return boolValue;
+    }
+
+    public void setBoolValue(Boolean boolValue) {
+        this.boolValue = boolValue;
+    }
 }

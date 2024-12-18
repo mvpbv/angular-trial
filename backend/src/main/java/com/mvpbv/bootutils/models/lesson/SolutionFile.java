@@ -11,13 +11,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "solution_files")
-@Getter @Setter @NoArgsConstructor
+
 public class SolutionFile{
 
     @Id
@@ -58,6 +55,85 @@ public class SolutionFile{
     @JoinColumn(name = "lesson_code_tests_id")
     private LessonCodeTests lessonCodeTests;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        isHidden = hidden;
+    }
+
+    public boolean isReadonly() {
+        return isReadonly;
+    }
+
+    public void setReadonly(boolean readonly) {
+        isReadonly = readonly;
+    }
+
+    public LessonCodeOutput getLessonCodeOutput() {
+        return lessonCodeOutput;
+    }
+
+    public void setLessonCodeOutput(LessonCodeOutput lessonCodeOutput) {
+        this.lessonCodeOutput = lessonCodeOutput;
+    }
+
+    public LessonCodeSQL getLessonCodeSQL() {
+        return lessonCodeSQL;
+    }
+
+    public void setLessonCodeSQL(LessonCodeSQL lessonCodeSQL) {
+        this.lessonCodeSQL = lessonCodeSQL;
+    }
+
+    public LessonHttpTests getLessonHttpTests() {
+        return lessonHttpTests;
+    }
+
+    public void setLessonHttpTests(LessonHttpTests lessonHttpTests) {
+        this.lessonHttpTests = lessonHttpTests;
+    }
+
+    public LessonCli getLessonCli() {
+        return lessonCli;
+    }
+
+    public void setLessonCli(LessonCli lessonCli) {
+        this.lessonCli = lessonCli;
+    }
+
+    public LessonCodeTests getLessonCodeTests() {
+        return lessonCodeTests;
+    }
+
+    public void setLessonCodeTests(LessonCodeTests lessonCodeTests) {
+        this.lessonCodeTests = lessonCodeTests;
+    }
 
 
 }

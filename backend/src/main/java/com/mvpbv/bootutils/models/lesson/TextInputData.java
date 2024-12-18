@@ -22,4 +22,28 @@ public class TextInputData{
     @Lob
     @Column(name = "MatchesOne", columnDefinition="LONGTEXT")
     public List<String> matchesOne;
+
+    public List<String> getContainsAll() {
+        return containsAll;
+    }
+
+    public void setContainsAll(List<String> containsAll) {
+        this.containsAll = containsAll;
+    }
+
+    public List<String> getContainsNone() {
+        return containsNone;
+    }
+
+    public void setContainsNone(List<String> containsNone) {
+        this.containsNone = containsNone;
+    }
+
+    public List<String> getMatchesOne() {
+        return matchesOne;
+    }
+
+    public void setMatchesOne(List<String> matchesOne) {
+        this.matchesOne = matchesOne;
+    }
 }
