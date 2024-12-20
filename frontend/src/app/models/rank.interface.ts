@@ -4,4 +4,5 @@ export interface Rank {
     name: RankTitle;
     level: number;
     xp: number;
+    percent?: number;
   }

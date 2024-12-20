@@ -19,6 +19,6 @@ export class ApiService {
   }
   fetchData(): Observable<any> {
     console.log('fetching data');
-    return this.http.get<DataItem[]>(`${this.baseUrl}/api/v1/getChronologicalData`);
+    return this.http.get<DataItem[]>(`${this.baseUrl}/getChronologicalData`);
   }
 }

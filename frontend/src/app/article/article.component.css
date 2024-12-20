@@ -1,0 +1,153 @@
+/* Base Container */
+:host {
+    display: block;
+    background: #0f172a;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* Header Section */
+.page-header {
+    max-width: 65ch;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.author {
+    display: relative;
+    font-size: 1.1rem;
+    color: #94a3b8;
+    background: #1e293b;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #2d3748;
+}
+
+/* Content Section */
+section {
+    max-width: 80ch;
+    margin: 0 auto;
+    color: #e2e8f0;
+}
+
+section p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .author {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    section p {
+        font-size: 1.125rem;
+        line-height: 1.7;
+    }
+}
+.hotspots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    list-style: none;
+  }
+  
+  .hotspot-card {
+    background: #1e293b;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  
+  .hotspot-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .card-header {
+    padding: 1.5rem;
+    background: #2d3748;
+    border-bottom: 1px solid #374151;
+  }
+  
+  .hotspot-sum {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+  
+  .lesson-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .lesson-item {
+    padding: 1.5rem;
+    border-bottom: 1px solid #374151;
+  }
+  
+  .lesson-title {
+    font-size: 1.125rem;
+    color: #e2e8f0;
+    margin-bottom: 1rem;
+  }
+  
+  .lesson-details {
+    margin: 1rem 0;
+  }
+  
+  .course-info {
+    margin-bottom: 1rem;
+  }
+  
+  .course, .chapter {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+  }
+  
+  .metrics {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .metric {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    background: #2d3748;
+    color: #94a3b8;
+  }
+  
+  .lesson-link {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    background: #3b82f6;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    transition: background 0.2s;
+  }
+  
+  .lesson-link:hover {
+    background: #2563eb;
+  }
+  

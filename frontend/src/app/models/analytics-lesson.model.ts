@@ -12,5 +12,7 @@ export interface analyticsLesson {
     CourseIndex: number
     CourseName: string
     TrackIndex: number
+    TrackName: string
     Difficulty: number
+    Radix: number
   }

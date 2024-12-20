@@ -1,0 +1,30 @@
+<div class="form-container">
+    <section aria-label="Difficulty Hotspots">
+    <form [formGroup]="hotspotForm" class="hotspots-form">
+        <div class="form-group">
+            <div class="window-size-container">
+                <label for="window">Window Size</label>
+            </div>
+            <div class="slider-container">
+                <span class="slider-min">2</span>
+                <div class="slider-wrapper">
+                    <span class="slider-value" *ngIf="isSliderFocused">
+                        {{hotspotForm.get('window')?.value}}
+                    </span>
+                <input 
+                    id="window"
+                    type="range"
+                    formControlName="window"
+                    min="2"
+                    max="16"
+                    class="form-slider"
+                    (focus)="onSliderFocus()"
+                    (blur)="onSliderBlur()"
+                >
+            </div>
+            <span class="slider-max">16</span>
+        </div>
+        </div>
+    </form>
+    </section>
+</div>

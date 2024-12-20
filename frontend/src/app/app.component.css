@@ -1,7 +1,7 @@
 .form-container {
     display: flex;
-    align-items: center; /* Align items vertically in the center */
-    gap: 10px; /* Add some space between the input field and the button */
+    align-items: center; 
+    gap: 10px; 
   }
  
 .submit-button {
@@ -19,7 +19,7 @@
     background-color: #0056b3;
 }
   
-  .input-field {
+.input-field {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -29,7 +29,7 @@
     transition: border-color 0.3s ease;
   }
   
-  .input-field:focus {
+.input-field:focus {
     border-color: #007bff;
     outline: none; /* Remove default outline */
   }
@@ -45,13 +45,11 @@
 }
 .nav-item {
   margin: 0 15px;
-  border: 2px solid #444;
   border-radius: 5px;
-  background-color: #2a2b3b;
 }
 .nav-item a {
   text-decoration: none;
-  color: #ff5f5f;
+  color: #7aa2f7;
   padding: 30px;
   font-size: 20px;
 }
@@ -61,7 +59,7 @@
 .header {
   display: flex;
   align-items: center;
-  background-color: #1a1b26;
+  background-color: #1A1A2E;
   padding: 10px;
   color: white;
   border-bottom: 2px solid #444;

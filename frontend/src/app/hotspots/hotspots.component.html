@@ -1,0 +1,53 @@
+<title>HotSpot Playground</title>
+<h1>HotSpot Playground</h1>
+
+<app-hotspot-form [hotspotForm]="hotspotForm"></app-hotspot-form>
+<app-stats [window]="window"></app-stats>
+
+
+<div>
+<section class="hotspots-container" aria-label="Difficulty Hotspots">
+  <ul class="hotspots-grid" *ngIf="hotspots; else loading">
+      <li class="hotspot-card" *ngFor="let group of hotspots | keyvalue: noSortComparator; let i = index">
+          <h2 class="difficulty-score" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">{{group.key}}</h2>
+          <ng-container *ngIf="expandedGroups.has(i)">
+              <ng-container *ngFor="let hotspot of group.value">
+                <header class="card-header" (click)="toggleHotspot(i)" [class.expanded]="expandedHotspots.has(i)">
+                    <div class="header-content">
+                        <div class="title-group">
+                            <h2 class="card-course">{{hotspot.spotArray[0].CourseName}}</h2>
+                            <h3 class="card-chapter">{{hotspot.spotArray[0].ChapterName}}</h3>
+                            <!--
+                            <div *ngIf="hotspot.spotArray[0].CourseName != hotspot.spotArray[window].CourseName">
+                                <span class="chapter-label">{{hotspot.spotArray[wid]}}</span>
+                                <span class="chapter-value">{{hotspot.spotArray[0].ChapterName}}</span>
+                            </div>
+                            -->
+                        </div>
+                        <span class="expand-icon"></span>
+                    </div>
+                </header>
+                  <ul class="lesson-list" *ngIf="expandedHotspots.has(i)">
+                      <li *ngFor="let lesson of hotspot.spotArray" class="lesson-item">
+                          <a class="lesson-link" [href]="'https://boot.dev/lessons/' + lesson.UUID" target="_blank" rel="noopener">
+                              <div class="lesson-content">
+                                  <header>
+                                      <h3 class="lesson-title">{{lesson.Title}} 
+                                          <span class="course-info">{{lesson.Difficulty}}</span>
+                                      </h3>
+                                  </header>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+              </ng-container>
+          </ng-container>
+      </li>
+  </ul>
+  <ng-template #loading>
+      <div class="loading-state">
+          <p>Loading hotspots...</p>
+      </div>
+  </ng-template>
+</section>
+</div>

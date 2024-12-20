@@ -43,8 +43,13 @@ public class AnalyticsLesson {
     private String courseName;
     @JsonProperty("TrackIndex")
     private int trackIndex;
+    @JsonProperty("TrackName")
+    private String trackName;
     @JsonProperty("Difficulty")
     private int difficulty;
+    @JsonProperty("Radix")
+    private int radix;
+
 
     public AnalyticsLesson(Lesson lesson) {
         this.title = lesson.getTitle();
@@ -56,10 +61,56 @@ public class AnalyticsLesson {
         this.lessonType = parseType(lesson.getType());
         this.islocalMachine = parseType(lesson.getType()) == LessonType.cli_local || parseType(lesson.getType()) == LessonType.code_local;
         this.courseIndex = getCourseIndex(lesson.getCourseSlug());
-        this.courseName = lesson.getCourseTitle();
+        this.courseName = parseFriendlyTitle(lesson.getCourseTitle());
         this.trackIndex = getTrackIndex(this.courseIndex);
+        this.trackName = trackName(this.trackIndex);
         this.difficulty = lesson.getLessonDifficulty();
+        this.radix = calculateRadix(courseIndex, trackIndex, lessonIndex, isChallenge);
     }
+    private String parseFriendlyTitle(String courseTitle) {
+        return switch (courseTitle) {
+            case "Learn to Code in Python" -> "Learn Python";
+            case "Learn Shells and Terminals" -> "Learn Shells";
+            case "Learn Git" -> "Learn Git";
+            case "Build Bookbot Python" -> "Build Bookbot";
+            case "Learn Object Oriented Programming in Python" -> "Object Oriented Programming";
+            case "Build Asteroids Python" -> "Build Asteroids";
+            case "Learn Functional Programming in Python" -> "Functional Programming";
+            case "Build Static Site Generator Python" -> "Build SSG";
+            case "Learn Algorithms in Python" -> "Algorithms";
+            case "Learn Data Structures in Python" -> "Data Structures";
+            case "Build Maze Solver Python" -> "Build Maze Solver";
+            case "Learn Memory Management in C" -> "C Memory Management";
+            case "Build Personal Project 1" -> "Build Personal Project";
+            case "Learn Golang" -> "Learn Golang";
+            case "Learn HTTP Clients Golang" -> "Learn HTTP Clients";
+            case "Build Pokedex CLI Golang" -> "Build Pokedex CLI";
+            case "Learn SQL" -> "Learn SQL";
+            case "Build Blog Aggregator Golang" -> "Build Blog Aggregator";
+            case "Learn HTTP Servers Golang" -> "Learn HTTP Servers";
+            case "Learn Docker" -> "Learn Docker";
+            case "Learn CI CD Github Docker Golang" -> "Learn CI CD";
+            case "Build Capstone Project" -> "Build Capstone Project";
+            case "Learn Job Search" -> "Learn Job Search";
+            case "Learn Git 2" -> "Learn Git 2";
+            case "Learn Kubernetes" -> "Learn Kubernetes";
+            case "Learn Pub Sub RabbitMQ" -> "Learn Pub Sub";
+            case "Learn Crytography" -> "Learn Crytography";
+            case "Learn Algorithms 2" -> "Learn Algorithms 2";
+            case "Learn Javascript" -> "Learn Javascript";
+            case "Learn HTTP Clients Typescript" -> "Learn HTTP Clients";
+            case "Build Pokedex CLI Typescript" -> "Build Pokedex CLI";
+            case "Build Blog Aggregator Typescript" -> "Build Blog Aggregator";
+            case "Learn HTTP Servers Typescript" -> "Learn HTTP Servers";
+            default -> "Unknown";
+        };
+    }
+
+    private int calculateRadix(int courseIndex, int trackIndex, int lessonIndex, boolean isChallenge) {
+        var temp = isChallenge ? 20 * lessonIndex : lessonIndex;
+        return trackIndex * 10000 + courseIndex * 1000 + chapterIndex * 100 + temp;
+    }
+
     private int parseIndex(String index) {
         var temp = index.split("-")[0];
         return Integer.parseInt(temp);
@@ -116,6 +167,15 @@ public class AnalyticsLesson {
         else if (courseIndex > 23) return 4;
         else if (courseIndex > 13) return 2;
         else return 1;
+    }
+    private String trackName(int trackIndex) {
+        return switch (trackIndex) {
+            case 1 -> "CS Fundamentals";
+            case 2 -> "Backend Developer Go";
+            case 3 -> "Backend Developer TS";
+            case 4 -> "Deeper Learning";
+            default -> "Unknown";
+        };   
     }
 
     public Long getId() {
@@ -221,6 +281,19 @@ public class AnalyticsLesson {
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
+    public String getTrackName() {
+        return trackName;
+    }
+    public void setTrackName(String trackName) {
+        this.trackName = trackName;
+    }
+    public int getRadix() {
+        return radix;
+    }
+    public void setRadix(int radix) {
+        this.radix = radix;
+    }
+
 
     public AnalyticsLesson() {    
 

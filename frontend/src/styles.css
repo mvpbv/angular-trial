@@ -16,7 +16,7 @@
 
 body {
     background-color: var(--background-color); /* Light background color */
-    font-family: Arial, sans-serif; /* Consistent font family */
+    font-family: Robot, sans-serif; /* Consistent font family */
     color: var(--text-color); /* Default text color */
     margin: 0;
     padding: 0;

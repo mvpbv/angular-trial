@@ -4,6 +4,9 @@ import { HomeComponent } from './home/home.component';
 import { FetchComponent } from './fetch/fetch.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { ProgressComponent } from './progress/progress.component';
+import { ArticleComponent } from './article/article.component';
+import { HotspotsComponent } from './hotspots/hotspots.component';
+import { HotspotsCourseComponent } from './hotspots-course/hotspots-course.component';
 
 export const routes: Routes = [
     { 
@@ -30,6 +33,21 @@ export const routes: Routes = [
         path: 'progress',
         component: ProgressComponent,
         title: "Levels",
+    },
+    {
+        path: 'article',
+        component: ArticleComponent,
+        title: "Article",
+    },
+    {
+        path: 'hotspots',
+        component: HotspotsComponent,
+        title: "Hotspots Playground",
+    },
+    {
+        path: 'hotspots-course',
+        component: HotspotsCourseComponent,
+        title: "Hotspots Course",
     }
     
 
