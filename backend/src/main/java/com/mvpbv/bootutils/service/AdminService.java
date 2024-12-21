@@ -1,6 +1,7 @@
 package com.mvpbv.bootutils.service;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,9 +12,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.mvpbv.bootutils.models.analytics.AnalyticsLesson;
+import com.mvpbv.bootutils.models.analytics.CodeChallenge;
+import com.mvpbv.bootutils.models.analytics.LessonType;
 import com.mvpbv.bootutils.models.course.CourseRoot;
 import com.mvpbv.bootutils.models.lesson.Lesson;
 import com.mvpbv.bootutils.repositories.AnalyticsLessonRepository;
+import com.mvpbv.bootutils.repositories.CodeChallengeRepository;
 import com.mvpbv.bootutils.repositories.CourseRootRepository;
 import com.mvpbv.bootutils.repositories.LessonRepository;
 import com.mvpbv.bootutils.repositories.RootRepository;
@@ -30,6 +34,7 @@ public class AdminService {
     private final CourseRootRepository courseRootRepository;
     private final LessonRepository lessonRepository;
     private final AnalyticsLessonRepository analyticsLessonRepository;
+    private final CodeChallengeRepository codeChallengeRepository;
 
 
         
@@ -38,13 +43,15 @@ public AdminService(RootRepository rootRepository,
                     ObjectMapper objectMapper,
                     CourseRootRepository courseRootRepository,
                     LessonRepository lessonRepository,
-                    AnalyticsLessonRepository analyticsLessonRepository) {
+                    AnalyticsLessonRepository analyticsLessonRepository,
+                    CodeChallengeRepository codeChallengeRepository) {
         this.rootRepository = rootRepository;
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
         this.courseRootRepository = courseRootRepository;
         this.lessonRepository = lessonRepository;
         this.analyticsLessonRepository = analyticsLessonRepository;
+        this.codeChallengeRepository = codeChallengeRepository;
 }
 
     public void seedCourses() {
@@ -143,6 +150,18 @@ public AdminService(RootRepository rootRepository,
         lessonRepository.findAll().forEach(lesson -> {
             analyticsLessonRepository.save(new AnalyticsLesson(lesson));
         });
+    }
+    public void seedCodeChallenges() {
+        var codeChallenges = analyticsLessonRepository.findAll()
+                                                    .stream()
+                                                    .filter(lesson -> lesson.getLessonType() == LessonType.code_browser)
+                                                    .sorted(Comparator.comparing(AnalyticsLesson::getRadix))
+                                                    .toList();
+        for (int i = 0; i < codeChallenges.size(); i++) {
+            var temp = new CodeChallenge(codeChallenges.get(i), i);
+            codeChallengeRepository.save(temp);
 
+        }
+    
     }
 }

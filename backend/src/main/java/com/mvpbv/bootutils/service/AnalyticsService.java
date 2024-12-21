@@ -3,6 +3,7 @@ package com.mvpbv.bootutils.service;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -12,13 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.mvpbv.bootutils.models.analytics.AnalyticsLesson;
 import com.mvpbv.bootutils.models.analytics.AnalyticsStats;
-import com.mvpbv.bootutils.models.analytics.HotSpot;
+import com.mvpbv.bootutils.models.analytics.LegacyHotSpot;
 import com.mvpbv.bootutils.models.analytics.LessonType;
 import com.mvpbv.bootutils.repositories.AnalyticsLessonRepository;
 
@@ -30,17 +27,6 @@ public class AnalyticsService {
     private AnalyticsLessonRepository analyticsLessonRepository;
     private static final Logger logger = LoggerFactory.getLogger(AnalyticsService.class);
 
-    public JsonNode getLessonData() {
-
-        var analyticsLessons = analyticsLessonRepository.findAll();
-        ObjectMapper objectMapper = new ObjectMapper();
-        ArrayNode lessonData = objectMapper.createArrayNode();
-        for (var analyticsLesson : analyticsLessons) {
-            JsonNode lessonNode = objectMapper.convertValue(analyticsLesson, JsonNode.class);
-            lessonData.add(lessonNode);
-        }
-        return lessonData;
-    }
     public List<String> getCourseNames() {
         return analyticsLessonRepository.findCourseNames();
     }
@@ -116,83 +102,90 @@ public class AnalyticsService {
         return courses;
     }
 
-    public List<HotSpot> findHotSpots(int window) {
+    public List<LegacyHotSpot> findLegacyHotSpots(int window) {
         List<AnalyticsLesson> codingLessons = analyticsLessonRepository.findArticleLessons();
         codingLessons.sort(Comparator.comparing(AnalyticsLesson::getRadix));
-        List<HotSpot> hotSpots = new ArrayList<>();
+        List<LegacyHotSpot> LegacyHotSpots = new ArrayList<>();
         for (int i = 0; i < codingLessons.size() - window; i++) {
             List<AnalyticsLesson> subList = codingLessons.subList(i, i + window);
             int sum = subList.stream().mapToInt(AnalyticsLesson::getDifficulty).sum();
-            HotSpot hotSpot = new HotSpot(sum, subList.toArray(new AnalyticsLesson[window]));
-            hotSpots.add(hotSpot);
+            LegacyHotSpot LegacyHotSpot = new LegacyHotSpot(sum, subList.toArray(new AnalyticsLesson[window]));
+            LegacyHotSpots.add(LegacyHotSpot);
         }
-        hotSpots.sort(Comparator.comparing(HotSpot::getSum).reversed());
-        return hotSpots;
+        LegacyHotSpots.sort(Comparator.comparing(LegacyHotSpot::getSum).reversed());
+        return LegacyHotSpots;
     }
-    public Map<Integer, List<HotSpot>>findPrimary(int window, int limit) {
+
+    public List<LegacyHotSpot> removeOverlaps(int window, List<LegacyHotSpot> LegacyHotSpots) {
+        var noOverlaps = new HashSet<LegacyHotSpot>();
+    
+        for (int i = 0; i < LegacyHotSpots.size() - window; i++) {
+            noOverlaps.add(LegacyHotSpots.subList(i, i + window).stream().max(Comparator.comparing(LegacyHotSpot::getSum)).get());
+
+        }
+        return new ArrayList<>(noOverlaps);
+    }
+
+    
+    public Map<Integer, List<LegacyHotSpot>> findLegacyHotSpotsGrouped(int window) {
+        return findLegacyHotSpots(window).stream()
+            .collect(Collectors.groupingBy(LegacyHotSpot::getSum, () -> new TreeMap<>(Comparator.reverseOrder()), Collectors.toList()));
+    }
+    public Map<Integer, List<LegacyHotSpot>> findLegacyHotSpotsGroupedByCourse(int window) {
+        return findLegacyHotSpots(window).stream()
+            .collect(Collectors.groupingBy(LegacyHotSpot::getCourseIndex, Collectors.toList()));
+    }
+
+
+    public AnalyticsStats findLegacyHotSpotStats(int window) {
+        List<AnalyticsLesson> codingLessons = analyticsLessonRepository.findArticleLessons();
+        codingLessons.sort(Comparator.comparing(AnalyticsLesson::getRadix));
+        List<Integer> LegacyHotSpotSums = new ArrayList<>();
+        for (int i = 0; i < codingLessons.size() - window; i++) {
+            List<AnalyticsLesson> subList = codingLessons.subList(i, i + window);
+            int sum = subList.stream().mapToInt(AnalyticsLesson::getDifficulty).sum();
+            LegacyHotSpotSums.add(sum);
+        }
+    
+        double avg = LegacyHotSpotSums.stream().mapToDouble(i -> i).sum() / LegacyHotSpotSums.size();
+        double variance = LegacyHotSpotSums.stream().mapToDouble(i -> Math.pow(i - avg, 2)).sum() / (LegacyHotSpotSums.size() - 1);
+        double stdDev = Math.sqrt(variance);
+        int size = LegacyHotSpotSums.size();
+        double median;
+        if (size % 2 == 1) {
+            median = LegacyHotSpotSums.get(size / 2);
+        } else {
+            median = (LegacyHotSpotSums.get(size / 2 - 1) + LegacyHotSpotSums.get(size / 2)) / 2.0;
+        }
+        int max = LegacyHotSpotSums.stream().mapToInt(Integer::intValue).max().orElse(0);
+        int min = LegacyHotSpotSums.stream().mapToInt(Integer::intValue).min().orElse(0);
+        return new AnalyticsStats(avg, stdDev, variance, median, max, min);
+    }
+
+    public AnalyticsStats findPrimaryStats(int window) {
         List<AnalyticsLesson> codingLessons = analyticsLessonRepository.findPrimaryLessons();
         codingLessons.sort(Comparator.comparing(AnalyticsLesson::getRadix));
-        List<HotSpot> hotSpots = new ArrayList<>();
+        List<Integer> LegacyHotSpotSums = new ArrayList<>();
         for (int i = 0; i < codingLessons.size() - window; i++) {
             List<AnalyticsLesson> subList = codingLessons.subList(i, i + window);
             int sum = subList.stream().mapToInt(AnalyticsLesson::getDifficulty).sum();
-            HotSpot hotSpot = new HotSpot(sum, subList.toArray(new AnalyticsLesson[window]));
-            hotSpots.add(hotSpot);
+            LegacyHotSpotSums.add(sum);
         }
-        hotSpots.sort(Comparator.comparing(HotSpot::getSum).reversed());
-
-        return hotSpots.stream()
-            .limit(limit)
-            .collect(Collectors.groupingBy(HotSpot::getCourseIndex, Collectors.toList()));
-    }
     
-    public Map<Integer, List<HotSpot>> findHotSpotsGrouped(int window) {
-        return findHotSpots(window).stream()
-            .collect(Collectors.groupingBy(HotSpot::getSum, () -> new TreeMap<>(Comparator.reverseOrder()), Collectors.toList()));
-    }
-    public Map<Integer, List<HotSpot>> findHotSpotsGroupedByCourse(int window) {
-        return findHotSpots(window).stream()
-            .collect(Collectors.groupingBy(HotSpot::getCourseIndex, Collectors.toList()));
-
-        
-    }
-    public AnalyticsStats findPrimaryStats(int window) {
-        List<AnalyticsLesson> primaryLessons = analyticsLessonRepository.findPrimaryLessons();
-        primaryLessons.sort(Comparator.comparing(AnalyticsLesson::getRadix));
-        List<Integer> hotSpotSums = new ArrayList<>();
-        for (int i = 0; i < primaryLessons.size() - window; i++) {
-            List<AnalyticsLesson> subList = primaryLessons.subList(i, i + window);
-            int sum = subList.stream().mapToInt(AnalyticsLesson::getDifficulty).sum();
-            hotSpotSums.add(sum);
-        }
-        double avg = hotSpotSums.stream().mapToDouble(i -> i).sum() / hotSpotSums.size();
-        double variance = hotSpotSums.stream().mapToDouble(i -> Math.pow(i - avg, 2)).sum() / (hotSpotSums.size() - 1);
+        double avg = LegacyHotSpotSums.stream().mapToDouble(i -> i).sum() / LegacyHotSpotSums.size();
+        double variance = LegacyHotSpotSums.stream().mapToDouble(i -> Math.pow(i - avg, 2)).sum() / (LegacyHotSpotSums.size() - 1);
         double stdDev = Math.sqrt(variance);
-        double median = hotSpotSums.size() % 2 == 1 ? hotSpotSums.get(hotSpotSums.size() / 2) : hotSpotSums.get(hotSpotSums.size() / 2 - 1) + hotSpotSums.get(hotSpotSums.size() / 2) / 2;
-        int max = hotSpotSums.stream().mapToInt(Integer::intValue).max().getAsInt();
-        int min = hotSpotSums.stream().mapToInt(Integer::intValue).min().getAsInt();
+        int size = LegacyHotSpotSums.size();
+        double median;
+        if (size % 2 == 1) {
+            median = LegacyHotSpotSums.get(size / 2);
+        } else {
+            median = (LegacyHotSpotSums.get(size / 2 - 1) + LegacyHotSpotSums.get(size / 2)) / 2.0;
+        }
+        int max = LegacyHotSpotSums.stream().mapToInt(Integer::intValue).max().orElse(0);
+        int min = LegacyHotSpotSums.stream().mapToInt(Integer::intValue).min().orElse(0);
         return new AnalyticsStats(avg, stdDev, variance, median, max, min);
     }
-
-    public AnalyticsStats findHotSpotStats(int window) {
-
-        List<AnalyticsLesson> codingLessons = analyticsLessonRepository.findArticleLessons();
-        codingLessons.sort(Comparator.comparing(AnalyticsLesson::getRadix));
-        List<Integer> hotSpotSums = new ArrayList<>();
-        for (int i = 0; i < codingLessons.size() - window; i++) {
-            List<AnalyticsLesson> subList = codingLessons.subList(i, i + window);
-            int sum = subList.stream().mapToInt(AnalyticsLesson::getDifficulty).sum();
-            hotSpotSums.add(sum);
-        }
-        double avg = hotSpotSums.stream().mapToDouble(i -> i).sum() / hotSpotSums.size();
-        double variance = hotSpotSums.stream().mapToDouble(i -> Math.pow(i - avg, 2)).sum() / (hotSpotSums.size() - 1);
-        double stdDev = Math.sqrt(variance);
-        double median = hotSpotSums.size() % 2 == 1 ? hotSpotSums.get(hotSpotSums.size() / 2) : hotSpotSums.get(hotSpotSums.size() / 2 - 1) + hotSpotSums.get(hotSpotSums.size() / 2) / 2;
-        int max = hotSpotSums.stream().mapToInt(Integer::intValue).max().getAsInt();
-        int min = hotSpotSums.stream().mapToInt(Integer::intValue).min().getAsInt();
-        return new AnalyticsStats(avg, stdDev, variance, median, max, min);
-    }
-
-   
+       
 
 }

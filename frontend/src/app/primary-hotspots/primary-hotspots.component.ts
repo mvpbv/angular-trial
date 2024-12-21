@@ -38,7 +38,7 @@ export class PrimaryHotspotsComponent implements OnInit {
     this.windowService.window$.subscribe(window => {
       this.onWindowChange(window);
     });
-    this.analyticsService.getPrimary(6, 20).subscribe((data: any) => {
+    this.analyticsService.getPrimary(6, 30).subscribe((data: any) => {
       this.hotspots = data;
     });
     

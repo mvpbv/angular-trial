@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.mvpbv.bootutils.models.analytics.AnalyticsLesson;
 import com.mvpbv.bootutils.models.analytics.AnalyticsStats;
-import com.mvpbv.bootutils.models.analytics.HotSpot;
+import com.mvpbv.bootutils.models.analytics.LegacyHotSpot;
+import com.mvpbv.bootutils.repositories.AnalyticsLessonRepository;
 import com.mvpbv.bootutils.service.AnalyticsService;
 
 
@@ -23,9 +23,12 @@ public class AnalyticsController {
     @Autowired
     private AnalyticsService analyticsService;
 
+    @Autowired
+    private AnalyticsLessonRepository analyticsLessonRepository;
+
     @GetMapping("/getAllLessonData")
-    public JsonNode getLessonData() {
-        return analyticsService.getLessonData();        
+    public List<AnalyticsLesson> getLessonData() {
+        return analyticsLessonRepository.findAll();
     }
     @GetMapping("/getCourseNames")
     public List<String> getCourseNames() {
@@ -68,28 +71,20 @@ public class AnalyticsController {
         return analyticsService.findCodingCourses();
     }
     @GetMapping("/getHotSpots")
-    public List<HotSpot> getHotSpots(@RequestParam int window) {
-        return analyticsService.findHotSpots(window);
-    }
-    @GetMapping("/getPrimary") 
-    public Map<Integer, List<HotSpot>> getPrimary(@RequestParam int window, @RequestParam int limit) {
-        return analyticsService.findPrimary(window, limit);
-    }
-    @GetMapping("/getPrimaryStats") 
-    public AnalyticsStats getPrimaryStats(@RequestParam int window) {
-        return analyticsService.findPrimaryStats(window);
+    public List<LegacyHotSpot> getHotSpots(@RequestParam int window) {
+        return analyticsService.findLegacyHotSpots(window);
     }
     @GetMapping("/getHotSpotsAvg")
     public AnalyticsStats getHotSpotsStats(@RequestParam int window) {
-        return analyticsService.findHotSpotStats(window);
+        return analyticsService.findLegacyHotSpotStats(window);
     }
     @GetMapping("/getHotSpotsGrouped")
-    public Map<Integer, List<HotSpot>> getHotSpotsGrouped(@RequestParam int window) {
-        return analyticsService.findHotSpotsGrouped(window);
+    public Map<Integer, List<LegacyHotSpot>> getHotSpotsGrouped(@RequestParam int window) {
+        return analyticsService.findLegacyHotSpotsGrouped(window);
     }
     @GetMapping("/getHotSpotsCourse")
-    public Map<Integer, List<HotSpot>> getHotSpotsCourse(@RequestParam int window) {
-        return analyticsService.findHotSpotsGroupedByCourse(window);
+    public Map<Integer, List<LegacyHotSpot>> getHotSpotsCourse(@RequestParam int window) {
+        return analyticsService.findLegacyHotSpotsGroupedByCourse(window);
     }
     
 

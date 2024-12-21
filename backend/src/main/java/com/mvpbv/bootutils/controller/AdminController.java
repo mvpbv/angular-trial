@@ -40,6 +40,11 @@ public class AdminController {
         adminService.seedAnalyticsLessons();
         return "Seeded the analytics!";
     }
+    @GetMapping("/seedCode")
+    public String seedCode() {
+        adminService.seedCodeChallenges();
+        return "Seeded the code challenges!";
+    }
     @GetMapping("/getRawData")
     public JsonNode getRawData() {
         return dataService.fetchRawData();
