@@ -9,12 +9,59 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class HotSpot {
     private int sum;
+
     private List<CodeChallenge> items;
 
+    private Set<String> courses;
+    
+    private Set<String> chapters;
+
+    private int[] chronRange;
+
+    private int[] difficultyRange;
+    
+
+    
     public HotSpot(int sum, List<CodeChallenge> items) {
         this.sum = sum;
         this.items = items;
+        this.courses = new HashSet<>(items.stream().map(CodeChallenge::getCourseName).toList());
+        this.chapters = new HashSet<>(items.stream().map(CodeChallenge::getChapterName).toList());
+        this.chronRange = findChronRange(items);
+        this.difficultyRange = findDifficultyRange(items);
     }
+    private int[] findChronRange(List<CodeChallenge> items) {
+        return new int[] {findChronMin(items), findChronMax(items)};
+    }
+    private int[] findDifficultyRange(List<CodeChallenge> items) {
+        return new int[] {findDifficultyMin(items), findDifficultyMax(items)};
+    }
+
+    private int findChronMin(List<CodeChallenge> items) {
+        return items.stream()
+                    .map(CodeChallenge::getChron)
+                    .min(Integer::compare)
+                    .orElse(0);
+    }
+    private int findChronMax(List<CodeChallenge> items) {
+        return items.stream()
+                    .map(CodeChallenge::getChron)
+                    .max(Integer::compare)
+                    .orElse(0);
+    }
+    private int findDifficultyMin(List<CodeChallenge> items) {
+        return items.stream()
+                    .map(CodeChallenge::getDifficulty)
+                    .min(Integer::compare)
+                    .orElse(0);
+    }
+    private int findDifficultyMax(List<CodeChallenge> items) {
+        return items.stream()
+                    .map(CodeChallenge::getDifficulty)
+                    .max(Integer::compare)
+                    .orElse(0);
+    }
+
     public int getSum() {
         return sum;
     }
@@ -40,20 +87,49 @@ public class HotSpot {
         return new AnalyticsCourse(getCourseName(), getCourseIndex());
     }
     @JsonIgnore
-    public int getMinRadix() {
-        return items.stream().map(CodeChallenge::getChron).min(Integer::compare).orElse(0);
+    public int getMinChron() {
+        return chronRange[0];
     }
     @JsonIgnore
-    public int getMaxRadix() {
-        return items.stream().map(CodeChallenge::getChron).max(Integer::compare).orElse(0);
+    public int getMaxChron() {
+        return chronRange[1];
     }
-    @JsonIgnore
-    public int[] getRadixRange() {
-        return new int[] {getMinRadix(), getMaxRadix()};
-    }
+
     @JsonIgnore
     public Set<CodeChallenge> getSet() {
         return new HashSet<>(items);
+    }
+
+    public Set<String> getcourses() {
+        return courses;
+    }
+
+    public void setcourses(Set<String> courses) {
+        this.courses = courses;
+    }
+
+    public Set<String> getchapters() {
+        return chapters;
+    }
+
+    public void setchapters(Set<String> chapters) {
+        this.chapters = chapters;
+    }
+
+    public int[] getChronRange() {
+        return chronRange;
+    }
+
+    public void setChronRange(int[] chronRange) {
+        this.chronRange = chronRange;
+    }
+
+    public int[] getDifficultyRange() {
+        return difficultyRange;
+    }
+
+    public void setDifficultyRange(int[] difficultyRange) {
+        this.difficultyRange = difficultyRange;
     }
     @Override
     public boolean equals(Object o) {
