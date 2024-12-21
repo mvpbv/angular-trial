@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class StatsComponent implements OnInit {
     title = 'stats';
   @Input() window : number = 3;
+  @Input() primary : boolean = false;
   @Input() stats: AnalyticsStats = {
       average: 0,
       standardDeviation: 0,
@@ -24,9 +25,15 @@ export class StatsComponent implements OnInit {
     constructor(private analyticsService:AnalyticsService) {}
 
     ngOnInit(): void {
+      if (this.primary) {
+        this.analyticsService.getPrimaryStats(3).subscribe((data: AnalyticsStats) => {
+          this.stats = data;
+        });
+      } else {
       this.analyticsService.getHotSpotsStats(3).subscribe((data: AnalyticsStats) => {
         this.stats = data;
       });
+    }
     }
     ngOnChanges(changes: SimpleChanges): void {
       if (changes['window']) {

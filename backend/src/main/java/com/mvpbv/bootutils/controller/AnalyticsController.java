@@ -71,6 +71,14 @@ public class AnalyticsController {
     public List<HotSpot> getHotSpots(@RequestParam int window) {
         return analyticsService.findHotSpots(window);
     }
+    @GetMapping("/getPrimary") 
+    public Map<Integer, List<HotSpot>> getPrimary(@RequestParam int window, @RequestParam int limit) {
+        return analyticsService.findPrimary(window, limit);
+    }
+    @GetMapping("/getPrimaryStats") 
+    public AnalyticsStats getPrimaryStats(@RequestParam int window) {
+        return analyticsService.findPrimaryStats(window);
+    }
     @GetMapping("/getHotSpotsAvg")
     public AnalyticsStats getHotSpotsStats(@RequestParam int window) {
         return analyticsService.findHotSpotStats(window);

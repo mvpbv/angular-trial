@@ -24,6 +24,7 @@ import { RouterModule } from '@angular/router';
           <li class="nav-item"><a routerLink="/progress">Progress</a></li>
           <li class="nav-item"><a routerLink="/article">Article</a></li>
           <li class="nav-item"><a routerLink="/hotspots">Hotspots</a></li>
+          <li class="nav-item"><a routerLink="/about">About</a></li>
         </ul>
       </nav>
     </header>

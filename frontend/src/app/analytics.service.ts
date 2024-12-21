@@ -51,7 +51,13 @@ export class AnalyticsService {
       return this.http.get<AnalyticsStats>(`${this.baseUrl}/getHotSpotsAvg?window=${window}`);
     }
     getHotSpotsGrouped(window: number): Observable<any> {
-      return this.http.get<DataItem[]>(`${this.baseUrl}/getHotSpotsGrouped?window=${window}`);
+      return this.http.get<DataItem[]>(`${this.baseUrl}/getHotSpotsGrouped?window=${window}&primary=false`);
+    }
+    getPrimary(window: number, limit: number): Observable<any> {
+      return this.http.get<HotSpot[]>(`${this.baseUrl}/getPrimary?window=${window}&limit=${limit}`);
+    }
+    getPrimaryStats(window: number): Observable<AnalyticsStats> {
+    return this.http.get<AnalyticsStats>(`${this.baseUrl}/getPrimaryStats?window=${window}`);
     }
     getHotSpotsCourse(window: number): Observable<any> {
       return this.http.get<HotSpot[]>(`${this.baseUrl}/getHotSpotsCourse?window=${window}`);

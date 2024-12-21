@@ -7,6 +7,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { ArticleComponent } from './article/article.component';
 import { HotspotsComponent } from './hotspots/hotspots.component';
 import { HotspotsCourseComponent } from './hotspots-course/hotspots-course.component';
+import { AboutComponent } from './about/about.component';
 
 export const routes: Routes = [
     { 
@@ -48,6 +49,11 @@ export const routes: Routes = [
         path: 'hotspots-course',
         component: HotspotsCourseComponent,
         title: "Hotspots Course",
+    },
+    {
+        path: 'about',
+        component: AboutComponent,
+        title: "About Us",
     }
     
 

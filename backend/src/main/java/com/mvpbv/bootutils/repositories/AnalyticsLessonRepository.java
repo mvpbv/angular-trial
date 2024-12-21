@@ -26,6 +26,8 @@ public interface AnalyticsLessonRepository extends JpaRepository<AnalyticsLesson
     List<AnalyticsLesson> findByLessonType(LessonType lessonType);
     @Query("SELECT a FROM AnalyticsLesson a WHERE a.lessonType = 'code_browser' AND a.trackName = 'CS Fundamentals'")
     List<AnalyticsLesson> findArticleLessons();
+    @Query("SELECT a FROM AnalyticsLesson a WHERE a.lessonType = 'code_browser' AND a.trackName = 'CS Fundamentals' AND a.courseName IN ('Learn Python','Object Oriented Programming', 'Functional Programming')")
+    List<AnalyticsLesson> findPrimaryLessons();
     @Query("SELECT COUNT(a) FROM AnalyticsLesson a WHERE a.lessonType = 'code_browser' AND a.trackName = 'CS Fundamentals' AND a.courseName = :courseName")
     int countArticleCodeLessons(String courseName);
     @Query("SELECT COUNT(a) FROM AnalyticsLesson a WHERE a.trackName = 'CS Fundamentals' AND a.courseName = :courseName")

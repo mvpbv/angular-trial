@@ -1,0 +1,17 @@
+div:first-of-type {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    margin-left: 150px;
+    margin-right: 150px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+div > p {
+    margin-left: 100px;
+    margin-right: 100px;
+
+
+}

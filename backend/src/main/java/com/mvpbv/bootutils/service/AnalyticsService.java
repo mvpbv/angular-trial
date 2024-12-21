@@ -116,7 +116,7 @@ public class AnalyticsService {
         return courses;
     }
 
-    public List<HotSpot> findHotSpots( int window) {
+    public List<HotSpot> findHotSpots(int window) {
         List<AnalyticsLesson> codingLessons = analyticsLessonRepository.findArticleLessons();
         codingLessons.sort(Comparator.comparing(AnalyticsLesson::getRadix));
         List<HotSpot> hotSpots = new ArrayList<>();
@@ -129,8 +129,23 @@ public class AnalyticsService {
         hotSpots.sort(Comparator.comparing(HotSpot::getSum).reversed());
         return hotSpots;
     }
-    
+    public Map<Integer, List<HotSpot>>findPrimary(int window, int limit) {
+        List<AnalyticsLesson> codingLessons = analyticsLessonRepository.findPrimaryLessons();
+        codingLessons.sort(Comparator.comparing(AnalyticsLesson::getRadix));
+        List<HotSpot> hotSpots = new ArrayList<>();
+        for (int i = 0; i < codingLessons.size() - window; i++) {
+            List<AnalyticsLesson> subList = codingLessons.subList(i, i + window);
+            int sum = subList.stream().mapToInt(AnalyticsLesson::getDifficulty).sum();
+            HotSpot hotSpot = new HotSpot(sum, subList.toArray(new AnalyticsLesson[window]));
+            hotSpots.add(hotSpot);
+        }
+        hotSpots.sort(Comparator.comparing(HotSpot::getSum).reversed());
 
+        return hotSpots.stream()
+            .limit(limit)
+            .collect(Collectors.groupingBy(HotSpot::getCourseIndex, Collectors.toList()));
+    }
+    
     public Map<Integer, List<HotSpot>> findHotSpotsGrouped(int window) {
         return findHotSpots(window).stream()
             .collect(Collectors.groupingBy(HotSpot::getSum, () -> new TreeMap<>(Comparator.reverseOrder()), Collectors.toList()));
@@ -141,6 +156,24 @@ public class AnalyticsService {
 
         
     }
+    public AnalyticsStats findPrimaryStats(int window) {
+        List<AnalyticsLesson> primaryLessons = analyticsLessonRepository.findPrimaryLessons();
+        primaryLessons.sort(Comparator.comparing(AnalyticsLesson::getRadix));
+        List<Integer> hotSpotSums = new ArrayList<>();
+        for (int i = 0; i < primaryLessons.size() - window; i++) {
+            List<AnalyticsLesson> subList = primaryLessons.subList(i, i + window);
+            int sum = subList.stream().mapToInt(AnalyticsLesson::getDifficulty).sum();
+            hotSpotSums.add(sum);
+        }
+        double avg = hotSpotSums.stream().mapToDouble(i -> i).sum() / hotSpotSums.size();
+        double variance = hotSpotSums.stream().mapToDouble(i -> Math.pow(i - avg, 2)).sum() / (hotSpotSums.size() - 1);
+        double stdDev = Math.sqrt(variance);
+        double median = hotSpotSums.size() % 2 == 1 ? hotSpotSums.get(hotSpotSums.size() / 2) : hotSpotSums.get(hotSpotSums.size() / 2 - 1) + hotSpotSums.get(hotSpotSums.size() / 2) / 2;
+        int max = hotSpotSums.stream().mapToInt(Integer::intValue).max().getAsInt();
+        int min = hotSpotSums.stream().mapToInt(Integer::intValue).min().getAsInt();
+        return new AnalyticsStats(avg, stdDev, variance, median, max, min);
+    }
+
     public AnalyticsStats findHotSpotStats(int window) {
 
         List<AnalyticsLesson> codingLessons = analyticsLessonRepository.findArticleLessons();
