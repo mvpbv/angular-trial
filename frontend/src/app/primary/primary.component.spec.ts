@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrimaryHotspotsComponent } from './primary-hotspots.component';
+import { PrimaryHotspotsComponent } from './primary.component';
 
 describe('PrimaryHotspotsComponent', () => {
   let component: PrimaryHotspotsComponent;

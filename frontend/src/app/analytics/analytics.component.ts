@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsService } from '../analytics.service';
 import { CommonModule } from '@angular/common';
-import { analyticsLesson } from '../models/analytics-lesson.model';
+import { analyticsLesson } from '../models/hotspot.model';
 
 @Component({
   imports: [CommonModule, FormsModule],

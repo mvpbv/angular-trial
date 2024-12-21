@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { DataItem } from './models/data-item.model';
-import { analyticsLesson } from './models/analytics-lesson.model';
-import { HotSpot } from './models/hot-spot.model';
+import { analyticsLesson, HotSpot } from './models/hotspot.model';
 import { AnalyticsStats } from './models/analytics-stats.models';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from '../analytics.service';
-import { HotSpot } from '../models/hot-spot.model';
+import { HotSpot } from '../models/hotspot.model';
 import { CommonModule, KeyValue } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AnalyticsStats } from '../models/analytics-stats.models';

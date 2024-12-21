@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PrimaryHotspotsComponent } from '../primary-hotspots/primary-hotspots.component';
+import { PrimaryComponent } from '../primary/primary.component';
 
 @Component({
   selector: 'app-article',
-  imports: [CommonModule, PrimaryHotspotsComponent],
+  imports: [CommonModule, PrimaryComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })
