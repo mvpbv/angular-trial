@@ -8,6 +8,7 @@ import { ArticleComponent } from './article/article.component';
 import { HotspotsComponent } from './hotspots/hotspots.component';
 import { HotspotsCourseComponent } from './hotspots-course/hotspots-course.component';
 import { AboutComponent } from './about/about.component';
+import { RoadmapComponent } from './roadmap/roadmap.component';
 
 export const routes: Routes = [
     { 
@@ -54,6 +55,11 @@ export const routes: Routes = [
         path: 'about',
         component: AboutComponent,
         title: "About Us",
+    },
+    {
+        path: 'roadmap',
+        component: RoadmapComponent,
+        title: "Roadmap",
     }
     
 

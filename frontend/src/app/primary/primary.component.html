@@ -3,23 +3,22 @@
 <section class="hotspots-container" aria-label="Difficulty Hotspots">
   <ul class="hotspots-grid" *ngIf="hotspots; else loading">
       <li class="hotspot-card" *ngFor="let group of hotspots | keyvalue: noSortComparator; let i = index">
-          <h2 class="difficulty-score" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">{{group.value[0].items[0].CourseName}}</h2>
+          <h2 class="course-name" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">{{group.value[0].items[0].CourseName}}</h2>
           <ng-container *ngIf="expandedGroups.has(i)">
               <ng-container *ngFor="let hotspot of group.value">
                 <header class="card-header" (click)="toggleHotspot(i)" [class.expanded]="expandedHotspots.has(i)">
                     <div class="header-content">
-                        <div class="title-group">
-                            <h2 class="card-course">{{hotspot.items[0].ChapterName}} {{hotspot.sum}}</h2>
-                            <!--
-                            <div *ngIf="hotspot.items[0].CourseName != hotspot.items[window].CourseName">
-                                <span class="chapter-label">{{hotspot.items[wid]}}</span>
-                                <span class="chapter-value">{{hotspot.items[0].ChapterName}}</span>
-                            </div>
-                            -->
+                        <div class="chapter-container">
+                            <ng-container *ngFor="let chapter of hotspot.chapters">
+                            <h2 class="card-chapter">
+                                {{chapter}}
+                            </h2>
+                            </ng-container>
                         </div>
                         <span class="expand-icon"></span>
                     </div>
                 </header>
+                <div class="lesson-container">
                   <ul class="lesson-list" *ngIf="expandedHotspots.has(i)">
                       <li *ngFor="let lesson of hotspot.items" class="lesson-item">
                           <a class="lesson-link" [href]="'https://boot.dev/lessons/' + lesson.UUID" target="_blank" rel="noopener">
@@ -33,6 +32,7 @@
                           </a>
                       </li>
                   </ul>
+                </div>
               </ng-container>
           </ng-container>
       </li>

@@ -1,35 +1,151 @@
-.form-container {
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
-    gap: 10px; /* Add some space between the input field and the button */
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+.star-background {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background: transparent
+}
+
+
+.hero-section, 
+.features, 
+.about {
+  position: relative;
+  background: transparent;
+  z-index: 1;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  z-index: 2;
+}
+
+.hero-section {
+  /*background: linear-gradient(135deg, #0F0F11 0%, #1a1a20 100%); */
+
+  background: transparent;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-align: center;
+  
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
   }
   
-  .submit-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .hero-text {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+ /*
+ background-color: rgba(15, 15, 17, 0.7);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+ */ 
+.features {
+  background: transparent;
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
   }
   
-  .submit-button:hover {
-    background-color: #0056b3;
+  .feature-card {
+    background-color: rgba(15, 15, 17, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(192, 192, 192, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    i {
+      font-size: 2rem;
+      color: #2a5298;
+      margin-bottom: 1rem;
+    }
+    
+    h3 {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+
+.about {
+  padding: 5rem 0;
+  
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+  }
+}
+/*'#818cf8', '#9333ea', '#b061e5'*/
+
+.cta-button {
+  color: #818cf8; 
+  background-color: rgba(15, 15, 17, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
   }
   
-  .input-field {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    flex: 1; /* Allow the input field to take up the remaining space */
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-    transition: border-color 0.3s ease;
+  .features-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .input-field:focus {
-    border-color: #007bff;
-    outline: none; /* Remove default outline */
-  }
+}

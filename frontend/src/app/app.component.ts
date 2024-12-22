@@ -12,25 +12,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     ReactiveFormsModule,
   ],
-  template: `
-    <title>boot-utils</title>
-    <header class="header">
-      <h1 class="site-title">Cybernetic Boots</h1>
-      <nav class="navbar">
-        <ul class="nav-list">
-          <li class="nav-item"><a routerLink="/">Home</a></li>
-          <li class="nav-item"><a routerLink="/fetch">Fetch</a></li>
-          <li class="nav-item"><a routerLink="/analytics">Analytics</a></li>
-          <li class="nav-item"><a routerLink="/progress">Progress</a></li>
-          <li class="nav-item"><a routerLink="/article">Article</a></li>
-          <li class="nav-item"><a routerLink="/hotspots">Hotspots</a></li>
-          <li class="nav-item"><a routerLink="/about">About</a></li>
-        </ul>
-      </nav>
-    </header>
-    <router-outlet></router-outlet>
-  `,
-
+  templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent { 

@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrimaryHotspotsComponent } from './primary.component';
+import { PrimaryComponent } from './primary.component';
 
-describe('PrimaryHotspotsComponent', () => {
-  let component: PrimaryHotspotsComponent;
-  let fixture: ComponentFixture<PrimaryHotspotsComponent>;
+
+describe('PrimaryComponent', () => {
+  let component: PrimaryComponent;
+  let fixture: ComponentFixture<PrimaryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PrimaryHotspotsComponent]
+      imports: [PrimaryComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PrimaryHotspotsComponent);
+    fixture = TestBed.createComponent(PrimaryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

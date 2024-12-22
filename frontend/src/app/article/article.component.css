@@ -1,10 +1,4 @@
-/* Base Container */
-:host {
-    display: block;
-    background: #0f172a;
-    min-height: 100vh;
-    padding: 2rem 1rem;
-}
+
 
 /* Header Section */
 .page-header {
@@ -14,12 +8,13 @@
 }
 
 .title {
+    position: relative;
     font-size: 3.5rem;
     font-weight: 800;
-    color: #ffffff;
     margin-bottom: 1.5rem;
     letter-spacing: -0.025em;
     line-height: 1.2;
+    display: flex;
 }
 
 .author {

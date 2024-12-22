@@ -1,7 +1,7 @@
 :root {
-    --background-color: #1a1a2e;
+    --background-color: #0F0F11;
     --text-color: #e0e0e0;
-    --heading-color: #ff6f61;
+    --heading-color: #ec4899;
     --section-background-color: #2a2a40;
     --button-background-color: #ff6f61;
     --button-hover-background-color: #ff3b3b;
@@ -16,15 +16,17 @@
 
 body {
     background-color: var(--background-color); /* Light background color */
-    font-family: Robot, sans-serif; /* Consistent font family */
+    font-family: Roboto, sans-serif; /* Consistent font family */
     color: var(--text-color); /* Default text color */
     margin: 0;
     padding: 0;
+    padding-top: 80px;
   }
   
   h1, h2, h3, h4 {
     color: var(--heading-color) ;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
   }
   
   .container {

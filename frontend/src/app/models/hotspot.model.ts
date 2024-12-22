@@ -4,6 +4,10 @@ export interface LegacyHotspot {
 }
 export interface HotSpot {
     sum: number
+    chapters: Set<string>
+    courses: Set<string>
+    difficultyRange: number[]
+    chronRange: number[]
     items : CodeChallenge[]
 }
 export interface CodeChallenge {

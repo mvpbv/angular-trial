@@ -20,6 +20,7 @@
   
   
   /* Hotspots Grid */
+
   .hotspots-container {
     max-width: var(--max-width);
     margin: 1 auto;
@@ -30,26 +31,29 @@
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     gap: var(--spacing-md);
+    border:#292E42 20px solid;
+    border-radius: 10px;
   }
   
   /* Card Styling */
   .hotspot-card {
+    border: #0F172A 2px solid;
     background: #1f2336;
     border-radius: var(--border-radius);
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-md);
   }
   
-  .difficulty-score {
+  .course-name {
     font-size: 1.25rem;
     color: #ff9e64;
     cursor: pointer;
     padding: var(--spacing-xs) 0;
     border-bottom: 2px solid transparent;
   }
-  .difficulty-score:hover {
+  .course-name:hover {
     color: #ff6b6b;
     transition: color 0.3s ease-in-out;
   }
@@ -59,23 +63,24 @@
     border-bottom-color: var(--accent-color);
   }
   
-  .card-header {
+.card-header {
     padding: var(--spacing-sm) 0;
     cursor: pointer;
+    border: #0F172A 2px solid;
+}
+
+.card-chapter {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-xs);
+  color: #9d7cd8;
+  padding-right: 10px;
+}
+.chapter-container {
+    display:inline;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
   }
-  
-  .card-course {
-    font-size: 1.1rem;
-    margin-bottom: var(--spacing-xs);
-    color: #9d7cd8;
-  }
-  
-  .card-chapter {
-    font-size: 0.9rem;
-    color: #7aa2f7;
-  }
-  
-  /* Lesson List */
   .lesson-list {
     list-style: none;
     padding: var(--spacing-sm) 0;
@@ -114,48 +119,4 @@
     text-align: center;
     padding: var(--spacing-lg);
     color: var(--text-secondary);
-  }
-  .stats-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background: #292e42;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 1rem 0;
-  }
-  
-  .average-container,
-  .stdev-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.25rem;
-    background: #1f2335;
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .average-container:hover,
-  .stdev-container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-  }
-  
-  .average-label,
-  .stdev-label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #64748b;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  .average-value {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin: 0;
   }
