@@ -3,13 +3,15 @@
 </div>
 
 <div class="data-grid">
-    <div *ngFor="let item of items" class="data-point" [ngClass]="getDifficultyClass(item.difficulty)">
-        <h3>{{item.title}}</h3>
-        <h4>{{item.courseName}}</h4>
-        <p>Ch {{item.chapterIndex}}: {{item.chapterName}}</p>
-        <p>L: {{item.isChallenge ? 'C' : ''}}{{item.lessonIndex}}</p>
-        <p>Diff: {{item.difficulty}} Readme: {{item.readmeLen}}</p>
-        <p>Track: {{item.trackIndex}}</p>
+    @for (item of items; track item; ) {
+      <div [ngClass]="getDifficultyClass(item.difficulty)">
+          <h3>{{item.title}}</h3>
+          <h4>{{item.courseName}}</h4>
+          <p>Ch {{item.chapterIndex}}: {{item.chapterName}}</p>
+          <p>L: {{item.isChallenge ? 'C' : ''}}{{item.lessonIndex}}</p>
+          <p>Diff: {{item.difficulty}} Readme: {{item.readmeLen}}</p>
+          <p>Track: {{item.trackIndex}}</p>
       </div>
-    </div>
+    }
+</div>
 

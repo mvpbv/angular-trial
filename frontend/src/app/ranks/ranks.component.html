@@ -2,10 +2,14 @@
   <div class="rank-header" (click)="toggleRanks()">
     <h2>Ranks</h2>
   </div>
-  <div *ngIf="showRanks" class="rank-container">
-      <div *ngFor="let rank of ranks" class="rank-item">
+  @if (showRanks) {
+  <div class="rank-container">
+    @for (rank of ranks; track rank) {
+      <div class="rank-item">
         <h4>{{rank.name}}</h4>
         <p>Level: <span class="accent-text">{{rank.level}}</span> XP: <span class="accent-text">{{rank.xp}}</span></p>
         <p>To Archmage: <span class="accent-text">{{getRankPercent(rank.xp) | percent}}</span></p>
       </div>
+    }
   </div>
+  }

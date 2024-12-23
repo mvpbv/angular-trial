@@ -4,7 +4,8 @@
     <button class="cyber-button" (click)="loadMild()">GetEnhanced</button>
 </div>
 <ul>
-  <li *ngFor="let track of tracks">
+  @for (track of tracks; track track) {
+  <li>
     <label class="custom-checkbox">
       <input type="checkbox" [(ngModel)]="track.completed" />
       <span class="checkmark"></span>
@@ -15,14 +16,17 @@
     </span>
       <div class="course-list" [class.visible]="track.coursesVisible">
         <ul>
-          <li *ngFor="let course of track.courses">
+          @for (course of track.courses; track course) {
+          <li>
             <label class="custom-checkbox">
               <input type="checkbox" [(ngModel)]="course.completed" />
               <span class="checkmark"></span>
                 {{course.name}}
             </label>
           </li>
+          }
         </ul>
       </div>
   </li>
+  }
 </ul>

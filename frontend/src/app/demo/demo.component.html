@@ -11,7 +11,7 @@
         </button>
     </div>
     <h2>
-        <ng-container *ngFor="let i of data; let last = last; let idx = index">
+        @for (i of data; track i; let idx = $index; let last = $last) {
             <span 
             #dataItem
             class="data-item"
@@ -20,8 +20,12 @@
             >
             {{i}}
             </span>
-            <span *ngIf="!last">, </span>
-        </ng-container>
+            @if (!last) {           
+                <span>, </span>
+            }
+        }
+    
+
     </h2>
     <div class="underline" [ngStyle]="underlineStyle"></div>
     <div class="underline-sum">{{ underlineSum }}</div>

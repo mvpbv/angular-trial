@@ -9,17 +9,25 @@ import { analyticsLesson } from '../models/hotspot.model';
   template: `
   <label for="courseSelect">Select a course:</label>
   <select id="courseSelect" [(ngModel)] = "selectedCourse" (change)="onCourseChange($event)">
-    <option *ngFor="let item of courses" [value]="item">{{ item }}</option>
+    @for (course of courses; track courses) {
+    <option [value]="course">{{ course }}</option>
+    }
   </select>
+  
   <label for="trackSelect">Select a track:</label>
   <select id="trackSelect" [(ngModel)] = "selectedTrack" (change)="onTrackChange($event)">
-    <option *ngFor="let item of tracks" [value]="item">{{ item }}</option>
+    @for (track of tracks; track track) {
+    <option [value]="track">{{ track }}</option>
+    }
   </select>
   <label for="typeSelect">Select a type:</label>
   <select id="typeSelect" [(ngModel)] = "selectedType" (change)="onTypeChange($event)">
-    <option *ngFor="let item of types" [value]="item">{{ item }}</option>
+    @for (type of types; track types) {
+      <option [value]="type">{{ types }}</option>
+    }
   </select>
-  <div *ngFor="let item of lessons"> 
+  @for (item of lessons; track lessons) {
+  <div class="lesson"> 
     <p> {{ item.Title }} </p>
     <p> {{ item.CourseName }}</p>
     <p> {{ item.ChapterName }}</p>
@@ -27,6 +35,7 @@ import { analyticsLesson } from '../models/hotspot.model';
     <p> {{ item.Radix }}</p>
     <a href="https://boot.dev/lessons/{{item.UUID}}">Go To Lesson</a>
   </div>
+  }
 `,
   styleUrl: './analytics.component.css'
 })

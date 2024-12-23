@@ -1,29 +1,36 @@
 <app-stats [window]="window" [primary]="true"></app-stats>
 <div class="primary-container">
   <section class="hotspots-container" aria-label="Difficulty Hotspots">
-    <ul class="hotspots-grid" *ngIf="hotspots; else loading">
-      <li class="hotspot-card" *ngFor="let group of hotspots | keyvalue: noSortComparator; let i = index">
+    @defer {
+     <ul class="hotspots-grid">
+      @for (group of hotspots | keyvalue: noSortComparator; track group; let i = $index) {
+      <li class="hotspot-card">
         <h2 class="course-name" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">
           {{group.value[0].items[0].CourseName}}
         </h2>
-        <div class="lessons-section" *ngIf="expandedGroups.has(i)">
+        @if (expandedGroups.has(i)) {
+        <div class="lessons-section">
           <ul class="lesson-list">
-            <li *ngFor="let codeChallenge of group.value[0].items" class="lesson-item">
+            @for (codeChallenge of group.value[0].items; track codeChallenge.UUID) {
+            <li class="lesson-item">
               <a class="lesson-link" [href]="'https://boot.dev/lessons/' + codeChallenge.UUID" target="_blank" rel="noopener">
                 <div class="lesson-content">
                   <h3 class="lesson-title">{{codeChallenge.Title}}</h3>
                   <span class="course-info">{{codeChallenge.Difficulty}}</span>
-          </div>
+                </div>
               </a>
             </li>
+            }
           </ul>
         </div>
+     }
       </li>
+        }
     </ul>
-    <ng-template #loading>
+    } @loading (minimum 1s; after 500ms) {
       <div class="loading-state">
         <p>Loading hotspots...</p>
       </div>
-    </ng-template>
+    }
   </section>
   </div>

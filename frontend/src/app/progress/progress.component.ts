@@ -8,30 +8,8 @@ import { RanksComponent } from '../ranks/ranks.component';
 
 @Component({
   selector: 'app-progress',
-  imports: [CommonModule, ReactiveFormsModule, RanksComponent],
-  template: `
-  <h1>Progress Calculator</h1>
-  <section>
-      <form [formGroup] ="levelForm" (ngSubmit)="onSubmit()" class="form-container">
-        <input type="number"
-        class="input-field" 
-        formControlName="level" 
-        placeholder="Enter your level" #level />
-        <button type="submit" class="submit-button">Submit</button>
-      </form>
-    </section>
-    <section *ngIf="lvl > 0" class="output-container">
-      <p>You are level <span class="accent-text">{{lvl}}</span></p>
-      <p>You have <span class="accent-text">{{ totalXp }}</span> XP</p>
-      <p>You need <span class="accent-text">{{ levelXp }}</span> more XP to reach level <span class="accent-text">{{lvl + 1}}</span></p>
-      <p>Your rank is <span class="accent-text">{{rank.name}}</span></p>
-      <p>Your next rank is <span class="accent-text">{{nextRank.name}}</span></p>
-      <p>You need <span class="accent-text">{{nextRank.xp - totalXp}}</span> XP to reach the next rank</p>
-      <p>You are <span class="accent-text">{{ totalXp / Complete * 100 | number: '1.0-0' }}%</span> of the way to Archmage</p>
-    </section>
-    <app-ranks></app-ranks>
-    <br>
-  `,
+  imports: [CommonModule, ReactiveFormsModule],
+  template: './progress.component.html',
   styleUrl: './progress.component.css'
 })
 export class ProgressComponent {
