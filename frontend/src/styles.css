@@ -1,7 +1,8 @@
 :root {
     --background-color: #0F0F11;
     --text-color: #e0e0e0;
-    --heading-color: #ec4899;
+    --heading-color: var(--funky-two);
+    --section-heading-color: var(--funky-one);
     --section-background-color: #2a2a40;
     --button-background-color: #ff6f61;
     --button-hover-background-color: #ff3b3b;
@@ -11,7 +12,46 @@
     --checkbox-background-color: #2a2a40;
     --checkbox-checked-background-color: #ff6f61;
     --checkbox-glow-color: #39ff14;
+    --neon-gradient: linear-gradient(135deg, var(--funky-one) 0%, var(--funky-two) 50%, var(--funky-three) 100%);
+    --neon-gradient-reverse: linear-gradient(135deg, #818cf8 0%, #9333ea 50%, #ec4899 100%);
+    --neon-gradient-alt: linear-gradient(135deg, var(--amber), var(--sky-blue), #9333ea);
+    --neon-gradient-alt-reverse: linear-gradient(135deg, #9333ea, var(--sky-blue), var(--amber));
     --cyber-gradient: linear-gradient(45deg, #39ff14, #ff6f61);
+
+    --hot-pink: #ee036b;
+    --salmon: #fa4c80;
+    --blue: #0137b7;
+    --soft-pink: #fc92dd;
+    --light-purple: #ffc0fa;
+
+    --universe-one: #e923f4;
+    --universe-two: #72076e;
+    --universe-three: #2b0245;
+    --universe-four: #250096;
+    --universe-five: #5600f4;
+    --universe-gradient: linear-gradient(135deg, var(--universe-one) 0%, var(--universe-two) 20%, var(--universe-three) 40%, var(--universe-four) 60%, var(--universe-five) 80%);
+
+    --funky-one: #540d6e;
+    --funky-two: #7fff00;
+    --funky-three: #30ff14;
+    --funky-four: #0ff0fc;
+    --funky-five: #1f51ff;
+    --gradient-simple: linear-gradient(35deg, var(--funky-one), var(--funky-two), var(--funky-three));
+    --gradient-warm: linear-gradient(135deg, var(--funky-three), var(--funky-four), var(--funky-five));
+    --gradient-simple-reverse: linear-gradient(135deg, var(--funky-three) 0%, var(--funky-two) 50%, var(--funky-one) 100%);
+    --gradient-simple-alt: linear-gradient(135deg, var(--funky-three) 0%, var(--funky-four) 50%, var(--funky-five) 100%);
+    --gradient-simple-alt2: linear-gradient(135deg, var(--funky-two) 0%, var(--funky-three) 50%, var(--funky-four) 100%);
+    --funky-gradient: linear-gradient(38deg, '#f72585', '#b5179e', '#7209b7', '#560bad', '#480ca8', '#3a0ca3','#3f37c9', '#4361ee', '#4895ef', '#4cc9f0');
+
+    --funky-gradient-reverse: linear-gradient(135deg, var(--funky-five) 0%, var(--funky-four) 20%, var(--funky-three) 40%, var(--funky-two) 60%, var(--funky-one) 80%);
+    --funky-shadow: 0 0 5px var(--funky-one), 0 0 5px var(--funky-two), 0 0 5px var(--funky-three), 0 0 5px var(--funky-four), 0 0 5px var(--funky-five);
+
+
+
+    --neon-purple: #9333ea;
+    --sky-blue: #38bdf8;
+    --amber: #fcd34d;
+    --blue: #818cf8
   }
 
 body {
@@ -23,8 +63,13 @@ body {
     padding-top: 80px;
   }
   
-  h1, h2, h3, h4 {
+  h1, h3, h4 {
     color: var(--heading-color) ;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  h2 {
+    color: var(--section-heading-color);
     text-align: center;
     font-family: 'Poppins', sans-serif;
   }
@@ -49,6 +94,7 @@ body {
   
   .section p {
     margin: 10px 0;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   .button {
@@ -97,4 +143,50 @@ body {
 .cyber-button:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px var(--checkbox-glow-color), 0, 0, 30px var(--checkbox-glow-color), 0, 0, 40px var(--checkbox-glow-color), 0, 0;
+}
+
+button {
+  color: var(--funky-three); 
+  background-color: rgba(15, 15, 17, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(192, 192, 192, 0.1);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  .button-text {
+      transition: background 0.3s ease, color 0.3s ease;   
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  &:hover .button-text {
+      background: var(--neon-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+  }
+  &:hover .button-text::after {
+      content: '';
+      position: relative;
+      width: 60%;
+      height: 3%;
+      background: var(--neon-gradient);
+      top: 85%;
+      left: 20%;
+      border-radius: 50px;
+      z-index: -1;
+  }
+}
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }

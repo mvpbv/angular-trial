@@ -1,6 +1,6 @@
 <h1>Road To Archmage</h1>
-
-<form *ngIf="showForm" [formGroup]="rankForm" (ngSubmit)="onSubmit()" class="rank-form">
+@if (showForm) {
+<form [formGroup]="rankForm" (ngSubmit)="onSubmit()" class="rank-form">
     <div class="form-group">
         <label for="level">Level:</label>
         <input id="level" type="number" formControlName="level">
@@ -12,14 +12,25 @@
     
     <button type="submit">Add Rank</button>
 </form>
-<div *ngIf="!showForm" class="accuracy-display">Your guess was off by {{guessAccuracy | number:'1.2-2'}}%</div>
+}
+@if (showForm) {
+<div  class="accuracy-display">Your guess was off by {{guessAccuracy | number:'1.2-2'}}%</div>
+}
 <div class="number-line">
     <div class="number-line-horizontal">
         <div class="midway-tick"></div>
-        <div *ngFor="let rank of ranks" class="rank-line" [style.left.%]="rank.percent">
-            <span *ngIf="!showForm"class="tooltip">{{rank.name}} {{rank.xp}}XP Level {{rank.level}}</span>
+        @for (rank of ranks; track $index) {
+        <div class="rank-line" [style.left.%]="rank.percent">
+            @if (!showForm) {
+            <span class="tooltip">{{rank.name}} {{rank.xp}}XP Level {{rank.level}}</span>
+            }
         </div>
-        <div *ngIf="userPosition" class="rank-ball" [style.left.%]="userPosition.percent"></div>
-        <div *ngIf="guessPosition" class="rank-ball guess" [style.left.%]="guessPosition"></div>
+        }
+        @if (userPosition) {   
+        <div class="rank-ball" [style.left.%]="userPosition.percent"></div>
+        }
+        @if (guessPosition) {
+        <div class="rank-ball guess" [style.left.%]="guessPosition"></div>
+        }
     </div>
 </div>

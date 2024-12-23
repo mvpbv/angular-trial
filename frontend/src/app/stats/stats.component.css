@@ -1,44 +1,48 @@
 .stats-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background: #292e42;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 1rem 0;
-  }
-  
-  .average-container,
-  .stdev-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.25rem;
-    background: #1f2335;
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .average-container:hover,
-  .stdev-container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-  }
-  
-  .average-label,
-  .stdev-label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #64748b;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  .average-value {
-    font-size: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: #1a1a20; /* Updated background color to match theme */
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+}
+
+.average-container,
+.stdev-container {
+  color: #818cf8; 
+    background-color: rgba(15, 15, 17, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(192, 192, 192, 0.1);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: #0f172a;
-    margin: 0;
-  }
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.average-container:hover,
+.stdev-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.average-label,
+.stdev-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff; /* Updated text color to match theme */
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.average-value {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #EC4899; /* Updated value color to match accent theme */
+  margin: 0;
+}

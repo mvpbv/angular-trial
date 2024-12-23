@@ -17,23 +17,25 @@
   text-decoration: none;
   display: inline-block;
 }
-
+/*
+background: linear-gradient(135deg,
+   #6366f1 0%,
+   #8b5cf6 15%,
+   #d946ef 30%,
+   #ec4899 45%,
+   #f0a500 100%);
+*/
 /* background: linear-gradient(135deg, #818cf8 0%, #9333ea 50%, #ec4899 100%);*/
 .site-title {
   margin-right: 100px;
   font-size: 24px;
   font-weight: 800;
   font-family: 'Orbitron';
-  background: linear-gradient(135deg,
-   #6366f1 0%,
-   #8b5cf6 15%,
-   #d946ef 30%,
-   #ec4899 45%,
-   #f0a500 100%);
+  background: var(--funky-gradient);
   background-clip: text;
   color: transparent;
-  background-size: 200% auto;
-  position: relative;
+  background-size: 100% 100%;
+  display: block;
   transition: transform 0.3s ease;
   text-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
 }
@@ -93,6 +95,6 @@
   transform: translateX(-50%);
   width: 100%;
   height: 1px;
-  background: linear-gradient(135deg, #818cf8 0%, #9333ea 50%, #ec4899 100%);
-  box-shadow: 0 0 5px #818cf8, 0 0 5px #9333ea, 0 0 5px #ec4899;
+  background: var(--funky-gradient);
+  box-shadow: var(--funky-shadow); 
 }

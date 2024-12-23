@@ -8,7 +8,7 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 export class HomeComponent implements AfterViewInit {
   private streakPositions: Array<{x: number, y: number}> = [];
   private readonly minDistance = 300;
-  private colors = ['#818cf8', '#9333ea', '#b061e5'];
+  private colors = ['#f72585', '#b5179e', '#7209b7', '#560bad', '#480ca8', '#3a0ca3','#3f37c9', '#4361ee', '#4895ef', '#4cc9f0' ];
   @ViewChild('starCanvas') private canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
 

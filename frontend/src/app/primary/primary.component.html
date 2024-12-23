@@ -5,7 +5,6 @@
       <li class="hotspot-card" *ngFor="let group of hotspots | keyvalue: noSortComparator; let i = index">
         <h2 class="course-name" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">
           {{group.value[0].items[0].CourseName}}
-          <span class="expand-icon">{{ expandedGroups.has(i) ? '-' : '+' }}</span>
         </h2>
         <div class="lessons-section" *ngIf="expandedGroups.has(i)">
           <ul class="lesson-list">
@@ -14,7 +13,7 @@
                 <div class="lesson-content">
                   <h3 class="lesson-title">{{codeChallenge.Title}}</h3>
                   <span class="course-info">{{codeChallenge.Difficulty}}</span>
-                </div>
+          </div>
               </a>
             </li>
           </ul>
@@ -27,4 +26,4 @@
       </div>
     </ng-template>
   </section>
-</div>
+  </div>
