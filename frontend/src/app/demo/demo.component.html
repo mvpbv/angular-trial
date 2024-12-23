@@ -1,0 +1,28 @@
+<div class="demo">
+    <div class="controls">
+        <button (click)="incrementSize()">
+            <span class="button-text">window ++</span>
+        </button>
+        <button (click)="startAutoMove()">
+            <span class="button-text">{{isPlaying ? 'Pause' : 'Play'}}</span>
+        </button>
+        <button (click)="decrementSize()">
+            <span class="button-text">window --</span>
+        </button>
+    </div>
+    <h2>
+        <ng-container *ngFor="let i of data; let last = last; let idx = index">
+            <span 
+            #dataItem
+            class="data-item"
+            [class.active] = "activeIndex !== null && idx >= activeIndex && idx < activeIndex + numPoints"
+            (click)="moveLine(idx)"
+            >
+            {{i}}
+            </span>
+            <span *ngIf="!last">, </span>
+        </ng-container>
+    </h2>
+    <div class="underline" [ngStyle]="underlineStyle"></div>
+    <div class="underline-sum">{{ underlineSum }}</div>
+</div>

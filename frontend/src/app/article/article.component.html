@@ -1,15 +1,19 @@
 
-<h1>How the exercises are identified.</h1>
+<h1>How the exercises are identified</h1>
 <section>
-  <p>Defining the right metric for how the difficulty curve of boot.dev progress has proven elusive. The count of lessons above 7 per chapter metric that Lane utilized in the official analysis has been the best so far. However, that metric only allows focus on the chapter level. It is calculated from a mixture of difficulty signs: solutions viewed, boots used, and failed submissions. </p>
-  <p>The boot.dev difficulty scores are relative, so while it seems natural that it would get more difficult as you go through by default you would expect it to remain stable. However, it clearly does, suggesting the course increases in difficulty relative to how quickly the student learns. </p>
-  <p>The raw difficulty signs are then normalized and binned relative to standard deviations. 5 being the median, 6 being one std harder, 7 being 1.3 std harder, 8 being 1.6 std harder, and 9 being 1.9 std harder. Ten is a bin of everything 2 or higher. They are assymetrical however, 4 like 6 is one std deviation easier, and 3 is like 7, but binned off with everything easier like ten.</p>
-  <p>I've come up with the hotspot metric, it is useful at finding difficulty spikes at any resolution. The lessons are first filtered for the browser coding lessons in the CS fundamentals track, and sorted chronologically. With the given subset size, x, it sums the difficulty score for every window of lessons from 1 to x + 1</p>
-  <p>At subset window of 2 </p>
-
-
- 
+  <p>I've decided to focus entirely on the first three programming courses of the CS Fundamentals track. Although the Algorithms and Data Structures courses are by the far the hardest in the track, I've chosen to ignore them due to the sheer availability of existing content to practice those.</p>
+  <p>Unfortunately the only data point I really have access to is boot.dev's difficulty score which is calculated from a mixture of difficulty signs: solutions viewed, boots used, and failed submissions. It is normalized, and then binned into a difficulty score based on it's z-score. If the math doesn't make sense to you just know it's a measure of relative difficulty to learners at that point, a 5 in Data Structures is much harder than in Learn Python. It has a handful of issues I'll lay-out here.</p>
+  <div class="list">
+    <p>1. It only works for the browser coding challenges.</p>
+    <p>2. Learners with some programming experience deflate difficulty scores in Learn Python & OOP dispropionately.</p>
+    <p>3. All the difficulty data points are disincentized by the game mechanics, and it biases the dataset.</p>
+    <p>4. Easy lessons with tricky edge cases will have inflated scores.</p>
+    <p>4. Assemetry, 8, 9, and 10 aren't paired with 2,1, and 0 the easiest is 3.</p>
+  </div>
+  <p>Just picking the lessons based on raw difficulty alone also doesn't really get the job done either, some of the level 7 or 8 lessons have concepts worth reviewing far more than others. What I realized is that there is another data-points that's useful here, and that's it's context among the other lessons nearby. I want to find the high points in the difficulty curve as whole, because it's those bits of harder stuff that give the learner that senese of shock that they might not be ready to move on.</p>
+  <p>The idea came to me doing Leetcode, using the sliding window technique, to find the optimal buy low, sell high point in an array of integers. I want to order the boot.dev lessons chronologically and slide a window through, and choose the concepts from those peaks. </p>
 </section>
+<app-demo></app-demo>
 <app-primary></app-primary>
 <footer class="page-footer">
   <p>Created by Braeden Vallejos</p>

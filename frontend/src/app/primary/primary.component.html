@@ -1,46 +1,30 @@
 <app-stats [window]="window" [primary]="true"></app-stats>
-<div>
-<section class="hotspots-container" aria-label="Difficulty Hotspots">
-  <ul class="hotspots-grid" *ngIf="hotspots; else loading">
+<div class="primary-container">
+  <section class="hotspots-container" aria-label="Difficulty Hotspots">
+    <ul class="hotspots-grid" *ngIf="hotspots; else loading">
       <li class="hotspot-card" *ngFor="let group of hotspots | keyvalue: noSortComparator; let i = index">
-          <h2 class="course-name" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">{{group.value[0].items[0].CourseName}}</h2>
-          <ng-container *ngIf="expandedGroups.has(i)">
-              <ng-container *ngFor="let hotspot of group.value">
-                <header class="card-header" (click)="toggleHotspot(i)" [class.expanded]="expandedHotspots.has(i)">
-                    <div class="header-content">
-                        <div class="chapter-container">
-                            <ng-container *ngFor="let chapter of hotspot.chapters">
-                            <h2 class="card-chapter">
-                                {{chapter}}
-                            </h2>
-                            </ng-container>
-                        </div>
-                        <span class="expand-icon"></span>
-                    </div>
-                </header>
-                <div class="lesson-container">
-                  <ul class="lesson-list" *ngIf="expandedHotspots.has(i)">
-                      <li *ngFor="let lesson of hotspot.items" class="lesson-item">
-                          <a class="lesson-link" [href]="'https://boot.dev/lessons/' + lesson.UUID" target="_blank" rel="noopener">
-                              <div class="lesson-content">
-                                  <header>
-                                      <h3 class="lesson-title">{{lesson.Title}} 
-                                          <span class="course-info">{{lesson.Difficulty}}</span>
-                                      </h3>
-                                  </header>
-                              </div>
-                          </a>
-                      </li>
-                  </ul>
+        <h2 class="course-name" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">
+          {{group.value[0].items[0].CourseName}}
+          <span class="expand-icon">{{ expandedGroups.has(i) ? '-' : '+' }}</span>
+        </h2>
+        <div class="lessons-section" *ngIf="expandedGroups.has(i)">
+          <ul class="lesson-list">
+            <li *ngFor="let codeChallenge of group.value[0].items" class="lesson-item">
+              <a class="lesson-link" [href]="'https://boot.dev/lessons/' + codeChallenge.UUID" target="_blank" rel="noopener">
+                <div class="lesson-content">
+                  <h3 class="lesson-title">{{codeChallenge.Title}}</h3>
+                  <span class="course-info">{{codeChallenge.Difficulty}}</span>
                 </div>
-              </ng-container>
-          </ng-container>
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
-  </ul>
-  <ng-template #loading>
+    </ul>
+    <ng-template #loading>
       <div class="loading-state">
-          <p>Loading hotspots...</p>
+        <p>Loading hotspots...</p>
       </div>
-  </ng-template>
-</section>
+    </ng-template>
+  </section>
 </div>

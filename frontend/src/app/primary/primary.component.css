@@ -1,122 +1,107 @@
-/* Base Layout */
-:root {
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --border-radius: 8px;
-    --max-width: 800px;
-    --primary-blue: #3498db;
-    --primary-purple: #9b59b6;
-    --accent-green: #2ecc71;
-    --accent-orange: #e67e22;
-    --gradient-primary: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
-    --gradient-accent: linear-gradient(to right, var(--accent-green), var(--accent-orange));
-    --text-secondary: #0FB9D7;
-    }
-  
-  
-  /* Form Styling */
-  
-  
-  /* Hotspots Grid */
-
-  .hotspots-container {
-    max-width: var(--max-width);
-    margin: 1 auto;
-    padding: 0 var(--spacing-md);
-  }
-  
-  .hotspots-grid {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: var(--spacing-md);
-    border:#292E42 20px solid;
-    border-radius: 10px;
-  }
-  
-  /* Card Styling */
-  .hotspot-card {
-    border: #0F172A 2px solid;
-    background: #1f2336;
-    border-radius: var(--border-radius);
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-  }
-  
-  .course-name {
-    font-size: 1.25rem;
-    color: #ff9e64;
-    cursor: pointer;
-    padding: var(--spacing-xs) 0;
-    border-bottom: 2px solid transparent;
-  }
-  .course-name:hover {
-    color: #ff6b6b;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  
-  .difficulty-score.expanded {
-    border-bottom-color: var(--accent-color);
-  }
-  
-.card-header {
-    padding: var(--spacing-sm) 0;
-    cursor: pointer;
-    border: #0F172A 2px solid;
+.primary-container {
+  padding: var(--spacing-lg);
+  background-color: #f5f5f5;
 }
 
-.card-chapter {
-  font-size: 1.1rem;
+/* Hotspots Grid */
+.hotspots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* Hotspot Card */
+.hotspot-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hotspot-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Course Name */
+.course-name {
+  font-size: 1.5rem;
+  color: #333333;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-bottom: 2px solid transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.course-name:hover {
+  color: var(--accent-orange);
+  border-bottom-color: var(--accent-orange);
+}
+
+/* Expand Icon */
+.expand-icon {
+  font-size: 1.5rem;
+  color: #666666;
+  transition: transform 0.3s ease;
+}
+
+.course-name.expanded .expand-icon {
+  transform: rotate(180deg);
+}
+
+/* Lessons Section */
+.lessons-section {
+  padding: var(--spacing-md);
+  background-color: #fafafa;
+}
+
+/* Lesson List */
+.lesson-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Lesson Item */
+.lesson-item {
   margin-bottom: var(--spacing-xs);
-  color: #9d7cd8;
-  padding-right: 10px;
 }
-.chapter-container {
-    display:inline;
-    align-items: center;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-  }
-  .lesson-list {
-    list-style: none;
-    padding: var(--spacing-sm) 0;
-  }
-  
-  .lesson-item {
-    margin-bottom: var(--spacing-xs);
-  }
-  
-  
-  .lesson-link {
-    text-decoration: none;
-  }
-  .lesson-link:hover {
-    text-decoration: none;
-    color: #0f172a;
-  }
-  
-  .lesson-title {
-    font-size: 0.9rem;
-    font-weight: normal;
-    color: #b4f9f8;
-  }
-  .lesson-title:hover {
-    color: #0f172a;
-  }
-  
-  .course-info {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-left: var(--spacing-xs);
-  }
-  
-  /* Loading State */
-  .loading-state {
-    text-align: center;
-    padding: var(--spacing-lg);
-    color: var(--text-secondary);
-  }
+
+/* Lesson Link */
+.lesson-link {
+  text-decoration: none;
+  color: #1a202c;
+  display: block;
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.lesson-link:hover {
+  background-color: var(--accent-green);
+  color: #ffffff;
+}
+
+/* Lesson Title */
+.lesson-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Course Info */
+.course-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: var(--spacing-lg);
+  color: var(--text-secondary);
+}
