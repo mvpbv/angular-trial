@@ -1,25 +1,4 @@
-/* Base Layout */
-:root {
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --border-radius: 8px;
-  --max-width: 800px;
-  --primary-blue: #3498db;
-  --primary-purple: #9b59b6;
-  --accent-green: #2ecc71;
-  --accent-orange: #e67e22;
-  --gradient-primary: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
-  --gradient-accent: linear-gradient(to right, var(--accent-green), var(--accent-orange));
-  --text-secondary: #0FB9D7;
-  }
 
-
-/* Form Styling */
-
-
-/* Hotspots Grid */
 .hotspots-container {
   max-width: var(--max-width);
   margin: 1 auto;
@@ -34,7 +13,6 @@
   gap: var(--spacing-md);
 }
 
-/* Card Styling */
 .hotspot-card {
   background: #1f2336;
   border-radius: var(--border-radius);
@@ -44,7 +22,6 @@
 
 .difficulty-score {
   font-size: 1.25rem;
-  color: #ff9e64;
   cursor: pointer;
   padding: var(--spacing-xs) 0;
   border-bottom: 2px solid transparent;
@@ -53,7 +30,6 @@
   color: #ff6b6b;
   transition: color 0.3s ease-in-out;
 }
-
 
 .difficulty-score.expanded {
   border-bottom-color: var(--accent-color);
@@ -67,7 +43,6 @@
 .card-course {
   font-size: 1.1rem;
   margin-bottom: var(--spacing-xs);
-  color: #9d7cd8;
 }
 
 .card-chapter {

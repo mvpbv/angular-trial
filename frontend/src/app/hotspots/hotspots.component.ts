@@ -7,10 +7,11 @@ import { AnalyticsStats } from '../models/analytics-stats.models';
 import { HotspotFormComponent } from "../hotspot-form/hotspot-form.component";
 import { WindowService } from '../window.service';
 import { StatsComponent } from "../stats/stats.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-hotspots',
-  imports: [CommonModule, ReactiveFormsModule, HotspotFormComponent, StatsComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, HotspotFormComponent, StatsComponent],
   templateUrl: './hotspots.component.html',
   styleUrl: './hotspots.component.css'
 })

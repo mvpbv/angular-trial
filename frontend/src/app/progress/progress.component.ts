@@ -8,8 +8,8 @@ import { RanksComponent } from '../ranks/ranks.component';
 
 @Component({
   selector: 'app-progress',
-  imports: [CommonModule, ReactiveFormsModule],
-  template: './progress.component.html',
+  imports: [CommonModule, ReactiveFormsModule, RanksComponent],
+  templateUrl: './progress.component.html',
   styleUrl: './progress.component.css'
 })
 export class ProgressComponent {

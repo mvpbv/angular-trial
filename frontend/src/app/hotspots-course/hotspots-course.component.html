@@ -1,48 +1,52 @@
-
+<h1>Hotspots Playground</h1>
+<button [routerLink]="['/hotspots']">Group by difficulty</button>
 <app-hotspot-form [hotspotForm]="hotspotForm"></app-hotspot-form>
 <app-stats [window]="window"></app-stats>
 <div>
 <section class="hotspots-container" aria-label="Difficulty Hotspots">
-  <ul class="hotspots-grid" *ngIf="hotspots; else loading">
-      <li class="hotspot-card" *ngFor="let group of hotspots | keyvalue: noSortComparator; let i = index">
-          <h2 class="difficulty-score" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">{{group.value[0].items[0].CourseName}}</h2>
-          <ng-container *ngIf="expandedGroups.has(i)">
-              <ng-container *ngFor="let hotspot of group.value">
-                <header class="card-header" (click)="toggleHotspot(i)" [class.expanded]="expandedHotspots.has(i)">
-                    <div class="header-content">
-                        <div class="title-group">
-                            <h2 class="card-course">{{hotspot.sum}}</h2>
-                            <!--
-                            <div *ngIf="hotspot.items[0].CourseName != hotspot.items[window].CourseName">
-                                <span class="chapter-label">{{hotspot.items[wid]}}</span>
-                                <span class="chapter-value">{{hotspot.items[0].ChapterName}}</span>
-                            </div>
-                            -->
+  @defer {
+  <ul class="hotspots-grid">
+    @for (group of hotspots | keyvalue: noSortComparator; track group; let i = $index) {
+    <li class="hotspot-card">
+      <h2 class="difficulty-score" (click)="toggleGroup(i)" [class.expanded]="expandedGroups.has(i)">{{group.value[0].items[0].CourseName}}</h2>
+        @if (expandedGroups.has(i)) {
+          @for(hotspot of group.value; track hotspot.items[0].CourseName) {
+            <header 
+            class="card-header"
+            (click)="toggleHotspot(i)" 
+            [class.expanded]="expandedHotspots.has(i)">
+              <div class="header-content">
+                <div class="title-group">
+                  <h2 class="card-course">{{hotspot.sum}}</h2>
+                </div>
+              </div>
+            </header>
+              @if (expandedHotspots.has(i)) {
+                <ul class="lesson-list">
+                  @for (lesson of hotspot.items; track lesson.UUID) {
+                    <li class="lesson-item">
+                      <a class="lesson-link" [href]="'https://boot.dev/lessons/' + lesson.UUID" target="_blank" rel="noopener">
+                        <div class="lesson-content">
+                          <header>
+                              <h3 class="lesson-title">{{lesson.Title}} 
+                                <span class="course-info">{{lesson.Difficulty}}</span>
+                              </h3>
+                          </header>
                         </div>
-                        <span class="expand-icon"></span>
-                    </div>
-                </header>
-                  <ul class="lesson-list" *ngIf="expandedHotspots.has(i)">
-                      <li *ngFor="let lesson of hotspot.items" class="lesson-item">
-                          <a class="lesson-link" [href]="'https://boot.dev/lessons/' + lesson.UUID" target="_blank" rel="noopener">
-                              <div class="lesson-content">
-                                  <header>
-                                      <h3 class="lesson-title">{{lesson.Title}} 
-                                          <span class="course-info">{{lesson.Difficulty}}</span>
-                                      </h3>
-                                  </header>
-                              </div>
-                          </a>
-                      </li>
-                  </ul>
-              </ng-container>
-          </ng-container>
+                      </a>
+                    </li>
+                      }
+                </ul>
+              }
+          }
+        }
       </li>
+      }
   </ul>
-  <ng-template #loading>
+} @loading (minimum 1s; after 500ms) {
       <div class="loading-state">
           <p>Loading hotspots...</p>
       </div>
-  </ng-template>
+  }
 </section>
 </div>

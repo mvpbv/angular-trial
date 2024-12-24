@@ -6,10 +6,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AnalyticsStats } from '../models/analytics-stats.models';
 import { HotspotFormComponent } from "../hotspot-form/hotspot-form.component";
 import { StatsComponent } from "../stats/stats.component";
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-hotspots',
-  imports: [CommonModule, ReactiveFormsModule, HotspotFormComponent, StatsComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, HotspotFormComponent, StatsComponent],
   templateUrl: './hotspots-course.component.html',
   styleUrl: './hotspots-course.component.css'
 })
