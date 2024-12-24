@@ -2,7 +2,7 @@
     --background-color: #0F0F11;
     --text-color: #e0e0e0;
     --heading-color: var(--funky-two);
-    --section-heading-color: var(--funky-one);
+    --section-heading-color: var(--funky-five);
     --section-background-color: #2a2a40;
     --button-background-color: #ff6f61;
     --button-hover-background-color: #ff3b3b;
@@ -13,29 +13,27 @@
     --checkbox-checked-background-color: #ff6f61;
     --checkbox-glow-color: #39ff14;
     --neon-gradient: linear-gradient(135deg, var(--funky-one) 0%, var(--funky-two) 50%, var(--funky-three) 100%);
-    --neon-gradient-reverse: linear-gradient(135deg, #818cf8 0%, #9333ea 50%, #ec4899 100%);
-    --neon-gradient-alt: linear-gradient(135deg, var(--amber), var(--sky-blue), #9333ea);
-    --neon-gradient-alt-reverse: linear-gradient(135deg, #9333ea, var(--sky-blue), var(--amber));
-    --cyber-gradient: linear-gradient(45deg, #39ff14, #ff6f61);
+    --neon-gradient-reverse: linear-gradient(135deg, var(--funky-three) 0%, var(--funky-two) 50%, var(--funky-one) 100%);
+    --neon-gradient-dark: linear-gradient(135deg, var(--funky-three), var(--funky-four), var(--funky-five));
+    --neon-gradient-dark-reverse: linear-gradient(135deg, var(--funky-five), var(--funky-four), var(--funky-three));
 
+    --neon-purple: #9333ea;
     --hot-pink: #ee036b;
-    --salmon: #fa4c80;
-    --blue: #0137b7;
-    --soft-pink: #fc92dd;
-    --light-purple: #ffc0fa;
+    /* 
+    --dark-neon-green-1: #28a745;
+    --dark-neon-green-2: #218838;
+    --dark-neon-green-3: #1e7e34;
+    --dark-neon-green-4: #19692c;
+    --dark-neon-green-5: #155724;
+    */
 
-    --universe-one: #e923f4;
-    --universe-two: #72076e;
-    --universe-three: #2b0245;
-    --universe-four: #250096;
-    --universe-five: #5600f4;
-    --universe-gradient: linear-gradient(135deg, var(--universe-one) 0%, var(--universe-two) 20%, var(--universe-three) 40%, var(--universe-four) 60%, var(--universe-five) 80%);
-
-    --funky-one: #540d6e;
-    --funky-two: #7fff00;
+    --green-glow: 0 4px 12px rgba(95, 255, 95, 0.2);
+    --funky-one: #7fff00;
+    --funky-two: #39ff14;
     --funky-three: #30ff14;
-    --funky-four: #0ff0fc;
-    --funky-five: #1f51ff;
+    --funky-four: #28a745;
+    --funky-five: #155724;
+    --title-gradient: linear-gradient(135deg, var(--funky-one), var(--funky-three), var(--funky-four), var(--funky-five));
     --gradient-simple: linear-gradient(35deg, var(--funky-one), var(--funky-two), var(--funky-three));
     --gradient-warm: linear-gradient(135deg, var(--funky-three), var(--funky-four), var(--funky-five));
     --gradient-simple-reverse: linear-gradient(135deg, var(--funky-three) 0%, var(--funky-two) 50%, var(--funky-one) 100%);
@@ -48,10 +46,7 @@
 
 
 
-    --neon-purple: #9333ea;
-    --sky-blue: #38bdf8;
-    --amber: #fcd34d;
-    --blue: #818cf8
+
   }
 
 body {
@@ -129,21 +124,6 @@ body {
     border-color: var(--input-focus-border-color);
     outline: none;
   }
-.cyber-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--button-background-color);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px var(--checkbox-glow-color), 0, 0, 20px var(--checkbox-glow-color), 0, 0, 30px var(--checkbox-glow-color);
-}
-.cyber-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px var(--checkbox-glow-color), 0, 0, 30px var(--checkbox-glow-color), 0, 0, 40px var(--checkbox-glow-color), 0, 0;
-}
 
 button {
   color: var(--funky-three); 

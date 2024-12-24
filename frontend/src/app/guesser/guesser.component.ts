@@ -1,22 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RankService } from '../rank.service';
-import { Rank } from '../models/rank.interface';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
-import { GuesserComponent } from "../guesser/guesser.component";
 
 @Component({
-  selector: 'app-roadmap',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, GuesserComponent],
-  templateUrl: './roadmap.component.html',
-  styleUrl: './roadmap.component.css'
+  selector: 'app-guesser',
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './guesser.component.html',
+  styleUrl: './guesser.component.css'
 })
-export class RoadmapComponent implements OnInit{
+export class GuesserComponent {
   showForm: boolean = true;
-  title = 'roadmap';
-  ranks: Rank[] = [];
-  highestXP: number = 0;
   rankForm = new FormGroup({
     level: new FormControl(''),
     guess: new FormControl(''),
@@ -24,16 +18,11 @@ export class RoadmapComponent implements OnInit{
   userPosition = {  level: 0, xp: 0, percent: 0 };
   guessPosition = 0;
   guessAccuracy = 0;
+  highestXP: number = 0;
 
   constructor(private rankService: RankService) {
   }
-  ngOnInit(): void {
-    this.ranks = this.rankService.getAllRanks();
-    this.highestXP = this.calculateHighestXP();
-  }
-  calculateHighestXP(): number {
-    return this.ranks[this.ranks.length - 1].xp;
-  }
+
   onSubmit(): void {
     const level = parseInt(this.rankForm.get('level')?.value ?? '0');
     const guess = parseInt(this.rankForm.get('guess')?.value ?? '0');

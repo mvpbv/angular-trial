@@ -31,7 +31,7 @@ background: linear-gradient(135deg,
   font-size: 24px;
   font-weight: 800;
   font-family: 'Orbitron';
-  background: var(--funky-gradient);
+  background: var(--title-gradient);
   background-clip: text;
   color: transparent;
   background-size: 100% 100%;
@@ -95,6 +95,6 @@ background: linear-gradient(135deg,
   transform: translateX(-50%);
   width: 100%;
   height: 1px;
-  background: var(--funky-gradient);
+  background: var(--funky-gradient-dark);
   box-shadow: var(--funky-shadow); 
 }

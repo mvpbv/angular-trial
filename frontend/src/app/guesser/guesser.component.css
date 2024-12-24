@@ -1,0 +1,68 @@
+.rank-form {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--section-heading-color);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--heading-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+button[type="submit"] {
+    background: var(--neon-gradient-dark);
+    background-clip: text;
+    color: transparent;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--green-glow);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+.accuracy-display {
+    position:relative;
+    margin-top: 150px;
+    text-align: center;
+    color: #ff5f5f;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    border-radius: 4px;
+}

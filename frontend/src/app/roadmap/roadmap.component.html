@@ -1,21 +1,5 @@
 <h1>Road To Archmage</h1>
-@if (showForm) {
-<form [formGroup]="rankForm" (ngSubmit)="onSubmit()" class="rank-form">
-    <div class="form-group">
-        <label for="level">Level:</label>
-        <input id="level" type="number" formControlName="level">
-    </div>
-    <div class="form-group">
-        <label for="guess">What percent do you think you're done?</label>
-        <input id="guess" type="number" formControlName="guess">
-    </div>
-    
-    <button type="submit">Add Rank</button>
-</form>
-}
-@if (showForm) {
-<div  class="accuracy-display">Your guess was off by {{guessAccuracy | number:'1.2-2'}}%</div>
-}
+<app-guesser></app-guesser>
 <div class="number-line">
     <div class="number-line-horizontal">
         <div class="midway-tick"></div>
