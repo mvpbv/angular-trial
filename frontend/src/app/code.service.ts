@@ -14,4 +14,8 @@ export class CodeService {
     return this.http.get<any>(`${this.baseUrl}/getPrimary?window=${window}&limit=${limit}`);
   }
 
+  getCurve(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getCurveData`);
+  }
+
 }

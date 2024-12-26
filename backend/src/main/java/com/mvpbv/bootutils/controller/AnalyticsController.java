@@ -27,8 +27,17 @@ public class AnalyticsController {
     private AnalyticsLessonRepository analyticsLessonRepository;
 
     @GetMapping("/getAllLessonData")
-    public List<AnalyticsLesson> getLessonData() {
-        return analyticsLessonRepository.findAll();
+    public List<AnalyticsLesson> getLessonData(@RequestParam(required = false) Integer limit, @RequestParam(required = false) Integer offset) {
+        if (limit == null || offset == null) {
+            return analyticsLessonRepository.findAll();
+        }
+        return analyticsLessonRepository.findAll().subList(offset, offset + limit);
+
+    }
+
+    @GetMapping("/getLessonDataBy") 
+    public List<AnalyticsLesson> getLessonDataBy(@RequestParam(required = false) List<String> courseNames) {
+        return analyticsService.getLessonDataBy(courseNames); 
     }
     @GetMapping("/getCourseNames")
     public List<String> getCourseNames() {

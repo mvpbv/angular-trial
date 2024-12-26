@@ -1,0 +1,70 @@
+<div class="dropdown-container">
+  <div class="dropdown">
+    <button>Fiter Course</button>
+      <div 
+      class="dropdown-content"
+      [(ngModel)] = "selectedCourse"
+      (change)="onCourseChange($event)">
+        @for (course of courses; track courses) {
+        <option [value]="course">{{ course }}</option>
+        }
+       </div>
+  </div>
+
+  <div class="dropdown">
+    <button for="trackSelect">Filter Track</button>
+    <div 
+    class="dropdown-content"
+    [(ngModel)] = "selectedTrack"
+    (change)="onTrackChange($event)">
+      @for (track of tracks; track track) {
+      <option [value]="track">{{ track }}</option>
+      }
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <div class="dropdown-button">
+      <button>Filter Types</button>
+    </div>
+    <div [(ngModel)] = "selectedType" (change)="onTypeChange($event)" class="dropdown-content">
+      @for (type of types; track type) {
+      <option [value]="type">{{ type }}</option>
+      }
+    </div>
+  </div>
+  <div class="dropdown">
+    <div class="dropdown-button">
+      <button>Filter Difficulty</button>
+    </div>
+    <div 
+    [(ngModel)] = "selectedDifficultyMax"
+     class="dropdown-content">
+      @for (difficulty of difficulties; track difficulty) {
+      <option [value]="difficulty">{{ difficulty }}</option>
+      }
+    </div>
+  </div>
+  <button>Show Challenges</button>
+
+</div>
+@defer {
+<div class="lesson-container" (scroll) = "onScroll()">
+  @for (item of lessons; track lessons) {
+  <div class="lesson"> 
+    <p> {{ item.Title }} </p>
+    <div class="lesson-info">
+      <p> {{ item.CourseName }}</p>
+      <p> {{ item.ChapterName }}</p>
+      <p> {{ item.Difficulty }}</p>
+      <p> {{ item.Radix }}</p>
+      <a href="https://boot.dev/lessons/{{item.UUID}}">Go To Lesson</a>
+    </div>
+  </div>
+  }
+</div>
+} @loading (minimum 1s; after 500ms) {
+  <div class="loading-state">
+    <p>Loading lessons...</p>
+  </div>
+}

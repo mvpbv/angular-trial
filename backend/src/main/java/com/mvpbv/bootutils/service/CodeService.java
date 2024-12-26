@@ -19,8 +19,6 @@ public class CodeService {
     @Autowired
     private CodeChallengeRepository codeChallengeRepository;
     
-
-
     public Map<Integer, List<HotSpot>>findPrimary(int window, int limit) {
         var codingLessons = codeChallengeRepository.findPrimaryLessons();
         codingLessons.sort(Comparator.comparing(CodeChallenge::getChron));
@@ -44,9 +42,13 @@ public class CodeService {
     
         for (int i = 0; i < hotSpots.size() - window; i++) {
             noOverlaps.add(hotSpots.subList(i, i + window).stream().max(Comparator.comparing(HotSpot::getSum)).get());
-
         }
         return new ArrayList<>(noOverlaps);
+    }
+    public int[] findCurveData() {
+        var codingLessons = codeChallengeRepository.findAll();
+        codingLessons.sort(Comparator.comparing(CodeChallenge::getChron));
+        return codingLessons.stream().mapToInt(CodeChallenge::getDifficulty).toArray();
     }
 
 }

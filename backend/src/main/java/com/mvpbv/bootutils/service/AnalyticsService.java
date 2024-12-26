@@ -1,6 +1,5 @@
 package com.mvpbv.bootutils.service;
 
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -36,9 +35,21 @@ public class AnalyticsService {
     public List<String> getLessonTypes() {
         return analyticsLessonRepository.findLessonTypes();
     }
+
+    public List<AnalyticsLesson> getLessonDataBy(List<String> courseNames) {
+        if (courseNames == null) {
+            logger.info("No course names provided");
+        }
+        List<AnalyticsLesson> lessons = analyticsLessonRepository.findByCourseNames(courseNames);
+        if (lessons.isEmpty()) {
+            logger.error("No lessons found for course names: {0}", courseNames);
+        }
+        logger.info("Returning {0} lessons for course names: {1}", new Object[]{lessons.size(), courseNames});
+        return lessons;
+    }
     public List<AnalyticsLesson> getLessonsByCourse(String courseName) {
         if (courseName == null) {
-            logger.info("No course name provided");
+            return analyticsLessonRepository.findAll();
         }
         List<AnalyticsLesson> lessons = analyticsLessonRepository.findByCourseName(courseName);
         if (lessons.isEmpty()) {

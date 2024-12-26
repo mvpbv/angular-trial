@@ -32,4 +32,8 @@ public class CodeController {
     public AnalyticsStats getPrimaryStats(@RequestParam int window) {
         return analyticsService.findPrimaryStats(window);
     }
+    @GetMapping("/getCurveData")
+    public int[] getCurveData() {
+        return codeService.findCurveData();
+    }
 }

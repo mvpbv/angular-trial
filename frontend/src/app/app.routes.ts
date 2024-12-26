@@ -2,13 +2,14 @@ import { Routes } from '@angular/router';
 import { HealthStatusComponent } from './health-status/health-status.component';
 import { HomeComponent } from './home/home.component';
 import { FetchComponent } from './fetch/fetch.component';
-import { AnalyticsComponent } from './analytics/analytics.component';
+import { ExplorerComponent } from './explorer/explorer.component';
 import { ProgressComponent } from './progress/progress.component';
 import { ArticleComponent } from './article/article.component';
 import { HotspotsComponent } from './hotspots/hotspots.component';
 import { HotspotsCourseComponent } from './hotspots-course/hotspots-course.component';
 import { AboutComponent } from './about/about.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
+import { CurveComponent } from './curve/curve.component';
 
 export const routes: Routes = [
     { 
@@ -27,9 +28,9 @@ export const routes: Routes = [
         title: "Fetch",
     },
     {
-        path: 'analytics',
-        component: AnalyticsComponent,
-        title: "Analytics",
+        path: 'explorer',
+        component: ExplorerComponent,
+        title: "Explorer",
     },
     {
         path: 'progress',
@@ -60,6 +61,11 @@ export const routes: Routes = [
         path: 'roadmap',
         component: RoadmapComponent,
         title: "Roadmap",
+    },
+    {
+        path: 'curve',
+        component: CurveComponent,
+        title: "Curve",
     }
     
 

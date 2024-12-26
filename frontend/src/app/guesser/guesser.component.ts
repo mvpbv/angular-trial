@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RankService } from '../rank.service';
 import { CommonModule } from '@angular/common';
+import { GuessResult } from '../models/guess-result.model';
 
 @Component({
   selector: 'app-guesser',
@@ -9,16 +10,22 @@ import { CommonModule } from '@angular/common';
   templateUrl: './guesser.component.html',
   styleUrl: './guesser.component.css'
 })
-export class GuesserComponent {
+export class GuesserComponent{
+  @Input() initialLevel?: number;
+  @Input() initialGuess?: number;
+  @Output() formVisibility = new EventEmitter<boolean>();
+  @Output() guessSubmitted = new EventEmitter<GuessResult>();
+
   showForm: boolean = true;
+  guessAccuracy: number = 0;
+  highestXP: number = 436000;
+
   rankForm = new FormGroup({
     level: new FormControl(''),
     guess: new FormControl(''),
   });
-  userPosition = {  level: 0, xp: 0, percent: 0 };
-  guessPosition = 0;
-  guessAccuracy = 0;
-  highestXP: number = 0;
+
+   
 
   constructor(private rankService: RankService) {
   }
@@ -26,18 +33,28 @@ export class GuesserComponent {
   onSubmit(): void {
     const level = parseInt(this.rankForm.get('level')?.value ?? '0');
     const guess = parseInt(this.rankForm.get('guess')?.value ?? '0');
-    this.calcResults(level, guess);
-    this.showForm = false;
-  }
-  calcResults(xp: number, guess: number): void {
-    const userXp = this.rankService.xpAtLevel(xp);
+
+    const userXp = this.rankService.xpAtLevel(level);
     const userPercent = userXp / this.highestXP * 100;
-    this.userPosition = {
-      level: xp,
-      xp: userXp,
-      percent: userPercent,
-    };
-    this.guessPosition = guess;
-    this.guessAccuracy = Math.abs(guess - userPercent);
+    const result: GuessResult = {
+      level,
+      guess, 
+      userPosition: {
+        level,
+        xp: userXp,
+        percent: userPercent
+      },
+      guessPosition: guess,
+      accuracy: Math.abs(guess - userPercent)
+   };
+   this.guessAccuracy = result.accuracy;
+   this.guessSubmitted.emit(result);
+   this.formVisibility.emit(false);
+   this.showForm = false;
   }
+  toggleForm(): void {
+    this.showForm = true;
+    this.formVisibility.emit(true);
+  }
+  
 }

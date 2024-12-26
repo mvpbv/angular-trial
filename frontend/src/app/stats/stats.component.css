@@ -42,7 +42,6 @@
 
 .average-value {
   font-size: 2rem;
-  font-weight: 600;
-  color: #EC4899; /* Updated value color to match accent theme */
+  font-weight: 600; /* Updated value color to match accent theme */
   margin: 0;
 }

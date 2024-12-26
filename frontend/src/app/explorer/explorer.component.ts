@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsService } from '../analytics.service';
 import { CommonModule } from '@angular/common';
@@ -6,53 +6,27 @@ import { analyticsLesson } from '../models/hotspot.model';
 
 @Component({
   imports: [CommonModule, FormsModule],
-  template: `
-  <label for="courseSelect">Select a course:</label>
-  <select id="courseSelect" [(ngModel)] = "selectedCourse" (change)="onCourseChange($event)">
-    @for (course of courses; track courses) {
-    <option [value]="course">{{ course }}</option>
-    }
-  </select>
-  
-  <label for="trackSelect">Select a track:</label>
-  <select id="trackSelect" [(ngModel)] = "selectedTrack" (change)="onTrackChange($event)">
-    @for (track of tracks; track track) {
-    <option [value]="track">{{ track }}</option>
-    }
-  </select>
-  <label for="typeSelect">Select a type:</label>
-  <select id="typeSelect" [(ngModel)] = "selectedType" (change)="onTypeChange($event)">
-    @for (type of types; track types) {
-      <option [value]="type">{{ types }}</option>
-    }
-  </select>
-  @for (item of lessons; track lessons) {
-  <div class="lesson"> 
-    <p> {{ item.Title }} </p>
-    <p> {{ item.CourseName }}</p>
-    <p> {{ item.ChapterName }}</p>
-    <p> {{ item.Difficulty }}</p>
-    <p> {{ item.Radix }}</p>
-    <a href="https://boot.dev/lessons/{{item.UUID}}">Go To Lesson</a>
-  </div>
-  }
-`,
-  styleUrl: './analytics.component.css'
+  templateUrl: './explorer.component.html',
+  styleUrl: './explorer.component.css'
 })
-export class AnalyticsComponent implements OnInit{
+export class ExplorerComponent implements OnInit{
   
   lessons: analyticsLesson[] = [];
   courses: string[] = [];
   tracks: string[] = [];
   types: string[] = [];
+  difficulties: number[] = [3, 4, 5, 6, 7, 8, 9, 10];
   selectedCourse: string = '';
   selectedTrack: string = '';
   selectedType: string = '';
+  selectedDifficultyMax: number = 10;
+  selectedDifficultyMin: number = 3;
+  isLoading: boolean = false;
 
   constructor(private analyticsService: AnalyticsService) {}
 
   ngOnInit() {
-    this.analyticsService.getAnalyticsLessons().subscribe((data: analyticsLesson[]) => {
+    this.analyticsService.paginateAnalyticsLessons(50,0).subscribe((data: analyticsLesson[]) => {
       this.lessons = data;
     });
     this.analyticsService.getAnalyticsCourses().subscribe((data: string[]) => {
@@ -65,6 +39,17 @@ export class AnalyticsComponent implements OnInit{
       this.types = data;
     });
   } 
+  @HostListener('window:scroll')
+  onScroll() {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && !this.isLoading) {
+      this.isLoading = true;
+      this.analyticsService.paginateAnalyticsLessons(50, this.lessons.length)
+      .subscribe((data: analyticsLesson[]) => {
+        this.lessons = this.lessons.concat(data);
+        this.isLoading = false;
+      });
+    } 
+  }
   onCourseChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     this.analyticsService.getAnalyticsByCourse(this.selectedCourse).subscribe((data: analyticsLesson[]) => {

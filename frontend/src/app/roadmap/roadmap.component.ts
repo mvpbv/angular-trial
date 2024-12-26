@@ -2,31 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { RankService } from '../rank.service';
 import { Rank } from '../models/rank.interface';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
-import { GuesserComponent } from "../guesser/guesser.component";
+import { GuesserComponent} from "../guesser/guesser.component";
+import { GuessResult } from '../models/guess-result.model';
 
 @Component({
   selector: 'app-roadmap',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, GuesserComponent],
+  imports: [CommonModule, GuesserComponent],
   templateUrl: './roadmap.component.html',
   styleUrl: './roadmap.component.css'
 })
-export class RoadmapComponent implements OnInit{
-  showForm: boolean = true;
-  title = 'roadmap';
+export class RoadmapComponent implements OnInit {
   ranks: Rank[] = [];
+  title = 'roadmap';
   highestXP: number = 0;
-  rankForm = new FormGroup({
-    level: new FormControl(''),
-    guess: new FormControl(''),
-  });
   userPosition = {  level: 0, xp: 0, percent: 0 };
   guessPosition = 0;
   guessAccuracy = 0;
+  showForm: boolean = true;
 
-  constructor(private rankService: RankService) {
-  }
+  constructor(private rankService: RankService) {}
+
   ngOnInit(): void {
     this.ranks = this.rankService.getAllRanks();
     this.highestXP = this.calculateHighestXP();
@@ -34,12 +30,24 @@ export class RoadmapComponent implements OnInit{
   calculateHighestXP(): number {
     return this.ranks[this.ranks.length - 1].xp;
   }
-  onSubmit(): void {
-    const level = parseInt(this.rankForm.get('level')?.value ?? '0');
-    const guess = parseInt(this.rankForm.get('guess')?.value ?? '0');
-    this.calcResults(level, guess);
-    this.showForm = false;
+  formChange(show: boolean) {
+    this.showForm = show;
   }
+  onGuessSubmitted(result: GuessResult): void {
+    this.userPosition = {
+      level: result.userPosition.level,
+      xp: result.userPosition.xp,
+      percent: result.userPosition.percent,
+    };
+
+    this.guessPosition = result.guessPosition;
+    this.guessAccuracy = result.accuracy;
+    this.showForm = false;
+
+    console.log('updated userPosition:', this.userPosition);
+  }
+
+
   calcResults(xp: number, guess: number): void {
     const userXp = this.rankService.xpAtLevel(xp);
     const userPercent = userXp / this.highestXP * 100;

@@ -1,20 +1,46 @@
 <h1>Road To Archmage</h1>
-<app-guesser></app-guesser>
-<div class="number-line">
-    <div class="number-line-horizontal">
-        <div class="midway-tick"></div>
-        @for (rank of ranks; track $index) {
-        <div class="rank-line" [style.left.%]="rank.percent">
+<app-guesser 
+    (formVisibility)="formChange($event)"
+    (guessSubmitted)="onGuessSubmitted($event)"
+    [initialLevel]="userPosition.level"
+    [initialGuess]="userPosition.percent"
+></app-guesser>
+<div class="lines-container">
+    <!-- First line -->
+    <div class="number-line">
+        <div class="number-line-horizontal">
+            <div class="midway-tick"></div>
             @if (!showForm) {
-            <span class="tooltip">{{rank.name}} {{rank.xp}}XP Level {{rank.level}}</span>
+                @for (rank of ranks; track $index) {
+                <div class="rank-line" [style.left.%]="rank.percent">
+                    @if (!showForm) {
+                    <span class="tooltip">{{rank.name}} {{rank.xp}}XP Level {{rank.level}}</span>
+                    }
+                </div>
+                }
+            }
+            @if (userPosition) {   
+            <div class="rank-ball" [style.left.%]="userPosition.percent"></div>
             }
         </div>
-        }
-        @if (userPosition) {   
-        <div class="rank-ball" [style.left.%]="userPosition.percent"></div>
-        }
-        @if (guessPosition) {
-        <div class="rank-ball guess" [style.left.%]="guessPosition"></div>
-        }
+    </div>
+
+    <!-- Second line -->
+    <div class="number-line">
+        <div class="number-line-horizontal">
+            <div class="midway-tick"></div>
+            @if (!showForm) {
+                @for (rank of ranks; track $index) {
+                <div class="rank-line" [style.left.%]="rank.percent">
+                    @if (!showForm) {
+                    <span class="tooltip">{{rank.name}} {{rank.xp}}XP Level {{rank.level}}</span>
+                    }
+                </div>
+                }
+            }
+            @if (guessPosition) {
+            <div class="rank-ball guess" [style.left.%]="guessPosition"></div>
+            }
+        </div>
     </div>
 </div>

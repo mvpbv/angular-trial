@@ -25,6 +25,9 @@ public interface AnalyticsLessonRepository extends JpaRepository<AnalyticsLesson
     @Query("SELECT a FROM AnalyticsLesson a WHERE a.courseName = :courseName")
     List<AnalyticsLesson> findByCourseName(String courseName);
 
+    @Query("SELECT a FROM AnalyticsLesson a WHERE a.courseName IN :courseNames")
+    List<AnalyticsLesson> findByCourseNames(List<String> courseNames);
+
     @Query("SELECT a FROM AnalyticsLesson a WHERE a.trackName = :trackName")
     List<AnalyticsLesson> findByTrackName(String trackName);
 

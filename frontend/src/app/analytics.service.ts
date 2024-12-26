@@ -16,6 +16,12 @@ export class AnalyticsService {
     getAnalyticsLessons(): Observable<any> {
       return this.http.get<analyticsLesson[]>(`${this.baseUrl}/getAllLessonData`);
     }
+    paginateAnalyticsLessons(limit: number, offset: number): Observable<any> {
+      return this.http.get<analyticsLesson[]>(`${this.baseUrl}/getAllLessonData?limit=${limit}&offset=${offset}`);
+    }
+    getAnalyticsLessonsBy(courseNames: Array<String>): Observable<any> {
+      return this.http.get<analyticsLesson[]>(`${this.baseUrl}/getAllLessonDataBy=${courseNames}`);
+    }
     getAnalyticsCourses(): Observable<any> {
       return this.http.get<String[]>(`${this.baseUrl}/getCourseNames`);
     }
@@ -61,5 +67,4 @@ export class AnalyticsService {
     getHotSpotsCourse(window: number): Observable<any> {
       return this.http.get<HotSpot[]>(`${this.baseUrl}/getHotSpotsCourse?window=${window}`);
     }
-
 }
