@@ -10,6 +10,7 @@ import { HotspotsCourseComponent } from './hotspots-course/hotspots-course.compo
 import { AboutComponent } from './about/about.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { CurveComponent } from './curve/curve.component';
+import { LinksComponent } from './links/links.component';
 
 export const routes: Routes = [
     { 
@@ -66,7 +67,12 @@ export const routes: Routes = [
         path: 'curve',
         component: CurveComponent,
         title: "Curve",
-    }
+    },
+    {
+        path: 'links',
+        component: LinksComponent,
+        title: "Links",
+    },
     
 
 ];
