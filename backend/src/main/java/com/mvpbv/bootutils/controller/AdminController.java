@@ -50,13 +50,11 @@ public class AdminController {
         adminService.seedReadme();
         return "Seeded the readme!";
     }
-    /*
-    @GetMapping("/seedUrls") 
+    @GetMapping("/seedUrls")
     public String seedUrls() {
-        adminService.seedReadmeUrls();
+        adminService.seedDomains();
         return "Seeded the urls!";
     }
-    */
     @GetMapping("/getRawData")
     public JsonNode getRawData() {
         return dataService.fetchRawData();

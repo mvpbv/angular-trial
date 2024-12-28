@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.mvpbv.bootutils.dto.ReadmeDTO;
 import com.mvpbv.bootutils.models.analytics.AnalyticsLesson;
 import com.mvpbv.bootutils.models.analytics.CodeChallenge;
+import com.mvpbv.bootutils.models.analytics.Domain;
 import com.mvpbv.bootutils.models.analytics.LessonType;
 import com.mvpbv.bootutils.models.analytics.Readme;
 import com.mvpbv.bootutils.models.analytics.Urls;
@@ -25,9 +26,11 @@ import com.mvpbv.bootutils.models.lesson.Lesson;
 import com.mvpbv.bootutils.repositories.AnalyticsLessonRepository;
 import com.mvpbv.bootutils.repositories.CodeChallengeRepository;
 import com.mvpbv.bootutils.repositories.CourseRootRepository;
+import com.mvpbv.bootutils.repositories.DomainRepository;
 import com.mvpbv.bootutils.repositories.LessonRepository;
 import com.mvpbv.bootutils.repositories.ReadmeRepository;
 import com.mvpbv.bootutils.repositories.RootRepository;
+import com.mvpbv.bootutils.repositories.UrlsRepository;
 
 @Service
 public class AdminService {
@@ -43,24 +46,30 @@ public class AdminService {
     private final AnalyticsLessonRepository analyticsLessonRepository;
     private final CodeChallengeRepository codeChallengeRepository;
     private final ReadmeRepository readmeRepository;
-
+    private final UrlsRepository urlsRepository;
+    private final DomainRepository domainsRepository;
         
-public AdminService(RootRepository rootRepository, 
-                    RestTemplate restTemplate,
-                    ObjectMapper objectMapper,
-                    CourseRootRepository courseRootRepository,
-                    LessonRepository lessonRepository,
-                    AnalyticsLessonRepository analyticsLessonRepository,
-                    CodeChallengeRepository codeChallengeRepository,
-                    ReadmeRepository ReadmeRepository) {
-        this.rootRepository = rootRepository;
-        this.restTemplate = restTemplate;
-        this.objectMapper = objectMapper;
-        this.courseRootRepository = courseRootRepository;
-        this.lessonRepository = lessonRepository;
-        this.analyticsLessonRepository = analyticsLessonRepository;
-        this.codeChallengeRepository = codeChallengeRepository;
-        this.readmeRepository = ReadmeRepository;
+                
+        public AdminService(RootRepository rootRepository, 
+                            RestTemplate restTemplate,
+                            ObjectMapper objectMapper,
+                            CourseRootRepository courseRootRepository,
+                            LessonRepository lessonRepository,
+                            AnalyticsLessonRepository analyticsLessonRepository,
+                            CodeChallengeRepository codeChallengeRepository,
+                            ReadmeRepository ReadmeRepository,
+                            UrlsRepository urlsRepository,
+                            DomainRepository domainRepository) {
+                this.rootRepository = rootRepository;
+                this.restTemplate = restTemplate;
+                this.objectMapper = objectMapper;
+                this.courseRootRepository = courseRootRepository;
+                this.lessonRepository = lessonRepository;
+                this.analyticsLessonRepository = analyticsLessonRepository;
+                this.codeChallengeRepository = codeChallengeRepository;
+                this.readmeRepository = ReadmeRepository;
+                this.urlsRepository = urlsRepository;
+                this.domainsRepository = domainRepository;
 }
 
     public void seedCourses() {
@@ -194,7 +203,26 @@ public AdminService(RootRepository rootRepository,
         });
         
     }
-    
+    public void seedDomains() {
+        urlsRepository.findAll().forEach(url -> {
+            var temp = parseDomain(url.getUrl());
+            var domain = domainsRepository.findByDomain(temp).orElseGet(() -> {
+                var newDomain = new Domain(temp);
+                domainsRepository.save(newDomain);
+                return newDomain;
+            });
+            url.setDomain(domain);
+            urlsRepository.save(url);  
+        });
+    }
+
+    private String parseDomain(String url) {
+        url = url.replace("https://", "");
+        url = url.replace("http://", "");
+        url = url.replace("www", "");
+        url = url.split("/")[0];
+        return url;
+    }
     private List<Urls> parseUrls(Readme readme) {
         var urlPattern = "https?://\\S+";
         var text = readme.getReadme();

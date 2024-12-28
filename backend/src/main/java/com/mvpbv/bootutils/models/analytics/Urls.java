@@ -20,6 +20,11 @@ public class Urls {
 
     private String url;
 
+    @ManyToOne
+    @JoinColumn(name = "domain_id")
+    private Domain domain;
+
+
     public Urls() {
     }
     public Urls(String url, Readme readme) {
@@ -50,5 +55,11 @@ public class Urls {
     public void setUrl(String url) {
         this.url = url;
     }
+    public Domain getDomain() {
+        return domain;
+    }
 
+    public void setDomain(Domain domain) {
+        this.domain = domain;
+    }
 }
