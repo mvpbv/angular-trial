@@ -1,7 +1,10 @@
 package com.mvpbv.bootutils.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,15 +14,19 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.mvpbv.bootutils.dto.ReadmeDTO;
 import com.mvpbv.bootutils.models.analytics.AnalyticsLesson;
 import com.mvpbv.bootutils.models.analytics.CodeChallenge;
 import com.mvpbv.bootutils.models.analytics.LessonType;
+import com.mvpbv.bootutils.models.analytics.Readme;
+import com.mvpbv.bootutils.models.analytics.Urls;
 import com.mvpbv.bootutils.models.course.CourseRoot;
 import com.mvpbv.bootutils.models.lesson.Lesson;
 import com.mvpbv.bootutils.repositories.AnalyticsLessonRepository;
 import com.mvpbv.bootutils.repositories.CodeChallengeRepository;
 import com.mvpbv.bootutils.repositories.CourseRootRepository;
 import com.mvpbv.bootutils.repositories.LessonRepository;
+import com.mvpbv.bootutils.repositories.ReadmeRepository;
 import com.mvpbv.bootutils.repositories.RootRepository;
 
 @Service
@@ -35,7 +42,7 @@ public class AdminService {
     private final LessonRepository lessonRepository;
     private final AnalyticsLessonRepository analyticsLessonRepository;
     private final CodeChallengeRepository codeChallengeRepository;
-
+    private final ReadmeRepository readmeRepository;
 
         
 public AdminService(RootRepository rootRepository, 
@@ -44,7 +51,8 @@ public AdminService(RootRepository rootRepository,
                     CourseRootRepository courseRootRepository,
                     LessonRepository lessonRepository,
                     AnalyticsLessonRepository analyticsLessonRepository,
-                    CodeChallengeRepository codeChallengeRepository) {
+                    CodeChallengeRepository codeChallengeRepository,
+                    ReadmeRepository ReadmeRepository) {
         this.rootRepository = rootRepository;
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
@@ -52,6 +60,7 @@ public AdminService(RootRepository rootRepository,
         this.lessonRepository = lessonRepository;
         this.analyticsLessonRepository = analyticsLessonRepository;
         this.codeChallengeRepository = codeChallengeRepository;
+        this.readmeRepository = ReadmeRepository;
 }
 
     public void seedCourses() {
@@ -164,4 +173,43 @@ public AdminService(RootRepository rootRepository,
         }
     
     }
+    public void seedReadme() {
+        List<Supplier<List<ReadmeDTO>>> methods = List.of(
+            lessonRepository::getDescriptionCLI,
+            lessonRepository::getDescriptionGithub,
+            lessonRepository::getDescriptionHttpTests,
+            lessonRepository::getDescriptionMultipleChoice,
+            lessonRepository::getDescriptionOutput,
+            lessonRepository::getDescriptionTests,
+            lessonRepository::getDescriptionSQL,
+            lessonRepository::getDescriptionTextInput,
+            lessonRepository::getDescriptionManual
+        );
+        methods.forEach(method -> {
+            method.get().forEach(readmeDTO -> {
+                var temp = new Readme(readmeDTO);
+                temp.setUrls(parseUrls(temp));
+                readmeRepository.save(temp);
+            });
+        });
+        
+    }
+    
+    private List<Urls> parseUrls(Readme readme) {
+        var urlPattern = "https?://\\S+";
+        var text = readme.getReadme();
+        var matcher = java.util.regex.Pattern.compile(urlPattern).matcher(text);
+        List<Urls> urls = new ArrayList<>();
+        while (matcher.find()) {
+            var tempUrl = matcher.group();
+            if (tempUrl.contains("storage.googleapis.com") || tempUrl.contains("localhost")) {
+                continue;
+            }
+            var obj = new Urls(tempUrl, readme);
+            urls.add(obj);
+            logger.log(Level.INFO, "Found url: {0}", matcher.group());
+        }
+        return urls;
+    }
+    
 }

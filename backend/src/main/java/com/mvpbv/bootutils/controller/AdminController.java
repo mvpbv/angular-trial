@@ -45,6 +45,18 @@ public class AdminController {
         adminService.seedCodeChallenges();
         return "Seeded the code challenges!";
     }
+    @GetMapping("/seedReadme")
+    public String seedReadme() {
+        adminService.seedReadme();
+        return "Seeded the readme!";
+    }
+    /*
+    @GetMapping("/seedUrls") 
+    public String seedUrls() {
+        adminService.seedReadmeUrls();
+        return "Seeded the urls!";
+    }
+    */
     @GetMapping("/getRawData")
     public JsonNode getRawData() {
         return dataService.fetchRawData();
