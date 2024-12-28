@@ -13,4 +13,7 @@ export class LinksService {
   getLinks(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/getLinks`);
   }
+  getDomains(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/domains`);
+  }
 }

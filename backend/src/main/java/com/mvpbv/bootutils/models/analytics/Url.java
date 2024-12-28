@@ -8,7 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Urls {
+public class Url {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,9 +25,9 @@ public class Urls {
     private Domain domain;
 
 
-    public Urls() {
+    public Url() {
     }
-    public Urls(String url, Readme readme) {
+    public Url(String url, Readme readme) {
         this.url = url;
         this.readme = readme;
     }

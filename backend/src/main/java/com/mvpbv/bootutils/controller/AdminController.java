@@ -48,6 +48,7 @@ public class AdminController {
     @GetMapping("/seedReadme")
     public String seedReadme() {
         adminService.seedReadme();
+        adminService.seedDomains();
         return "Seeded the readme!";
     }
     @GetMapping("/seedUrls")

@@ -13,7 +13,7 @@ export class LinksComponent implements OnInit {
   constructor(private linksService: LinksService) {}
 
   ngOnInit(): void {
-    this.linksService.getLinks().subscribe((data: any) => {
+    this.linksService.getDomains().subscribe((data: any) => {
       this.links = data;
     });
   }

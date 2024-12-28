@@ -1,7 +1,6 @@
 package com.mvpbv.bootutils.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Supplier;
@@ -20,7 +19,6 @@ import com.mvpbv.bootutils.models.analytics.CodeChallenge;
 import com.mvpbv.bootutils.models.analytics.Domain;
 import com.mvpbv.bootutils.models.analytics.LessonType;
 import com.mvpbv.bootutils.models.analytics.Readme;
-import com.mvpbv.bootutils.models.analytics.Urls;
 import com.mvpbv.bootutils.models.course.CourseRoot;
 import com.mvpbv.bootutils.models.lesson.Lesson;
 import com.mvpbv.bootutils.repositories.AnalyticsLessonRepository;
@@ -48,6 +46,7 @@ public class AdminService {
     private final ReadmeRepository readmeRepository;
     private final UrlsRepository urlsRepository;
     private final DomainRepository domainsRepository;
+    private final AdminHelper adminHelper;
         
                 
         public AdminService(RootRepository rootRepository, 
@@ -59,7 +58,8 @@ public class AdminService {
                             CodeChallengeRepository codeChallengeRepository,
                             ReadmeRepository ReadmeRepository,
                             UrlsRepository urlsRepository,
-                            DomainRepository domainRepository) {
+                            DomainRepository domainRepository, 
+                            AdminHelper adminHelper) {
                 this.rootRepository = rootRepository;
                 this.restTemplate = restTemplate;
                 this.objectMapper = objectMapper;
@@ -70,6 +70,7 @@ public class AdminService {
                 this.readmeRepository = ReadmeRepository;
                 this.urlsRepository = urlsRepository;
                 this.domainsRepository = domainRepository;
+                this.adminHelper = adminHelper;
 }
 
     public void seedCourses() {
@@ -197,7 +198,7 @@ public class AdminService {
         methods.forEach(method -> {
             method.get().forEach(readmeDTO -> {
                 var temp = new Readme(readmeDTO);
-                temp.setUrls(parseUrls(temp));
+                temp.setUrls(adminHelper.parseUrls(temp));
                 readmeRepository.save(temp);
             });
         });
@@ -205,7 +206,7 @@ public class AdminService {
     }
     public void seedDomains() {
         urlsRepository.findAll().forEach(url -> {
-            var temp = parseDomain(url.getUrl());
+            var temp = adminHelper.parseDomain(url.getUrl());
             var domain = domainsRepository.findByDomain(temp).orElseGet(() -> {
                 var newDomain = new Domain(temp);
                 domainsRepository.save(newDomain);
@@ -216,28 +217,6 @@ public class AdminService {
         });
     }
 
-    private String parseDomain(String url) {
-        url = url.replace("https://", "");
-        url = url.replace("http://", "");
-        url = url.replace("www", "");
-        url = url.split("/")[0];
-        return url;
-    }
-    private List<Urls> parseUrls(Readme readme) {
-        var urlPattern = "https?://\\S+";
-        var text = readme.getReadme();
-        var matcher = java.util.regex.Pattern.compile(urlPattern).matcher(text);
-        List<Urls> urls = new ArrayList<>();
-        while (matcher.find()) {
-            var tempUrl = matcher.group();
-            if (tempUrl.contains("storage.googleapis.com") || tempUrl.contains("localhost")) {
-                continue;
-            }
-            var obj = new Urls(tempUrl, readme);
-            urls.add(obj);
-            logger.log(Level.INFO, "Found url: {0}", matcher.group());
-        }
-        return urls;
-    }
+    
     
 }

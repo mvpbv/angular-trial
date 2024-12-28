@@ -19,7 +19,7 @@ public class Domain {
     private String domain;
 
     @OneToMany(mappedBy = "domain", cascade=CascadeType.ALL)
-    private List<Urls> urls;
+    private List<Url> urls;
 
     public Domain(String domain) {
         this.domain = domain;
@@ -45,11 +45,11 @@ public class Domain {
         this.domain = domain;
     }
 
-    public List<Urls> getUrls() {
+    public List<Url> getUrls() {
         return urls;
     }
 
-    public void setUrls(List<Urls> urls) {
+    public void setUrls(List<Url> urls) {
         this.urls = urls;
     }
 }
