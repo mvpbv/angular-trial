@@ -1,4 +1,6 @@
-package com.mvpbv.bootutils.models.analytics;
+package com.mvpbv.bootutils.models.links;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,7 +41,7 @@ public class Url {
     public void setId(Long id) {
         this.id = id;
     }
-
+    @JsonIgnore
     public Readme getReadme() {
         return readme;
     }
@@ -62,4 +64,17 @@ public class Url {
     public void setDomain(Domain domain) {
         this.domain = domain;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Url obj = (Url) o;
+        return this.getUrl().equals(obj.getUrl());
+    }
+    @Override
+    public int hashCode() {
+        return this.getUrl().hashCode();
+    }
+
 }

@@ -16,11 +16,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.mvpbv.bootutils.dto.ReadmeDTO;
 import com.mvpbv.bootutils.models.analytics.AnalyticsLesson;
 import com.mvpbv.bootutils.models.analytics.CodeChallenge;
-import com.mvpbv.bootutils.models.analytics.Domain;
 import com.mvpbv.bootutils.models.analytics.LessonType;
-import com.mvpbv.bootutils.models.analytics.Readme;
 import com.mvpbv.bootutils.models.course.CourseRoot;
 import com.mvpbv.bootutils.models.lesson.Lesson;
+import com.mvpbv.bootutils.models.links.Domain;
+import com.mvpbv.bootutils.models.links.Readme;
 import com.mvpbv.bootutils.repositories.AnalyticsLessonRepository;
 import com.mvpbv.bootutils.repositories.CodeChallengeRepository;
 import com.mvpbv.bootutils.repositories.CourseRootRepository;
@@ -28,7 +28,7 @@ import com.mvpbv.bootutils.repositories.DomainRepository;
 import com.mvpbv.bootutils.repositories.LessonRepository;
 import com.mvpbv.bootutils.repositories.ReadmeRepository;
 import com.mvpbv.bootutils.repositories.RootRepository;
-import com.mvpbv.bootutils.repositories.UrlsRepository;
+import com.mvpbv.bootutils.repositories.UrlRepository;
 
 @Service
 public class AdminService {
@@ -44,8 +44,8 @@ public class AdminService {
     private final AnalyticsLessonRepository analyticsLessonRepository;
     private final CodeChallengeRepository codeChallengeRepository;
     private final ReadmeRepository readmeRepository;
-    private final UrlsRepository urlsRepository;
-    private final DomainRepository domainsRepository;
+    private final UrlRepository urlRepository;
+    private final DomainRepository domainRepository;
     private final AdminHelper adminHelper;
         
                 
@@ -57,7 +57,7 @@ public class AdminService {
                             AnalyticsLessonRepository analyticsLessonRepository,
                             CodeChallengeRepository codeChallengeRepository,
                             ReadmeRepository ReadmeRepository,
-                            UrlsRepository urlsRepository,
+                            UrlRepository urlRepository,
                             DomainRepository domainRepository, 
                             AdminHelper adminHelper) {
                 this.rootRepository = rootRepository;
@@ -68,8 +68,8 @@ public class AdminService {
                 this.analyticsLessonRepository = analyticsLessonRepository;
                 this.codeChallengeRepository = codeChallengeRepository;
                 this.readmeRepository = ReadmeRepository;
-                this.urlsRepository = urlsRepository;
-                this.domainsRepository = domainRepository;
+                this.urlRepository = urlRepository;
+                this.domainRepository = domainRepository;
                 this.adminHelper = adminHelper;
 }
 
@@ -205,18 +205,23 @@ public class AdminService {
         
     }
     public void seedDomains() {
-        urlsRepository.findAll().forEach(url -> {
+        urlRepository.findAll().forEach(url -> {
             var temp = adminHelper.parseDomain(url.getUrl());
-            var domain = domainsRepository.findByDomain(temp).orElseGet(() -> {
+            var domain = domainRepository.findByDomain(temp).orElseGet(() -> {
                 var newDomain = new Domain(temp);
-                domainsRepository.save(newDomain);
+                domainRepository.save(newDomain);
                 return newDomain;
             });
             url.setDomain(domain);
-            urlsRepository.save(url);  
+            urlRepository.save(url);  
         });
     }
-
-    
+    public void seedUrlCounts() {
+        domainRepository.findAll().forEach(domain -> {
+            var count = domain.getUrls().stream().distinct().count();
+            domain.setCount((int) count);
+            domainRepository.save(domain);
+        });
+    }
     
 }

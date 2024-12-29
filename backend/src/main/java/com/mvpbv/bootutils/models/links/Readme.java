@@ -1,5 +1,5 @@
 
-package com.mvpbv.bootutils.models.analytics;
+package com.mvpbv.bootutils.models.links;
 
 import java.util.List;
 

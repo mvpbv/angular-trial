@@ -1,6 +1,16 @@
-<p>links works!</p>
-@for (link of links; track links) {
-  <div class="link">
-    <h3>{{link}}</h3>
+<div class="domain-container">
+@for (domain of domains; track domains) {
+  <div class="domain">
+    <button (click)="getLinks(domain.id)">{{domain.domain}} {{domain.count}}</button>
+    @if (selectedDomains.has(domain.id)) {
+      <div class="links">
+        @for (link of links[domain.id]; track link) {
+          <div>
+            <a href="{{link.url}}" target="_blank" class="link">{{link.url}}</a>
+          </div>
+        }
+      </div>
+    }
   </div>
 }
+</div>

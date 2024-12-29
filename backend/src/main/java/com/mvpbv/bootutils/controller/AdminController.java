@@ -56,6 +56,11 @@ public class AdminController {
         adminService.seedDomains();
         return "Seeded the urls!";
     }
+    @GetMapping("/seedUrlCounts") 
+    public String seedUrlCounts() {
+        adminService.seedUrlCounts();
+        return "Seeded the url counts!";
+    }
     @GetMapping("/getRawData")
     public JsonNode getRawData() {
         return dataService.fetchRawData();

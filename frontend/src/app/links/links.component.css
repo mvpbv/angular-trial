@@ -1,0 +1,21 @@
+.domain-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin: 20px auto;
+
+}
+
+.domain {
+    width: 100%;
+    overflow-wrap: break-word;
+}
+.domain button {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

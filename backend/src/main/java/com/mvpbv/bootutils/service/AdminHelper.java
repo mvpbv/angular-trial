@@ -6,8 +6,8 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
-import com.mvpbv.bootutils.models.analytics.Readme;
-import com.mvpbv.bootutils.models.analytics.Url;
+import com.mvpbv.bootutils.models.links.Readme;
+import com.mvpbv.bootutils.models.links.Url;
 
 @Component
 public class AdminHelper {

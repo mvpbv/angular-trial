@@ -1,6 +1,8 @@
-package com.mvpbv.bootutils.models.analytics;
+package com.mvpbv.bootutils.models.links;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -20,6 +22,8 @@ public class Domain {
 
     @OneToMany(mappedBy = "domain", cascade=CascadeType.ALL)
     private List<Url> urls;
+
+    private int count;
 
     public Domain(String domain) {
         this.domain = domain;
@@ -44,12 +48,19 @@ public class Domain {
     public void setDomain(String domain) {
         this.domain = domain;
     }
-
+    @JsonIgnore
     public List<Url> getUrls() {
         return urls;
     }
 
     public void setUrls(List<Url> urls) {
         this.urls = urls;
+    }
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

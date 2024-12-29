@@ -10,8 +10,8 @@ export class LinksService {
 
   constructor(private http: HttpClient) { }
 
-  getLinks(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/getLinks`);
+  getLinks(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getLinks?domainId=${id}`);
   }
   getDomains(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/domains`);

@@ -5,31 +5,27 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mvpbv.bootutils.models.analytics.Domain;
-import com.mvpbv.bootutils.models.analytics.Url;
-import com.mvpbv.bootutils.repositories.DomainRepository;
-import com.mvpbv.bootutils.repositories.UrlsRepository;
+import com.mvpbv.bootutils.models.links.Domain;
+import com.mvpbv.bootutils.models.links.Url;
+import com.mvpbv.bootutils.service.LinkService;
 
 @RestController
 @RequestMapping("/api/v1/link")
 public class LinkController {
     
     @Autowired
-    private UrlsRepository urlsRepository;
+    private LinkService linkService;
 
-    @Autowired
-    private DomainRepository domainRepository;
 
     @GetMapping("/getLinks") 
-    public List<String> getLinks() {
-        var urls = urlsRepository.findAll();
-        return urls.stream().map(Url::getUrl).toList();
+    public List<Url> getLinks(@RequestParam(required = false) Integer domainId) {
+        return linkService.findLinks(domainId); 
     }
     @GetMapping("/domains")
-    public List<String> getDomains() {
-        var domains = domainRepository.findAll();
-        return domains.stream().map(Domain::getDomain).toList();
+    public List<Domain> getDomains(@RequestParam(required = false) boolean sort) {
+        return linkService.findDomains(); 
     }
 }
