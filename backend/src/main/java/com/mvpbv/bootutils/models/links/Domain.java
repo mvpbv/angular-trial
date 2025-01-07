@@ -1,15 +1,11 @@
 package com.mvpbv.bootutils.models.links;
 
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class Domain {
@@ -23,6 +19,12 @@ public class Domain {
     @OneToMany(mappedBy = "domain", cascade=CascadeType.ALL)
     private List<Url> urls;
 
+    @ManyToMany
+    @JoinTable(name = "domain_course",
+            joinColumns = @JoinColumn(name = "domain_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<CourseInfo> courseInfos;
+
     private int count;
 
     public Domain(String domain) {
@@ -30,7 +32,7 @@ public class Domain {
     }
 
     public Domain() {
-        
+
     }
 
     public Long getId() {
@@ -56,6 +58,7 @@ public class Domain {
     public void setUrls(List<Url> urls) {
         this.urls = urls;
     }
+
     public int getCount() {
         return count;
     }
@@ -63,4 +66,13 @@ public class Domain {
     public void setCount(int count) {
         this.count = count;
     }
+
+  public Set<CourseInfo> getCourseInfos() {
+    return courseInfos;
+  }
+
+  public void setCourseInfos(Set<CourseInfo> courseInfos) {
+    this.courseInfos = courseInfos;
+  }
 }
+

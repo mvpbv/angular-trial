@@ -11,9 +11,10 @@ import { AboutComponent } from './about/about.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { CurveComponent } from './curve/curve.component';
 import { LinksComponent } from './links/links.component';
+import {FaqComponent} from './faq/faq.component';
 
 export const routes: Routes = [
-    { 
+    {
         path: 'health',
         component: HealthStatusComponent,
         title: "Healthz",
@@ -22,7 +23,7 @@ export const routes: Routes = [
         path: '',
         component: HomeComponent,
         title: "Home",
-    }, 
+    },
     {
         path: 'fetch',
         component: FetchComponent,
@@ -59,6 +60,11 @@ export const routes: Routes = [
         title: "About Us",
     },
     {
+      path: 'faq',
+      component: FaqComponent,
+      title: "FAQ",
+    },
+    {
         path: 'roadmap',
         component: RoadmapComponent,
         title: "Roadmap",
@@ -73,7 +79,7 @@ export const routes: Routes = [
         component: LinksComponent,
         title: "Links",
     },
-    
+
 
 ];
 

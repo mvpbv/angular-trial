@@ -17,21 +17,25 @@ public class Url {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "readme_uuid")    
+    @JoinColumn(name = "readme_uuid")
     private Readme readme;
 
     private String url;
 
     @ManyToOne
-    @JoinColumn(name = "domain_id")
     private Domain domain;
 
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private CourseInfo courseInfo;
 
     public Url() {
     }
     public Url(String url, Readme readme) {
         this.url = url;
         this.readme = readme;
+        this.courseInfo = readme.getCourseInfo();
+
     }
 
     public Long getId() {
@@ -63,6 +67,13 @@ public class Url {
 
     public void setDomain(Domain domain) {
         this.domain = domain;
+    }
+
+    public CourseInfo getCourseInfo() {
+        return courseInfo;
+    }
+    public void setCourseInfo(CourseInfo courseInfo) {
+        this.courseInfo = courseInfo;
     }
 
     @Override

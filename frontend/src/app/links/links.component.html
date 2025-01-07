@@ -1,16 +1,22 @@
-<div class="domain-container">
-@for (domain of domains; track domains) {
-  <div class="domain">
-    <button (click)="getLinks(domain.id)">{{domain.domain}} {{domain.count}}</button>
-    @if (selectedDomains.has(domain.id)) {
-      <div class="links">
-        @for (link of links[domain.id]; track link) {
-          <div>
-            <a href="{{link.url}}" target="_blank" class="link">{{link.url}}</a>
-          </div>
-        }
-      </div>
-    }
-  </div>
-}
+<div class="course-container">
+  @for (course of courses; track courses) {
+    <div class="course">
+      <button (click)="getDomains(course.courseIndex)">{{course.courseTitle}} </button>
+      @for (domain of domains.get(course.courseIndex); track domain) {
+        <div class="domain-container">
+          <button (click)="getLinks(domain.id, course.courseIndex)">{{domain.domain}}</button>
+          @if (selectedDomains.has(domain.id)) {
+            <div class="links">
+              @for (link of links[course.courseIndex][domain.id]; track link) {
+                <div>
+                  <a href="{{link.url}}" target="_blank" class="link">{{link.url}}</a>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+      }
 </div>

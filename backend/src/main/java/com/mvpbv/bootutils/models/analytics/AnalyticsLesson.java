@@ -13,9 +13,6 @@ import jakarta.persistence.Id;
 @Entity
 
 public class AnalyticsLesson {
-
-        
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -72,35 +69,39 @@ public class AnalyticsLesson {
             case "Learn to Code in Python" -> "Learn Python";
             case "Learn Shells and Terminals" -> "Learn Shells";
             case "Learn Git" -> "Learn Git";
-            case "Build Bookbot Python" -> "Build Bookbot";
+            case "Build a Bookbot in Python" -> "Build Bookbot";
             case "Learn Object Oriented Programming in Python" -> "Object Oriented Programming";
-            case "Build Asteroids Python" -> "Build Asteroids";
+            case "Build Asteroids using Python and Pygame" -> "Build Asteroids";
             case "Learn Functional Programming in Python" -> "Functional Programming";
-            case "Build Static Site Generator Python" -> "Build SSG";
+            case "Build a Static Site Generator in Python" -> "Build SSG";
             case "Learn Algorithms in Python" -> "Algorithms";
             case "Learn Data Structures in Python" -> "Data Structures";
-            case "Build Maze Solver Python" -> "Build Maze Solver";
+            case "Build a Maze Solver in Python" -> "Build Maze Solver";
             case "Learn Memory Management in C" -> "C Memory Management";
             case "Build Personal Project 1" -> "Build Personal Project";
             case "Learn Golang" -> "Learn Golang";
             case "Learn HTTP Clients Golang" -> "Learn HTTP Clients";
             case "Build Pokedex CLI Golang" -> "Build Pokedex CLI";
             case "Learn SQL" -> "Learn SQL";
-            case "Build Blog Aggregator Golang" -> "Build Blog Aggregator";
+            case "Build a Blog Aggregator in Go" -> "Build Blog Aggregator Go";
             case "Learn HTTP Servers Golang" -> "Learn HTTP Servers";
             case "Learn Docker" -> "Learn Docker";
-            case "Learn CI CD Github Docker Golang" -> "Learn CI CD";
+            case "Learn CI/CD with Github Actions, Docker and Go" -> "Learn CI/CD Go";
+            case "Learn CI/CD with Github Actions, Docker and TypeScript" -> "Learn CI/CD Go";
             case "Build Capstone Project" -> "Build Capstone Project";
             case "Learn Job Search" -> "Learn Job Search";
             case "Learn Git 2" -> "Learn Git 2";
             case "Learn Kubernetes" -> "Learn Kubernetes";
             case "Learn Pub Sub RabbitMQ" -> "Learn Pub Sub";
             case "Learn Crytography" -> "Learn Crytography";
-            case "Learn Algorithms 2" -> "Learn Algorithms 2";
+            case "Learn Algorithms 2 in Python" -> "Learn Algorithms 2";
             case "Learn Javascript" -> "Learn Javascript";
             case "Learn HTTP Clients Typescript" -> "Learn HTTP Clients";
-            case "Build Pokedex CLI Typescript" -> "Build Pokedex CLI";
-            case "Build Blog Aggregator Typescript" -> "Build Blog Aggregator";
+            case "Build a Pokedex in Typescript" -> "Build Pokedex TS";
+            case "Build a Pokedex in Go" -> "Build Pokedex Go";
+            case "Build a Web Crawler in Go" -> "Build Web Crawler Go";
+            case "Build a Web Crawler in JavaScript" -> "Build Web Crawler JS";
+            case "Build a Blog Aggregator in Typescript" -> "Build Blog Aggregator TS";
             case "Learn HTTP Servers Typescript" -> "Learn HTTP Servers";
             default -> "Unknown";
         };

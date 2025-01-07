@@ -13,5 +13,7 @@ import com.mvpbv.bootutils.models.links.Url;
 @Repository
 public interface UrlRepository extends JpaRepository<Url, Long> {
    @Query("SELECT u FROM Url u WHERE u.domain.id = ?1")
-    List<Url> findUrlsByDomainId(int domainId); 
+    List<Url> findUrlsByDomainId(int domainId);
+   @Query("SELECT u FROM Url u WHERE u.domain.id = ?1 AND u.courseInfo.courseIndex = ?2")
+    List<Url> findUrlsByDomainIdAndCourseId(int domainId, int courseId);
 }

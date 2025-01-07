@@ -5,42 +5,42 @@ import java.util.List;
 
 import com.mvpbv.bootutils.dto.ReadmeDTO;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.OneToMany;
+import com.mvpbv.bootutils.service.ReadmeService;
+import jakarta.persistence.*;
 
 @Entity
 public class Readme {
-    
+
     @Lob
     @Column(name = "readme", columnDefinition="LONGTEXT")
     private String readme;
 
     @Id
-    private String uuid;
+    private String lessonUuid;
 
     private int length;
 
     @OneToMany(mappedBy = "readme", cascade=CascadeType.ALL)
     private List<Url> urls;
 
+    @ManyToOne
+    private CourseInfo courseInfo;
 
     public Readme() {
 
     }
     public Readme(String readme, String uuid, int length) {
         this.readme = readme;
-        this.uuid = uuid;
+        this.lessonUuid = uuid;
         this.length = length;
     }
-    public Readme(ReadmeDTO readmeDTO) {
-        this.readme = readmeDTO.getDescription();
-        this.uuid = readmeDTO.getUuid();
-        this.length = this.readme.length();
+    public Readme(ReadmeDTO readmeDTO, CourseInfo courseInfo) {
+      this.readme = readmeDTO.getDescription();
+      this.lessonUuid = readmeDTO.getUuid();
+      this.length = this.readme.length();
+      this.courseInfo = courseInfo;
     }
+
 
     public String getReadme() {
         return readme;
@@ -57,12 +57,7 @@ public class Readme {
     public void setLength(int length) {
         this.length = length;
     }
-    public String getUuid() {
-        return uuid;
-    }
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
+
     public List<Url> getUrls() {
         return urls;
     }
@@ -71,4 +66,20 @@ public class Readme {
         this.urls = urls;
     }
 
+
+  public CourseInfo getCourseInfo() {
+    return courseInfo;
+  }
+
+  public void setCourseInfo(CourseInfo courseInfo) {
+    this.courseInfo = courseInfo;
+  }
+
+  public String getLessonUuid() {
+    return lessonUuid;
+  }
+
+  public void setLessonUuid(String lessonUuid) {
+    this.lessonUuid = lessonUuid;
+  }
 }

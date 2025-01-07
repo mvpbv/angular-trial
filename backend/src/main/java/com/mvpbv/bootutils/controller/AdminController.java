@@ -1,5 +1,6 @@
 package com.mvpbv.bootutils.controller;
 
+import com.mvpbv.bootutils.service.ReadmeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.mvpbv.bootutils.service.AdminService;
 import com.mvpbv.bootutils.service.DataService;
 
-    
+
 @RestController
 @RequestMapping("api/v1/admin")
 public class AdminController {
@@ -17,6 +18,8 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
     private DataService dataService;
+    @Autowired
+    private ReadmeService readmeService;
 
     @GetMapping("/generateDB")
     public String seedDb() {
@@ -25,7 +28,7 @@ public class AdminController {
         adminService.seedOptionalLessons();
         return "Seeded the database!";
     }
-    @GetMapping("/seedLessons") 
+    @GetMapping("/seedLessons")
     public String seedLessons() {
         adminService.seedRequiredLessons();
         return "Seeded the lessons!";
@@ -45,27 +48,34 @@ public class AdminController {
         adminService.seedCodeChallenges();
         return "Seeded the code challenges!";
     }
-    @GetMapping("/seedReadme")
+    @GetMapping("/seedReadmeService")
     public String seedReadme() {
-        adminService.seedReadme();
-        adminService.seedDomains();
+        readmeService.seedReadme();
+        readmeService.seedDomains();
+        return "Seeded the readme service!";
+    }
+    @GetMapping("/seedReadme")
+    public String seedReadmeOnly() {
+        readmeService.seedReadme();
         return "Seeded the readme!";
     }
-    @GetMapping("/seedUrls")
-    public String seedUrls() {
-        adminService.seedDomains();
-        return "Seeded the urls!";
+    @GetMapping("/seedDomains")
+    public String seedDomains() {
+        readmeService.seedDomains();
+        return "Seeded the domains!";
     }
-    @GetMapping("/seedUrlCounts") 
-    public String seedUrlCounts() {
-        adminService.seedUrlCounts();
-        return "Seeded the url counts!";
+
+    @GetMapping("/seedCourseInfo")
+    public String seedCourseInfo() {
+      readmeService.seedCourseInfo();
+        return "Seeded the course info!";
     }
+
     @GetMapping("/getRawData")
     public JsonNode getRawData() {
         return dataService.fetchRawData();
     }
-    @GetMapping("/getOopData") 
+    @GetMapping("/getOopData")
     public JsonNode getOopData() {
         return dataService.fetchOopData();
     }

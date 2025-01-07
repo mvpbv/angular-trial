@@ -61,14 +61,14 @@ export class CurveComponent implements AfterViewInit {
 
     ctx.clearRect(0, 0, container.width, container.height);
     ctx.save();
-    ctx.translate(0, -this.scrollPosition);
+    ctx.translate(-this.scrollPosition, 0);
 
     data.forEach((value, index) => {
-      const y = index * (this.width + 1);
+      const x = index * (this.width + 1);
       const height = ((value - 3) / 7) * (container.height - 100);
       if (ctx !== null) {
         ctx.fillStyle = this.colors[index % this.colors.length];
-        ctx?.fillRect(container.width - height, y, height, this.width);
+        ctx?.fillRect(x, container.height - height, this.width, height);
       }
     });
 

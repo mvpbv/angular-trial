@@ -8,12 +8,17 @@ import { Observable } from 'rxjs';
 export class LinksService {
   private baseUrl = 'http://localhost:8080/api/v1/link';
 
-  constructor(private http: HttpClient) { }
-
-  getLinks(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/getLinks?domainId=${id}`);
+  constructor(private http: HttpClient) {
   }
-  getDomains(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/domains`);
+
+  getLinks(domainId: number, courseId : number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/links?domainId=${domainId}&courseId=${courseId}`);
+  }
+
+  getDomains(courseIndex: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/domains?courseIndex=${courseIndex}`);
+  }
+  getCourse(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/courses`);
   }
 }
