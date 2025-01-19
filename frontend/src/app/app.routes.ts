@@ -12,6 +12,11 @@ import { RoadmapComponent } from './roadmap/roadmap.component';
 import { CurveComponent } from './curve/curve.component';
 import { LinksComponent } from './links/links.component';
 import {FaqComponent} from './faq/faq.component';
+import {MageComponent} from './mages/mage.component';
+import {ExerciseNavigatorComponent} from './exercise-navigator/exercise-navigator.component';
+import {ResourcesComponent} from './resources/resources.component';
+import {RecursionComponent} from './recursion/recursion.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
 
 export const routes: Routes = [
     {
@@ -64,6 +69,16 @@ export const routes: Routes = [
       component: FaqComponent,
       title: "FAQ",
     },
+  {
+    path: 'mages',
+    component: MageComponent,
+    title: "Exercise",
+  },
+  {
+    path: 'recursion',
+    component: RecursionComponent,
+    title: "Recursion",
+  },
     {
         path: 'roadmap',
         component: RoadmapComponent,
@@ -79,6 +94,21 @@ export const routes: Routes = [
         component: LinksComponent,
         title: "Links",
     },
+  {
+    path: 'exercises',
+    component: ExerciseNavigatorComponent,
+    title: "Exercise Navigator",
+  },
+  {
+    path: 'resources',
+    component: ResourcesComponent,
+    title: "Resources",
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
+    title: "Sign Up",
+  }
 
 
 ];

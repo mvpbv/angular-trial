@@ -1,0 +1,59 @@
+<div class="container">
+  <button class="copy-button" (click)="copyAllCode()" >Copy Code</button>
+  <div class="instructions">
+    <h2>Recursion</h2>
+    <p class="instructions">
+     I've long had the belief that the issue with recursion is that it's not taught from first principles well. It's often
+      introduced straight into where it's useful with just one or two exercises of easier stuff, but then straight to
+      descending a file tree. That's not how loops are taught, we start from simple loops over an integer range, and then
+      some while loops, and then going over lists, dictionaries etc. and then nesting them.
+    </p>
+    <h2>Factorial Range</h2>
+    <p class="instructions">
+      One extremely common pattern that comes up in using factorial in probability and statistics is taking the factorial
+      of a larger number subtracted from a larger number. Ex: 5! - 3! There's a pattern here that can be exploited to do
+      less work. 5 * 4 * 3 * 2 * 1 - 3 * 2 * 1 = 5 * 4 Create a recursive function that takes the high and low range to
+      compute the factorial of the high range and subtract the factorial of the low range without the redundant work.
+    </p>
+    <h2>Take</h2>
+    <p>
+     The take function is another staple higher order function that's often used in functional programming languages. It
+      simply takes the first n elements of a list. Create a recursive function that takes a list and an integer n and returns
+      the first n elements of the list. You may be thinking, why not do this with a loop, or slice? Well, doing it recursively
+      is safe on the bounds. Ex list = 1 .. 3 take(10, list) will return [1, 2, 3] without needing any explicit error handling
+    </p>
+    <h2>Take Right</h2>
+    <p class="instructions">
+      Same as above, just take from the end of the list.
+    </p>
+    <h2>Count Up and Down</h2>
+    <p>
+      Create a recursive function that counts up from 0 to n, and then counts back down from n to 0.
+      Hint: Thing about what might happen if you did work after a recursive call, when would it finish?
+    </p>
+  </div>
+  <div class="code-editor">
+
+    <div class="code-title"><h2>rec.py</h2></div>
+    <pre class="code-content">
+<code class="language-python">
+
+  list1 = [for i in range(1, 10)]
+  list2 = [for i in range(10, 1, -1)]
+  list3 = [for i in range(1, 10, 2)]
+
+  def factorial_range(high, low):
+     pass
+
+  def take(n, lst):
+      pass
+
+  def take_right(n, lst):
+      pass
+
+  def count_up_down(n):
+      pass
+</code>
+  </pre>
+  </div>
+</div>

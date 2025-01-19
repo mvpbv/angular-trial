@@ -1,0 +1,134 @@
+<div class="container">
+  <button class="copy-button" (click)="copyAllCode()" >Copy Code</button>
+<div class="instructions">
+  <h2>Mages</h2>
+  <p class="instructions">
+    Let's build upon the concept of the boot.dev Dragon class. We're going to the creating a series
+    of mages that will have different spells. Just like the dragon return the list of units hit by the spells.
+  </p>
+  <h2>Ice Mage</h2>
+  <p class="instructions">
+    The ice mage is the most similar to the dragon. It will have a two range values a low, n, and high, m. It will generate two
+    rectangles. One extends vertically in each direction by m and horizontally by n. The other horizontally by m and
+    vertically by m.
+  </p>
+  <h2>Earth Mage</h2>
+  <p>
+    The earth mage will raise a set of spires from it's starting position to a target position (x, y). The first set of
+    spires will be a rectangle of height 1 traveling horizontally until it reaches the target's y. The next rectangle will
+    travel vertically until it reaches the target position with a width of 1.
+  </p>
+  <h2>Fire Mage</h2>
+  <p class="instructions">
+    The fire mage creates a rectangle that is a height 1 and extends outward by n on both sides, per row. It will continue
+    creating rectangles until that start at y + 1 and extend outward by n - 1 on each side with the last rectangle being
+    of width 2. In the shape of a pyramid.
+  </p>
+  <h2>Water Mage</h2>
+  <p>
+    The water mage will create a wave that starts on a coordinate (x, y) and moves horizontally growing in height by 1 each
+    row until it reaches a height m, and shrinks by 1 each row until it reaches a height of 1. The wave will repeat by a
+    period m.
+
+  </p>
+  <h2>Dark Mage</h2>
+  <p>
+    The dark mage will cast a haze of darkness that takes the shape of a diamond. The diamond will be the shape of the fire
+    mage's pyramid however, the base will serve as the middle of the diamond, and it will create a pyramid on both sides.
+
+  </p>
+  <button><a href="/recursion">Next Lesson</a></button>
+</div>
+<div class="code-editor">
+
+
+    <div class="code-title"><h2>mages.py</h2></div>
+  <pre class="code-content">
+<code class="language-python">
+  class Unit:
+    def __init__(self, name, pos_x, pos_y):
+        self.name = name
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+
+    def in_area(self, x_1, y_1, x_2, y_2):
+        return (
+            self.pos_x >= x_1
+            and self.pos_x <= x_2
+            and self.pos_y >= y_1
+            and self.pos_y <= y_2
+        )
+class Dragon(Unit):
+    def __init__(self, name, pos_x, pos_y, fire_range):
+        super().__init__(name, pos_x, pos_y)
+        self.__fire_range = fire_range
+
+    def breathe_fire(self, x, y, units):
+        hit_by_blast = []
+        for unit in units:
+            in_area = unit.in_area(
+                x - self.__fire_range,
+                y - self.__fire_range,
+                x + self.__fire_range,
+                y + self.__fire_range,
+            )
+            if in_area:
+                hit_by_blast.append(unit)
+        return hit_by_blast
+
+class IceMage(Unit):
+    def __init__(self, name, pos_x, pos_y, low_range, high_range):
+        super().__init__(name, pos_x, pos_y)
+        self.__low_range = low_range
+        self.__high_range = high_range
+
+    """
+     ##
+    ####
+    ####
+     ##
+    """
+    def freeze(self, x, y, units):
+       pass
+
+class EarthMage(Unit):
+    def __init__(self, name, pos_x, pos_y):
+        super().__init__(name, pos_x, pos_y)
+    """
+       #
+       #
+       #
+    ####
+    """
+    def raise_spire(self, x, y, units):
+       pass
+
+class FireMage(Unit):
+    def __init__(self, name, pos_x, pos_y, range):
+        super().__init__(name, pos_x, pos_y)
+        self.__range = range
+    """
+      #
+     ###
+    #####
+    """
+    def burn(self, x, y, units):
+       pass
+
+class WaterMage(Unit):
+
+    def __init__(self, name, pos_x, pos_y, height):
+        super().__init__(name, pos_x, pos_y)
+        self.__height = height
+    """
+    Example wave height 3, period 2:
+      #     #
+     ###   ###
+    ##### #####
+    """
+    def wave(self, x, y, units):
+       pass
+</code>
+  </pre>
+</div>
+</div>

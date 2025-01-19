@@ -1,5 +1,5 @@
-.hero-section, 
-.features, 
+.hero-section,
+.features,
 .about {
   position: relative;
   background: transparent;
@@ -19,12 +19,16 @@
   align-items: center;
   color: white;
   text-align: center;
-  
+
   h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
   }
-  
+  a {
+    text-decoration: none;
+    color: var(--funky-one)
+  }
+
   .hero-text {
     font-size: 1.5rem;
     margin-bottom: 2rem;
@@ -32,14 +36,14 @@
 }
 .features {
   background: transparent;
-  
+
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     padding: 2rem;
   }
-  
+
   .feature-card {
     background-color: rgba(15, 15, 17, 0.7);
     backdrop-filter: blur(10px);
@@ -48,7 +52,7 @@
     padding: 2rem;
     border-radius: 8px;
     transition: transform 0.3s ease;
-    
+
     &:hover {
       transform: translateY(-5px);
     }
@@ -68,7 +72,7 @@
 }
 .about {
   padding: 5rem 0;
-  
+
   .about-content {
     max-width: 800px;
     margin: 0 auto;
@@ -87,7 +91,7 @@
   .hero-section h1 {
     font-size: 2.5rem;
   }
-  
+
   .features-grid,
   .testimonial-grid {
     grid-template-columns: 1fr;

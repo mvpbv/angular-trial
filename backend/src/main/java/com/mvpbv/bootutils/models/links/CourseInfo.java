@@ -1,6 +1,7 @@
 package com.mvpbv.bootutils.models.links;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mvpbv.bootutils.models.remix.RemixCourse;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -25,6 +26,10 @@ public class CourseInfo {
 
   @OneToMany(mappedBy = "courseInfo")
   private List<Url> urls;
+
+  @OneToOne(mappedBy = "courseInfo")
+  @JoinColumn(name = "course_index", referencedColumnName = "course_index")
+  private RemixCourse remixCourse;
 
   public CourseInfo() {}
 

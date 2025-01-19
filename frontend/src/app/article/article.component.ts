@@ -5,7 +5,7 @@ import { DemoComponent } from '../demo/demo.component';
 
 @Component({
   selector: 'app-article',
-  imports: [CommonModule, PrimaryComponent, DemoComponent],
+  imports: [CommonModule, DemoComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })
@@ -14,5 +14,5 @@ export class ArticleComponent {
 
   constructor() {}
 
-  
+
 }

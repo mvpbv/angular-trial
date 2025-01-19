@@ -25,7 +25,7 @@ export class GuesserComponent{
     guess: new FormControl(''),
   });
 
-   
+
 
   constructor(private rankService: RankService) {
   }
@@ -38,7 +38,7 @@ export class GuesserComponent{
     const userPercent = userXp / this.highestXP * 100;
     const result: GuessResult = {
       level,
-      guess, 
+      guess,
       userPosition: {
         level,
         xp: userXp,
@@ -56,5 +56,5 @@ export class GuesserComponent{
     this.showForm = true;
     this.formVisibility.emit(true);
   }
-  
+
 }
